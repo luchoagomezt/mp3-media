@@ -3,12 +3,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>ca.cbc</groupId>
-  <artifactId>property_based_testing</artifactId>
+  <artifactId>mp3.lover</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>property_based_testing</name>
-  <url>http://maven.apache.org</url>
+  <name>mp3.lover</name>
+  <url>https://github.com/luchoagomezt/mp3_lover</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
