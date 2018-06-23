@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MP3File {
-  private List<ID3V2Tag> tags;
+  private final List<ID3V2Tag> tags;
     
-  public MP3File(byte[] mp3Array) throws IllegalArgumentException {
+  public MP3File(final byte[] mp3Array) throws IllegalArgumentException {
     if (mp3Array == null) {
       throw new IllegalArgumentException("Byte array is null"); 
     }
