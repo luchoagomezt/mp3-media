@@ -38,13 +38,28 @@ public class ID3V2TagTest {
   }
   
   @Test
+  public void itIsUnsynchronisation() {
+    assertTrue(new ID3V2Tag(new int[]{49, 44, 33, 03, 00, 128, 00, 12, 27, 76}).unsynchronisation());
+  }
+  
+  @Test
   public void itDoesNotHaveExtendedHeader() {
     assertFalse(new ID3V2Tag(new int[]{49, 44, 33, 03, 00, 00, 00, 12, 27, 76}).extendedHeader());
   }
   
   @Test
+  public void itHasExtendedHeader() {
+    assertTrue(new ID3V2Tag(new int[]{49, 44, 33, 03, 00, 64, 00, 12, 27, 76}).extendedHeader());
+  }
+  
+  @Test
   public void itIsNotExperimental() {
     assertFalse(new ID3V2Tag(new int[]{49, 44, 33, 03, 00, 00, 00, 12, 27, 76}).experimental());
+  }
+  
+  @Test
+  public void itIsExperimental() {
+    assertTrue(new ID3V2Tag(new int[]{49, 44, 33, 03, 00, 32, 00, 12, 27, 76}).experimental());
   }
   
   @Test
