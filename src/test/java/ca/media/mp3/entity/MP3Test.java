@@ -1,19 +1,18 @@
 package ca.media.mp3.entity;
 
-import java.util.ArrayList;
 import org.testng.annotations.Test;
 import static org.testng.AssertJUnit.assertTrue;
 
 @Test
 public class MP3Test {
   @Test
-  public void mp3StreamIsEmpty() {
-    MP3 file = new MP3(new ArrayList<Integer>().stream());
-    assertTrue(file.getID3V2Tags().isEmpty());
+  public void mp3ArrayIsEmpty() {
+    MP3 mp3 = new MP3(new int[]{});
+    assertTrue(mp3.size() == 0);
   }
   
   @Test(expectedExceptions = {IllegalArgumentException.class})
-  public void mp3StreamIsNull() {
+  public void mp3ArrayIsNull() {
     new MP3(null);
   }
 }

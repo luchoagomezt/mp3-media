@@ -1,24 +1,16 @@
 package ca.media.mp3.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
-
 public class MP3 {
-  private final List<ID3V2Tag> tags;
+  private final int[] media;
     
-  public MP3(final Stream<Integer> stream) throws IllegalArgumentException {
-    if (stream == null) {
-      throw new IllegalArgumentException("Stream is null"); 
+  public MP3(final int[] mp3) throws IllegalArgumentException {
+    if (mp3 == null) {
+      throw new IllegalArgumentException("Integer array is null"); 
     }
-    
-    tags = new ArrayList<ID3V2Tag>();
-    if (stream.count() == 0) {
-      return;
-    }
+    this.media = mp3;
   }
   
-  public List<ID3V2Tag> getID3V2Tags() {
-    return tags;
+  public int size() {
+    return media.length;
   }
 }
