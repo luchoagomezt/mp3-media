@@ -1,7 +1,5 @@
 package ca.media.mp3.entity;
 
-import java.util.Arrays;
-
 public class ID3V2Tag {
   private final int version;
   private final int revision;
