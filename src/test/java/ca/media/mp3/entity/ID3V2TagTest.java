@@ -71,4 +71,14 @@ public class ID3V2TagTest {
   public void revisionNumberIs0() {
     assertTrue(new ID3V2Tag(new int[]{49, 44, 33, 03, 00, 00, 00, 12, 27, 76}).revisionNumber() == 0);
   }
+
+  @Test
+  public void sizeaIs257() {
+    assertTrue(new ID3V2Tag(new int[]{49, 44, 33, 03, 00, 00, 00, 00, 0x02, 0x01}).size() == 257);
+  }
+
+  @Test
+  public void sizeaIs256() {
+    assertTrue(new ID3V2Tag(new int[]{49, 44, 33, 03, 00, 00, 00, 00, 0x02, 0x00}).size() == 256);
+  }
 }

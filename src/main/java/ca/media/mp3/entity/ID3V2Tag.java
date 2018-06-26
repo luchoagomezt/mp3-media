@@ -3,9 +3,10 @@ package ca.media.mp3.entity;
 import java.util.Arrays;
 
 public class ID3V2Tag {
-  private final int[] versionRevision;
+  private final int version;
+  private final int revision;
   private final int flags;
-  private final int[] size;
+  private final int size;
   
   public ID3V2Tag(final int[] mp3) throws IllegalArgumentException {
     if(mp3 == null) {
@@ -20,17 +21,18 @@ public class ID3V2Tag {
       throw new IllegalArgumentException("First three bytes are not 49 44 33");
     }
     
-    versionRevision = Arrays.copyOfRange(mp3, 3, 5);
+    version = mp3[3];
+    revision = mp3[4];
     flags = mp3[5];
-    size = Arrays.copyOfRange(mp3, 6, 10);
+    size = ((mp3[6] * 0x80 + mp3[7]) * 0x80 + mp3[8]) * 0x80 + mp3[9];
   }
-  
+    
   public int majorVersion() {
-    return versionRevision[0];
+    return version;
   }
   
   public int revisionNumber() {
-    return versionRevision[1];
+    return revision;
   }
   
   public boolean unsynchronisation() {
@@ -43,5 +45,9 @@ public class ID3V2Tag {
   
   public boolean experimental() {
     return (flags & 0x20) == 0x20;
+  }
+  
+  public int size() {
+    return size;
   }
 }
