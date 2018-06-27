@@ -19,4 +19,9 @@ public class MP3Test {
   public void mp3Size() {
     assertTrue(new MP3(new int[]{49, 44, 33, 03, 00, 00, 00, 00, 0x02, 0x00}).size() == 10);
   }
+
+  @Test
+  public void mp3WithNoID3V2Tag() {
+    new MP3(new int[]{50, 60, 30, 05, 00, 00, 00, 00, 02, 00});
+  }
 }
