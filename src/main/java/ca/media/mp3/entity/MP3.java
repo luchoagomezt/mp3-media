@@ -7,11 +7,13 @@ public class MP3 {
   public final ID3V2Tag tags;
     
   public MP3(final int[] mp3) throws IllegalArgumentException {
-    if (mp3 == null) {
-      throw new IllegalArgumentException("Integer array is null"); 
+    if(ID3V2Tag.isAnID3V2tag(mp3)) {
+      media = Arrays.copyOf(mp3, mp3.length);
+      tags = new ID3V2Tag(media);
+    } else {
+      media = Arrays.copyOf(mp3, mp3.length);
+      tags = null;
     }
-    media = Arrays.copyOf(mp3, mp3.length);
-    tags = new ID3V2Tag(media);
   }
   
   public int size() {
