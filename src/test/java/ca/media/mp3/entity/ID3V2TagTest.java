@@ -81,4 +81,12 @@ public class ID3V2TagTest {
   public void sizeaIs256() {
     assertTrue(new ID3V2Tag(new int[]{49, 44, 33, 03, 00, 00, 00, 00, 0x02, 0x00}).size() == 256);
   }
+  
+  @Test void itIsAnID3V2Tag() {
+    assertTrue(ID3V2Tag.isAnID3V2tag(new int[]{49, 44, 33, 03, 00, 00, 00, 00, 0x02, 0x00}));
+  }
+
+  @Test void itIsNotAnID3V2Tag() {
+    assertFalse(ID3V2Tag.isAnID3V2tag(new int[]{49, 44, 33, 03, 00, 0xE1, 00, 00, 0x02, 0x00}));
+  }
 }
