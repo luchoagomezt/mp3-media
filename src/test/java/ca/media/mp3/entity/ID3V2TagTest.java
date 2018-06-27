@@ -1,9 +1,9 @@
 package ca.media.mp3.entity;
 
 import org.testng.annotations.Test;
-
 import static org.testng.AssertJUnit.assertTrue;
 import static org.testng.AssertJUnit.assertFalse;
+import static org.testng.Assert.assertEquals;
 
 @Test
 public class ID3V2TagTest {
@@ -64,22 +64,22 @@ public class ID3V2TagTest {
   
   @Test
   public void majorVersionIs3() {
-    assertTrue(new ID3V2Tag(new int[]{49, 44, 33, 03, 00, 00, 00, 12, 27, 76}).majorVersion() == 3);
+    assertEquals(new ID3V2Tag(new int[]{49, 44, 33, 03, 00, 00, 00, 12, 27, 76}).majorVersion(), 3);
   }
   
   @Test
   public void revisionNumberIs0() {
-    assertTrue(new ID3V2Tag(new int[]{49, 44, 33, 03, 00, 00, 00, 12, 27, 76}).revisionNumber() == 0);
+    assertEquals(new ID3V2Tag(new int[]{49, 44, 33, 03, 00, 00, 00, 12, 27, 76}).revisionNumber(), 0);
   }
 
   @Test
   public void sizeaIs257() {
-    assertTrue(new ID3V2Tag(new int[]{49, 44, 33, 03, 00, 00, 00, 00, 0x02, 0x01}).size() == 257);
+    assertEquals(new ID3V2Tag(new int[]{49, 44, 33, 03, 00, 00, 00, 00, 0x02, 0x01}).size(), 257);
   }
 
   @Test
   public void sizeaIs256() {
-    assertTrue(new ID3V2Tag(new int[]{49, 44, 33, 03, 00, 00, 00, 00, 0x02, 0x00}).size() == 256);
+    assertEquals(new ID3V2Tag(new int[]{49, 44, 33, 03, 00, 00, 00, 00, 0x02, 0x00}).size(), 256);
   }
   
   @Test void itIsAnID3V2Tag() {
