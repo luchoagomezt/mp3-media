@@ -1,23 +1,21 @@
 package ca.media.mp3.entity;
 
-import java.util.Arrays;
-
 public class MP3 {
-  private final int[] media;
+  private final int length;
   private final ID3V2Tag tags;
     
   public MP3(final int[] mp3) throws IllegalArgumentException {
     if(ID3V2Tag.isAnID3V2tag(mp3)) {
-      media = Arrays.copyOf(mp3, mp3.length);
-      tags = new ID3V2Tag(media);
+      length = mp3.length;
+      tags = new ID3V2Tag(mp3);
     } else {
-      media = Arrays.copyOf(mp3, mp3.length);
+      length = mp3.length;
       tags = null;
     }
   }
   
   public int size() {
-    return media.length;
+    return length;
   }
   
   public boolean hasID3V2tag() {

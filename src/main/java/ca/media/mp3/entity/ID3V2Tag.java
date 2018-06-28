@@ -1,20 +1,18 @@
 package ca.media.mp3.entity;
 
+import java.util.Arrays;
+
 public class ID3V2Tag {
-  private final int version;
-  private final int revision;
-  private final int flags;
   private final int size;
+  private final int[] id3V2tag;
   
   public ID3V2Tag(final int[] mp3) throws IllegalArgumentException {
     if(!isAnID3V2tag(mp3)) {
       throw new IllegalArgumentException("Array does not contain an ID3 V2 tag");
     }
-    
-    version = mp3[3];
-    revision = mp3[4];
-    flags = mp3[5];
+
     size = ((mp3[6] * 0x80 + mp3[7]) * 0x80 + mp3[8]) * 0x80 + mp3[9];
+    id3V2tag = Arrays.copyOf(mp3, size);    
   }
   
   public static boolean isAnID3V2tag(final int[] mp3) throws IllegalArgumentException {
@@ -34,23 +32,23 @@ public class ID3V2Tag {
   }
     
   public int majorVersion() {
-    return version;
+    return id3V2tag[3];
   }
   
   public int revisionNumber() {
-    return revision;
+    return id3V2tag[4];
   }
   
   public boolean unsynchronisation() {
-    return (flags & 0x80) == 0x80;
+    return (id3V2tag[5] & 0x80) == 0x80;
   }
   
   public boolean extendedHeader() {
-    return (flags & 0x40) == 0x40;
+    return (id3V2tag[5] & 0x40) == 0x40;
   }
   
   public boolean experimental() {
-    return (flags & 0x20) == 0x20;
+    return (id3V2tag[5] & 0x20) == 0x20;
   }
   
   public int size() {
