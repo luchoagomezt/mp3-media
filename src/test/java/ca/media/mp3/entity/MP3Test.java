@@ -21,17 +21,17 @@ public class MP3Test {
   
   @Test
   public void mp3Size() {
-    assertEquals(new MP3(new int[]{49, 44, 33, 03, 00, 00, 00, 00, 0x02, 0x00}).size(), 10);
+    assertEquals(new MP3(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x02, 0x00}).size(), 10);
   }
 
   @Test
   public void mp3WithID3V2Tag() {
-    assertTrue(new MP3(new int[]{49, 44, 33, 03, 00, 00, 00, 00, 0x02, 0x00}).hasID3V2tag());
+    assertTrue(new MP3(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x02, 0x00}).hasID3V2tag());
   }
 
   @Test
   public void mp3WithNoID3V2Tag() {
-    assertFalse(new MP3(new int[]{50, 60, 30, 05, 00, 00, 00, 00, 02, 00}).hasID3V2tag());
+    assertFalse(new MP3(new int[]{0x50, 0x60, 0x30, 0x05, 00, 00, 00, 00, 02, 00}).hasID3V2tag());
   }
 
   @Test
@@ -41,6 +41,6 @@ public class MP3Test {
 
   @Test
   public void theID3V2TagIsNotNull() {
-    assertNotNull(new MP3(new int[]{49, 44, 33, 03, 00, 00, 00, 00, 0x02, 0x00}).getID3V2tag());
+    assertNotNull(new MP3(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x02, 0x00}).getID3V2tag());
   }
 }
