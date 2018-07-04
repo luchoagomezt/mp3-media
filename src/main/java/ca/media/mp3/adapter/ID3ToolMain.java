@@ -1,10 +1,13 @@
 package ca.media.mp3.adapter;
 
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+
 import ca.media.mp3.application.ID3Tool;
-import ca.media.mp3.application.ID3Writer;
+import ca.media.mp3.application.ID3Formatter;
 
 public class ID3ToolMain {
   
@@ -13,11 +16,12 @@ public class ID3ToolMain {
       return;
     }
     
-    ID3Writer writer = t -> String.format(
-      "{\"version\":%s, \"revision\":%s}%n", t.majorVersion(), t.revisionNumber());
+    ID3Formatter formatter = t -> String.format(
+      "{\"version\":%s, \"revision\":%s, \"flags\":%d, \"size\":%d}%n", 
+      t.majorVersion(), t.revisionNumber(), t.flags(), t.size());
 
-    try (FileInputStream mp3File = new FileInputStream(args[0])) {
-      ID3Tool tool = new ID3Tool(writer);
+    try (InputStream mp3File = new BufferedInputStream(new FileInputStream(args[0]))) {
+      ID3Tool tool = new ID3Tool(formatter);
       System.out.print(tool.perform(tool.read(mp3File)));
     } catch (FileNotFoundException e) {
       e.printStackTrace();

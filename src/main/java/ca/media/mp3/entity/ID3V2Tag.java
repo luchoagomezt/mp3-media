@@ -51,6 +51,10 @@ public class ID3V2Tag {
     return (id3V2tag[5] & 0x20) == 0x20;
   }
   
+  public int flags() {
+    return id3V2tag[5];
+  }
+  
   public int size() {
     return size;
   }

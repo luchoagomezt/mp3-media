@@ -82,6 +82,11 @@ public class ID3V2TagTest {
     assertEquals(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x02, 0x00}).size(), 256);
   }
   
+  @Test
+  public void flagsIsZero() {
+    assertEquals(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x02, 0x00}).flags(), 0);
+  }
+  
   @Test void itIsAnID3V2Tag() {
     assertTrue(ID3V2Tag.isAnID3V2tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x02, 0x00}));
   }
