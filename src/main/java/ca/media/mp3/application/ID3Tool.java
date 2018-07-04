@@ -9,7 +9,7 @@ public class ID3Tool implements ID3Reader {
 
   public ID3Tool(ID3Formatter formatter) throws IllegalArgumentException {
     if (formatter == null) {
-      throw new IllegalArgumentException("Writer is null");
+      throw new IllegalArgumentException("Formatter is null");
     }
     this.formatter = formatter;
   }
