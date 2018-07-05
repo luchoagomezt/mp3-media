@@ -8,6 +8,7 @@ import java.io.InputStream;
 
 import ca.media.mp3.application.ID3Tool;
 import ca.media.mp3.application.ID3Formatter;
+import ca.media.mp3.application.ID3Reader;
 
 public class ID3ToolMain {
   
@@ -21,8 +22,8 @@ public class ID3ToolMain {
       t.majorVersion(), t.revisionNumber(), t.flags(), t.size());
 
     try (InputStream mp3File = new BufferedInputStream(new FileInputStream(args[0]))) {
-      ID3Tool tool = new ID3Tool(formatter);
-      System.out.print(tool.perform(tool.read(mp3File)));
+      ID3Reader tool = new ID3Tool(formatter);
+      System.out.print(tool.perform(mp3File));
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     } catch (IOException e) {
