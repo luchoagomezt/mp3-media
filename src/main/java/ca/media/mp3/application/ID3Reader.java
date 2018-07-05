@@ -6,5 +6,5 @@ import java.io.IOException;
 @FunctionalInterface
 public interface ID3Reader {
 
-  int[] read(InputStream stream) throws IOException;
+  String perform(InputStream stream) throws IOException;
 }

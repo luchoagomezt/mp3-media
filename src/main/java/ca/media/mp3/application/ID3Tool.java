@@ -14,17 +14,17 @@ public class ID3Tool implements ID3Reader {
     this.formatter = formatter;
   }
   
-  public String perform(int[] array) {
+  @Override
+  public String perform(InputStream stream) throws IOException {
     String s;
     try {
-      s = formatter.toString(new ID3V2Tag(array));
+      s = formatter.toString(new ID3V2Tag(read(stream)));
     } catch(IllegalArgumentException e) {
       s = e.getMessage();
     }
     return s;
   }
 
-  @Override
   public int[] read(InputStream stream) throws IOException {
     if (stream == null) {
       return null;

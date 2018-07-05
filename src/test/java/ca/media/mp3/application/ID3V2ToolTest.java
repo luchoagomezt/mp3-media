@@ -15,19 +15,19 @@ import org.testng.annotations.Test;
 public class ID3V2ToolTest {
   
   @Test
-  public void performOnMP3WithID3V2Tag() {
+  public void performOnMP3WithID3V2Tag() throws IOException {
     ID3Tool tool = new ID3Tool(tag -> String.format("%d", tag.majorVersion()));
-    assertTrue(tool.perform(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x02, 0x00}).equalsIgnoreCase("3"));
+    assertTrue(tool.perform(new ByteArrayInputStream(new byte[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x02, 0x00})).equalsIgnoreCase("3"));
   }
 
   @Test
-  public void performOnMP3WithoutID3V2Tag() {
+  public void performOnMP3WithoutID3V2Tag() throws IOException {
     ID3Tool tool = new ID3Tool(t -> "");
-    assertEquals(tool.perform(new int[]{60, 60, 33, 03, 00, 00, 00, 00, 0x02, 0x00}), "Array does not contain an ID3 V2 tag");
+    assertEquals(tool.perform(new ByteArrayInputStream(new byte[]{60, 60, 33, 03, 00, 00, 00, 00, 0x02, 0x00})), "Array does not contain an ID3 V2 tag");
   }
 
   @Test
-  public void performOnNullArray() {
+  public void performOnNullArray() throws IOException {
     ID3Tool tool = new ID3Tool(tag -> "");
     assertEquals(tool.perform(null), "Array is null");
   }
