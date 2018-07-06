@@ -11,4 +11,8 @@ public class Presenter implements ID3Formatter {
         "{\"version\":%s, \"revision\":%s, \"flags\":%d, \"size\":%d}%n", 
         t.majorVersion(), t.revisionNumber(), t.flags(), t.size());
   }
+  
+  public  void view(String output) {
+    System.out.printf("%s%n", output);
+  }
 }
