@@ -1,18 +1,25 @@
 package ca.media.mp3.entity;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ID3V2Tag {
-  private final int size;
   private final int[] id3V2tag;
+  private final Map<String, Integer> header;
   
   public ID3V2Tag(final int[] mp3) throws IllegalArgumentException {
     if(!isAnID3V2tag(mp3)) {
       throw new IllegalArgumentException("Array does not contain an ID3 V2 tag");
     }
 
-    size = ((mp3[6] * 0x80 + mp3[7]) * 0x80 + mp3[8]) * 0x80 + mp3[9];
-    id3V2tag = Arrays.copyOf(mp3, size);    
+    int size = ((mp3[6] * 0x80 + mp3[7]) * 0x80 + mp3[8]) * 0x80 + mp3[9];
+    id3V2tag = Arrays.copyOf(mp3, size);
+    header = new HashMap<>();
+    header.put("majorVersion", id3V2tag[3]);
+    header.put("revisionNumber", id3V2tag[4]);
+    header.put("flags", id3V2tag[5]);
+    header.put("size", size);
   }
   
   public static boolean isAnID3V2tag(final int[] mp3) throws IllegalArgumentException {
@@ -32,31 +39,31 @@ public class ID3V2Tag {
   }
     
   public int majorVersion() {
-    return id3V2tag[3];
+    return header.get("majorVersion");
   }
   
   public int revisionNumber() {
-    return id3V2tag[4];
+    return header.get("revisionNumber");
   }
   
   public boolean unsynchronisation() {
-    return (id3V2tag[5] & 0x80) == 0x80;
+    return (header.get("flags") & 0x80) == 0x80;
   }
   
   public boolean extendedHeader() {
-    return (id3V2tag[5] & 0x40) == 0x40;
+    return (header.get("flags") & 0x40) == 0x40;
   }
   
   public boolean experimental() {
-    return (id3V2tag[5] & 0x20) == 0x20;
+    return (header.get("flags") & 0x20) == 0x20;
   }
   
   public int flags() {
-    return id3V2tag[5];
+    return header.get("flags");
   }
   
   public int size() {
-    return size;
+    return header.get("size");
   }
   
   @Override
@@ -64,5 +71,9 @@ public class ID3V2Tag {
     return 
       String.format("\"version\":%d, \"revision\":%d, \"flags\":0x%02X, \"size\":%d", 
       majorVersion(), revisionNumber(), flags(), size());
+  }
+  
+  public Map<String, Integer> header() {
+    return header;
   }
 }
