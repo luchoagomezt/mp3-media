@@ -3,7 +3,6 @@
 <suite name="ID3 V2 Tool" verbose="1" thread-count="1" parallel="tests" configfailurepolicy="continue">
     <test name="entity test" annotations="JDK" preserve-order="true">
         <classes>
-            <class name="ca.media.mp3.entity.MP3Test"/>
             <class name="ca.media.mp3.entity.ID3V2TagTest"/>
         </classes>
     </test>
