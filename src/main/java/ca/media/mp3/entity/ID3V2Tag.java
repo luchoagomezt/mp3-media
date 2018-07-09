@@ -1,11 +1,9 @@
 package ca.media.mp3.entity;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ID3V2Tag {
-  private final int[] id3V2tag;
   private final Map<String, Integer> header;
   
   public ID3V2Tag(final int[] mp3) throws IllegalArgumentException {
@@ -13,13 +11,11 @@ public class ID3V2Tag {
       throw new IllegalArgumentException("Array does not contain an ID3 V2 tag");
     }
 
-    int size = ((mp3[6] * 0x80 + mp3[7]) * 0x80 + mp3[8]) * 0x80 + mp3[9];
-    id3V2tag = Arrays.copyOf(mp3, size);
     header = new HashMap<>();
-    header.put("majorVersion", id3V2tag[3]);
-    header.put("revisionNumber", id3V2tag[4]);
-    header.put("flags", id3V2tag[5]);
-    header.put("size", size);
+    header.put("majorVersion", mp3[3]);
+    header.put("revisionNumber", mp3[4]);
+    header.put("flags", mp3[5]);
+    header.put("size", ((mp3[6] * 0x80 + mp3[7]) * 0x80 + mp3[8]) * 0x80 + mp3[9]);
   }
   
   public static boolean isAnID3V2tag(final int[] mp3) throws IllegalArgumentException {
