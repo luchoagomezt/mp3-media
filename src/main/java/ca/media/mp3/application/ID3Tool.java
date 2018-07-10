@@ -6,24 +6,24 @@ import ca.media.mp3.entity.ID3V2Tag;
 
 public class ID3Tool implements ID3Reader {
   private final InputStream stream;
-  private final ID3TagFormatter formater;
+  private final ID3TagFormatter formatter;
 
-  public ID3Tool(InputStream stream, ID3TagFormatter formater) throws IllegalArgumentException {
+  public ID3Tool(InputStream stream, ID3TagFormatter formatter) throws IllegalArgumentException {
     if (stream == null) {
       throw new IllegalArgumentException("Stream is null");
     }
-    if (formater == null) {
-      throw new IllegalArgumentException("Formater is null");
+    if (formatter == null) {
+      throw new IllegalArgumentException("Formatter is null");
     }
     this.stream = stream;
-    this.formater = formater;
+    this.formatter = formatter;
   }
   
   @Override
   public String perform() {
     String s;
     try {
-      s = formater.tagToString(new ID3V2Tag(read(stream)));
+      s = formatter.tagToString(new ID3V2Tag(read(stream)));
     } catch(IllegalArgumentException e) {
       s = e.getMessage();
     } catch(IOException e) {

@@ -23,10 +23,8 @@ public class ID3ToolMain {
       presenter.view(tool.perform());
     } catch (FileNotFoundException e) {
       e.getMessage();
-      return;
     } catch (IOException e) {
       e.getMessage();
-      return;
     }
   }
 }
