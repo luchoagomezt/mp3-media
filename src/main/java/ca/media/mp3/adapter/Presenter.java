@@ -1,9 +1,9 @@
 package ca.media.mp3.adapter;
 
-import ca.media.mp3.application.ID3TagFormater;
+import ca.media.mp3.application.ID3TagFormatter;
 import ca.media.mp3.entity.ID3V2Tag;
 
-public class Presenter implements ID3TagFormater {
+public class Presenter implements ID3TagFormatter {
 
   public  void view(String output) {
     System.out.printf("{%s}%n", output);

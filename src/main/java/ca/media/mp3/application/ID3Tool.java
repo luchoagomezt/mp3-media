@@ -6,9 +6,9 @@ import ca.media.mp3.entity.ID3V2Tag;
 
 public class ID3Tool implements ID3Reader {
   private final InputStream stream;
-  private final ID3TagFormater formater;
+  private final ID3TagFormatter formater;
 
-  public ID3Tool(InputStream stream, ID3TagFormater formater) throws IllegalArgumentException {
+  public ID3Tool(InputStream stream, ID3TagFormatter formater) throws IllegalArgumentException {
     if (stream == null) {
       throw new IllegalArgumentException("Stream is null");
     }
