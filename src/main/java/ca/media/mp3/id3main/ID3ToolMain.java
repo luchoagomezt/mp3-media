@@ -1,7 +1,14 @@
 package ca.media.mp3.id3main;
 
-import ca.media.mp3.adapter.Controller;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+
 import ca.media.mp3.adapter.Presenter;
+import ca.media.mp3.application.ID3Reader;
+import ca.media.mp3.application.ID3Tool;
 
 public class ID3ToolMain {
   
@@ -10,8 +17,16 @@ public class ID3ToolMain {
       return;
     }
     
-    Controller controller = new Controller();
-    Presenter presenter = new Presenter();
-    presenter.view(controller.perform(args[0]));
+    try (InputStream mp3File = new BufferedInputStream(new FileInputStream(args[0]))) {
+      Presenter presenter = new Presenter();
+      ID3Reader tool = new ID3Tool(mp3File, presenter);
+      presenter.view(tool.perform());
+    } catch (FileNotFoundException e) {
+      e.getMessage();
+      return;
+    } catch (IOException e) {
+      e.getMessage();
+      return;
+    }
   }
 }
