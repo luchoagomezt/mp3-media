@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 import static org.testng.AssertJUnit.assertTrue;
 import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 
 @Test
 public class ID3V2TagTest {
@@ -53,6 +54,12 @@ public class ID3V2TagTest {
   }
   
   @Test
+  public void getTheHeaderMap() {
+    ID3V2Tag tag = new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 64, 00, 12, 27, 76});
+    assertNotNull(tag.header());
+  }
+  
+  @Test
   public void itIsNotExperimental() {
     assertFalse(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 12, 27, 76}).experimental());
   }
@@ -93,5 +100,15 @@ public class ID3V2TagTest {
 
   @Test void itIsNotAnID3V2Tag() {
     assertFalse(ID3V2Tag.isAnID3V2tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 0xE1, 00, 00, 0x02, 0x00}));
+  }
+  
+  @Test(expectedExceptions = {IllegalArgumentException.class})
+  void isAnID3V2tagReceivesANullArray() {
+    assertFalse(ID3V2Tag.isAnID3V2tag(null));
+  }
+  
+  @Test(expectedExceptions = {IllegalArgumentException.class})
+  void isAnID3V2tagReceivesATooShortArray() {
+    assertFalse(ID3V2Tag.isAnID3V2tag(new int[]{0x49, 0x44, 0x33, 0x03, 00}));
   }
 }
