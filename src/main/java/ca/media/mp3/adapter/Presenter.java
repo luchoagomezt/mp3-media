@@ -11,6 +11,9 @@ public class Presenter implements ID3TagFormatter {
 
   @Override
   public String tagToString(ID3V2Tag tag) {
+    if(tag == null) {
+      return null;
+    }
     return tag.
         header().
         entrySet().
