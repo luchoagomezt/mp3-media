@@ -21,9 +21,9 @@ public class ID3ToolMain {
       ID3Reader tool = new ID3Tool(mp3File, new Presenter());
       System.out.println(tool.perform());
     } catch (FileNotFoundException e) {
-      e.getMessage();
+      System.out.println(e.getMessage());
     } catch (IOException e) {
-      e.getMessage();
+      System.out.println(e.getMessage());
     }
   }
 }
