@@ -33,10 +33,6 @@ public class ID3Tool implements ID3Reader {
   }
 
   public int[] read(InputStream stream) throws IOException {
-    if (stream == null) {
-      return null;
-    }
-    
     int[] header;
     if(stream.available() > 10) {
       header = new int[10];
