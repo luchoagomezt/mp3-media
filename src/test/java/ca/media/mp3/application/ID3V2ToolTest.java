@@ -49,4 +49,9 @@ public class ID3V2ToolTest {
     ID3Tool tool = new ID3Tool(stream, e -> e.toString());
     assertEquals(tool.read(stream).length, 6);
   }
+
+  @Test(expectedExceptions = {IllegalArgumentException.class})
+  public void formatterIsNull() {
+    new ID3Tool(new ByteArrayInputStream(new byte[]{60, 60, 33, 03, 00, 00}), null);
+  }
 }
