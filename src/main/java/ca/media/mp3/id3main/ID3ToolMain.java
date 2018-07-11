@@ -18,9 +18,8 @@ public class ID3ToolMain {
     }
     
     try (InputStream mp3File = new BufferedInputStream(new FileInputStream(args[0]))) {
-      Presenter presenter = new Presenter();
-      ID3Reader tool = new ID3Tool(mp3File, presenter);
-      presenter.view(tool.perform());
+      ID3Reader tool = new ID3Tool(mp3File, new Presenter());
+      System.out.println(tool.perform());
     } catch (FileNotFoundException e) {
       e.getMessage();
     } catch (IOException e) {

@@ -5,21 +5,21 @@ import ca.media.mp3.entity.ID3V2Tag;
 
 public class Presenter implements ID3TagFormatter {
 
-  public  void view(String output) {
-    System.out.printf("{%s}%n", output);
-  }
-
   @Override
   public String tagToString(ID3V2Tag tag) {
-    if(tag == null) {
-      return null;
+    if(tag != null) {
+      return 
+        "{".
+        concat(
+          tag.
+          header().
+          entrySet().
+          stream().
+          map(e -> "\"" + e.getKey() + "\":" + e.getValue()).
+          reduce((s1, s2) -> s1 + ", " + s2).
+          orElse("")).
+        concat("}");
     }
-    return tag.
-        header().
-        entrySet().
-        stream().
-        map(e -> "\"" + e.getKey() + "\":" + e.getValue()).
-        reduce((s1, s2) -> s1 + ", " + s2).
-        orElse("");
+    return null;
   }
 }
