@@ -28,6 +28,11 @@ public class ID3ToolMainTest {
   }
   
   @Test
+  public void usingTheConstructorJustForCoverage() {
+    new ID3ToolMain();
+  }
+
+  @Test
   public void emptyParameters() {
     ID3ToolMain.main(new String[]{});
     assertEquals(outContent.toString(), "");
