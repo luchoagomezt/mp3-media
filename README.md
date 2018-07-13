@@ -6,7 +6,7 @@ MP3 Media is a ID3 V2 tag editor.
 
 ## Command Line Execution
 
-id3tool <path to a mp3 file>
+java -jar id3tool **path to a mp3 file**
 
 ## Example
 
