@@ -49,4 +49,10 @@ public class ID3ToolMainTest {
     ID3ToolMain.main(new String[]{"src/test/resources/journey.mp3"});
     assertEquals(outContent.toString(), String.format("%s%n", "{\"size\":300022, \"revisionNumber\":0, \"flags\":0, \"majorVersion\":3}"));
   }
+
+  @Test
+  public void fileNameWasFoundButItWasNotAMP3File() {
+    ID3ToolMain.main(new String[]{"src/test/resources/emptyFile.mp3"});
+    assertEquals(outContent.toString(), String.format("%s%n", "Array does not contain an ID3 V2 tag"));
+  }
 }
