@@ -36,7 +36,7 @@ public class ID3ToolMainTest {
   @Test
   public void fileNameWasNotFound() {
     ID3ToolMain.main(new String[]{"notAFile.mp3"});
-    assertEquals(outContent.toString(), String.format("%s%n", "notAFile.mp3 (The system cannot find the file specified)"));
+    assertEquals(outContent.toString(), String.format("%s%n", "notAFile.mp3 (No such file or directory)"));
   }
 
   @Test
