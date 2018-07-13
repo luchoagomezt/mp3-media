@@ -16,4 +16,9 @@
             <class name="ca.media.mp3.adapter.PresenterTest"/>
         </classes>
     </test>
+    <test name="main test" annotations="JDK" preserve-order="true">
+        <classes>
+            <class name="ca.media.mp3.id3main.ID3ToolMainTest"/>
+        </classes>
+    </test>
 </suite>
