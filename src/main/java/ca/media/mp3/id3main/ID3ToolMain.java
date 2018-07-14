@@ -21,7 +21,7 @@ public class ID3ToolMain {
       ID3Reader tool = new ID3Tool(mp3File, new Presenter());
       System.out.println(tool.perform());
     } catch (FileNotFoundException e) {
-      System.out.println(e.getMessage());
+      System.out.println(args[0] + " (No such file or directory)");
     } catch (IOException e) {
       System.out.println(e.getMessage());
     }
