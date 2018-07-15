@@ -5,17 +5,25 @@ import java.util.Map;
 
 public class ID3V2Tag {
   private final Map<String, Integer> header;
+  private final int majorVersion;
+  private final int revisionNumber;
+  private final int flags;
+  private final int size;
   
   public ID3V2Tag(final int[] mp3) throws IllegalArgumentException {
     if(!isAnID3V2tag(mp3)) {
       throw new IllegalArgumentException("Array does not contain an ID3 V2 tag");
     }
 
+    majorVersion = mp3[3];
+    revisionNumber = mp3[4];
+    flags = mp3[5];
+    size = ((mp3[6] * 0x80 + mp3[7]) * 0x80 + mp3[8]) * 0x80 + mp3[9];
     header = new HashMap<>();
-    header.put("majorVersion", mp3[3]);
-    header.put("revisionNumber", mp3[4]);
-    header.put("flags", mp3[5]);
-    header.put("size", ((mp3[6] * 0x80 + mp3[7]) * 0x80 + mp3[8]) * 0x80 + mp3[9]);
+    header.put("majorVersion", majorVersion);
+    header.put("revisionNumber", revisionNumber);
+    header.put("flags", flags);
+    header.put("size", size);
   }
   
   public static boolean isAnID3V2tag(final int[] mp3) throws IllegalArgumentException {
@@ -41,38 +49,38 @@ public class ID3V2Tag {
   }
     
   public int majorVersion() {
-    return header.get("majorVersion");
+    return majorVersion;
   }
   
   public int revisionNumber() {
-    return header.get("revisionNumber");
+    return revisionNumber;
   }
   
   public boolean unsynchronisation() {
-    return (header.get("flags") & 0x80) == 0x80;
+    return (flags & 0x80) == 0x80;
   }
   
   public boolean extendedHeader() {
-    return (header.get("flags") & 0x40) == 0x40;
+    return (flags & 0x40) == 0x40;
   }
   
   public boolean experimental() {
-    return (header.get("flags") & 0x20) == 0x20;
+    return (flags & 0x20) == 0x20;
   }
   
   public int flags() {
-    return header.get("flags");
+    return flags;
   }
   
   public int size() {
-    return header.get("size");
+    return size;
   }
   
   @Override
   public String toString() {
     return 
       String.format("{\"version\":%d, \"revision\":%d, \"flags\":0x%02X, \"size\":%d}", 
-      majorVersion(), revisionNumber(), flags(), size());
+      majorVersion, revisionNumber, flags, size);
   }
   
   public Map<String, Integer> header() {
