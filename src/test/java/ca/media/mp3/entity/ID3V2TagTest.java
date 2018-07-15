@@ -85,11 +85,6 @@ public class ID3V2TagTest {
   }
 
   @Test
-  public void sizeaIs256() {
-    assertEquals(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x02, 0x00}).size(), 256);
-  }
-  
-  @Test
   public void flagsIsZero() {
     assertEquals(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x02, 0x00}).flags(), 0);
   }
@@ -98,6 +93,22 @@ public class ID3V2TagTest {
     assertTrue(ID3V2Tag.isAnID3V2tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x02, 0x00}));
   }
 
+  @Test void firstSizeByteIsMoreThan0x7F() {
+    assertFalse(ID3V2Tag.isAnID3V2tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 0xE1, 0x80, 0x00, 0x00, 0x00}));
+  }
+  
+  @Test void secondSizeByteIsMoreThan0x7F() {
+    assertFalse(ID3V2Tag.isAnID3V2tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 0xE1, 0x7F, 0x80, 0x00, 0x00}));
+  }
+  
+  @Test void thirdSizeByteIsMoreThan0x7F() {
+    assertFalse(ID3V2Tag.isAnID3V2tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 0xE1, 0x7F, 0x7F, 0x80, 0x00}));
+  }
+  
+  @Test void lastSizeByteIsMoreThan0x7F() {
+    assertFalse(ID3V2Tag.isAnID3V2tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 0xE1, 0x7F, 0x7F, 0x7F, 0x80}));
+  }
+  
   @Test void itIsNotAnID3V2Tag() {
     assertFalse(ID3V2Tag.isAnID3V2tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 0xE1, 00, 00, 0x02, 0x00}));
   }
