@@ -109,8 +109,16 @@ public class ID3V2TagTest {
     assertFalse(ID3V2Tag.isAnID3V2tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 0xE1, 0x7F, 0x7F, 0x7F, 0x80}));
   }
   
-  @Test void itIsNotAnID3V2Tag() {
+  @Test void theFlagIsMoreThan0xE0() {
     assertFalse(ID3V2Tag.isAnID3V2tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 0xE1, 00, 00, 0x02, 0x00}));
+  }
+  
+  @Test void theMajorVersionIsMoreThan0xFE() {
+    assertFalse(ID3V2Tag.isAnID3V2tag(new int[]{0x49, 0x44, 0x33, 0xFF, 00, 0xE0, 00, 00, 0x02, 0x00}));
+  }
+  
+  @Test void theRevisionNumberIsMoreThan0xFE() {
+    assertFalse(ID3V2Tag.isAnID3V2tag(new int[]{0x49, 0x44, 0x33, 0xFE, 0xFF, 0xE0, 00, 00, 0x02, 0x00}));
   }
   
   @Test(expectedExceptions = {IllegalArgumentException.class})
