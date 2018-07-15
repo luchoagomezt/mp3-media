@@ -15,7 +15,7 @@ public class ID3V2ToolTest {
   @Test
   public void performOnMP3WithID3V2Tag() throws IOException {
     ID3Tool tool = new ID3Tool(new ByteArrayInputStream(new byte[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x02, 0x00}), e -> e.toString());
-    assertEquals(tool.perform(), "\"version\":3, \"revision\":0, \"flags\":0x00, \"size\":256");
+    assertEquals(tool.perform(), "{\"version\":3, \"revision\":0, \"flags\":0x00, \"size\":256}");
   }
 
   @Test
