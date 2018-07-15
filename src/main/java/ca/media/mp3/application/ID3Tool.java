@@ -33,17 +33,17 @@ public class ID3Tool implements ID3Reader {
   }
 
   public int[] read(InputStream stream) throws IOException {
-    int[] header;
-    if(stream.available() > 10) {
-      header = new int[10];
+    int[] byteArray;
+    if(stream.available() > 20) {
+      byteArray = new int[20];
     } else {
-      header = new int[stream.available()];
+      byteArray = new int[stream.available()];
     }
 
-    for(int i = 0; i < header.length; i++) {
-      header[i] = stream.read();
+    for(int i = 0; i < byteArray.length; i++) {
+      byteArray[i] = stream.read();
     }
 
-    return header;
+    return byteArray;
   }
 }

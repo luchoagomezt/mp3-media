@@ -40,7 +40,7 @@ public class ID3V2ToolTest {
   public void readOnlyTenBytes() throws IOException {
     InputStream stream = new ByteArrayInputStream(new byte[]{60, 60, 33, 03, 00, 00, 00, 00, 0x02, 0x00, 127});
     ID3Tool tool = new ID3Tool(stream, e -> e.toString());
-    assertEquals(tool.read(stream).length, 10);
+    assertEquals(tool.read(stream).length, 11);
   }
 
   @Test
