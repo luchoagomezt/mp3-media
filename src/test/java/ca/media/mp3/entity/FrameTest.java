@@ -58,6 +58,6 @@ public class FrameTest {
   @Test
   public void frameToString() {
     Frame frame = new Frame(new int[]{0x49, 0x49, 0x49, 0x49, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00});
-    assertEquals(frame.toString(), "{\"id\":IIII, \"size\":256, \"flags\":0x0000}");
+    assertEquals(frame.toString(), "{\"id\":\"IIII\", \"size\":256, \"flags\":0}");
   }
 }

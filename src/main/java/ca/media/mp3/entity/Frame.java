@@ -31,7 +31,7 @@ public class Frame {
   }
   
   public String toString() {
-    return String.format("{\"id\":%c%c%c%c, \"size\":%d, \"flags\":0x%02X%02X}", 
+    return String.format("{\"id\":\"%c%c%c%c\", \"size\":%d, \"flags\":%d}", 
         id[0], id[1], id[2], id[3], size, flags[0], flags[1]);
   }
 }
