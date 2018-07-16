@@ -1,10 +1,12 @@
 package ca.media.mp3.entity;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ID3V2Tag {
   private final Map<String, Integer> header;
+  private final Frame[] frame;
   private final int majorVersion;
   private final int revisionNumber;
   private final int flags;
@@ -24,6 +26,11 @@ public class ID3V2Tag {
     header.put("revisionNumber", revisionNumber);
     header.put("flags", flags);
     header.put("size", size);
+    if(mp3.length >= 20) {
+      frame = new Frame[]{new Frame(Arrays.copyOfRange(mp3, 10, 20))};
+    } else {
+      frame = new Frame[]{};
+    }
   }
   
   public static boolean isAnID3V2tag(final int[] mp3) throws IllegalArgumentException {
@@ -79,8 +86,8 @@ public class ID3V2Tag {
   @Override
   public String toString() {
     return 
-      String.format("{\"version\":%d, \"revision\":%d, \"flags\":0x%02X, \"size\":%d}", 
-      majorVersion, revisionNumber, flags, size);
+      String.format("{\"version\":%d, \"revision\":%d, \"flags\":0x%02X, \"size\":%d, \"frames\":%s}", 
+      majorVersion, revisionNumber, flags, size, Arrays.toString(frame));
   }
   
   public Map<String, Integer> header() {
