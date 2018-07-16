@@ -86,7 +86,7 @@ public class ID3V2Tag {
   @Override
   public String toString() {
     return 
-      String.format("{\"version\":%d, \"revision\":%d, \"flags\":%d, \"size\":%d, \"frames\":%s}", 
+      String.format("{\"header\":{\"version\":%d, \"revision\":%d, \"flags\":%d, \"size\":%d}, \"frames\":%s}", 
       majorVersion, revisionNumber, flags, size, Arrays.toString(frame));
   }
   
