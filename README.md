@@ -12,4 +12,4 @@ java -jar id3tool **path to a mp3 file**
 
 java -jar id3tool src/test/resources/journey.mp3
 
-{"size":300022, "revisionNumber":1, "flags":0, "majorVersion":3}
+{"header":{"version":3, "revision":0, "flags":0, "size":300022}, "frames":[{"id":"TIT2", "size":6, "flags":0}]}
