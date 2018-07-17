@@ -47,6 +47,11 @@ public class ID3V2ToolTest {
     assertNotNull(tool.read(stream));
   }
 
+  @Test(expectedExceptions = {IllegalArgumentException.class})
+  public void readANullStream() throws IOException {
+    new ID3Tool(e -> e.toString()).read(null);
+  }
+
   @Test
   public void readOnlyTenBytes() throws IOException {
     InputStream stream = new ByteArrayInputStream(new byte[]{60, 60, 33, 03, 00, 00, 00, 00, 0x02, 0x00, 127});
