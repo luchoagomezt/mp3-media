@@ -6,9 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
-import ca.media.mp3.adapter.Presenter;
+import ca.media.mp3.adapter.ID3ReaderFactory;
+import static ca.media.mp3.adapter.ID3ReaderFactory.HEADER_ONLY;
 import ca.media.mp3.application.ID3Reader;
-import ca.media.mp3.application.ID3Tool;
 
 public class ID3ToolMain {
   
@@ -18,7 +18,8 @@ public class ID3ToolMain {
     }
     
     try (InputStream mp3File = new BufferedInputStream(new FileInputStream(args[0]))) {
-      ID3Reader tool = new ID3Tool(mp3File, new Presenter());
+      ID3Reader tool = ID3ReaderFactory.getReader(HEADER_ONLY);
+      tool.read(mp3File);
       System.out.println(tool.perform());
     } catch (FileNotFoundException e) {
       System.out.println(args[0] + " (No such file or directory)");

@@ -16,7 +16,8 @@
         <classes>
             <class name="ca.media.mp3.adapter.PresenterTest"/>
             <class name="ca.media.mp3.adapter.SimplePresenterTest"/>
-            </classes>
+            <class name="ca.media.mp3.adapter.ID3ReaderFactoryTest"/>
+        </classes>
     </test>
     <test name="main test" annotations="JDK" preserve-order="true">
         <classes>
