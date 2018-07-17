@@ -4,13 +4,13 @@ import ca.media.mp3.application.ID3Reader;
 import ca.media.mp3.application.ID3Tool;
 
 public class ID3ReaderFactory {
-  public static final String HEADER_ONLY = "HEADER_ONLY";
-  public static final String JSON_STRING = "JSON_STRING";
+  public static final String HEADER_PRESENTER = "HEADER_PRESENTER";
+  public static final String SIMPLE_PRESENTER = "SIMPLE_PRESENTER";
 
-  public static ID3Reader getReader(String type) {
-    if(type.equals(HEADER_ONLY)) {
+  public static ID3Reader makeAnID3Reader(String presenterName) {
+    if(presenterName.equals(HEADER_PRESENTER)) {
       return new ID3Tool(new HeaderPresenter());
-    } else if (type.equals(JSON_STRING)) {
+    } else if (presenterName.equals(SIMPLE_PRESENTER)) {
       return new ID3Tool(new SimplePresenter());
     }
     return null;
