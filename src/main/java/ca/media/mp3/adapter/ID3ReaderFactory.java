@@ -9,7 +9,7 @@ public class ID3ReaderFactory {
 
   public static ID3Reader getReader(String type) {
     if(type.equals(HEADER_ONLY)) {
-      return new ID3Tool(new Presenter());
+      return new ID3Tool(new HeaderPresenter());
     } else if (type.equals(JSON_STRING)) {
       return new ID3Tool(new SimplePresenter());
     }
