@@ -13,16 +13,16 @@ public class ID3ReaderFactoryTest {
 
   @Test
   public void returnsANullObject() {
-    assertNull(ID3ReaderFactory.getReader("NOTHING"));
+    assertNull(ID3ReaderFactory.makeAnID3Reader("NOTHING"));
   }
 
   @Test
   public void presentJustTheHeader() {
-    assertNotNull(ID3ReaderFactory.getReader(ID3ReaderFactory.HEADER_ONLY));
+    assertNotNull(ID3ReaderFactory.makeAnID3Reader(ID3ReaderFactory.HEADER_PRESENTER));
   }
 
   @Test
   public void presentAJSONString() {
-    assertNotNull(ID3ReaderFactory.getReader(ID3ReaderFactory.JSON_STRING));
+    assertNotNull(ID3ReaderFactory.makeAnID3Reader(ID3ReaderFactory.SIMPLE_PRESENTER));
   }
 }
