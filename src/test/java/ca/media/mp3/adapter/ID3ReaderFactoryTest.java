@@ -7,6 +7,11 @@ import static org.testng.Assert.assertNotNull;
 public class ID3ReaderFactoryTest {
 
   @Test
+  public void instantiateAFactory() {
+    assertNotNull(new ID3ReaderFactory());
+  }
+
+  @Test
   public void returnsANullObject() {
     assertNull(ID3ReaderFactory.getReader("NOTHING"));
   }
