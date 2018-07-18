@@ -10,26 +10,26 @@ public class ID3Tool implements ID3Reader {
 
   public ID3Tool(ID3TagFormatter formatter) {
     if (formatter == null) {
-      throw new IllegalArgumentException("Formatter is null");
+      throw new IllegalArgumentException("The ID3 Formatter is null");
     }
     this.formatter = formatter;
   }
   
   @Override
   public String perform() {
-    String s;
+    String outputString;
     try {
-      s = formatter.tagToString(new ID3V2Tag(byteArray));
+      outputString = formatter.tagToString(new ID3V2Tag(byteArray));
     } catch(IllegalArgumentException e) {
-      s = e.getMessage();
+      outputString = e.getMessage();
     }
-    return s;
+    return outputString;
   }
 
   @Override
   public int[] read(InputStream stream) throws IOException {
     if (stream == null) {
-      throw new IllegalArgumentException("Stream is null");
+      throw new IllegalArgumentException("The Inputstream is null");
     }
 
     if(stream.available() > 20) {
