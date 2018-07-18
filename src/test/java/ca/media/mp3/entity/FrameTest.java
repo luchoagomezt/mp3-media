@@ -3,6 +3,9 @@ package ca.media.mp3.entity;
 import org.testng.annotations.Test;
 import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertTrue;
+
+import java.util.Arrays;
+
 import static org.testng.Assert.assertEquals;
 
 public class FrameTest {
@@ -57,7 +60,7 @@ public class FrameTest {
 
   @Test
   public void frameToString() {
-    Frame frame = new Frame(new int[]{0x49, 0x49, 0x49, 0x49, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00});
-    assertEquals(frame.toString(), "{\"id\":\"IIII\", \"size\":256, \"flags\":0}");
+    Frame frame = new Frame(new int[]{84, 73, 84, 50, 0, 0, 0, 6, 0, 0, 0, 84, 105, 116, 118, 101});
+    assertEquals(frame.toString(), "{\"id\":\"TIT2\", \"size\":6, \"flags\":{\"first\":0, \"second\":0}, \"content\":[0, 84, 105, 116, 118, 101]}");
   }
 }

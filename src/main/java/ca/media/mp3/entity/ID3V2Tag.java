@@ -28,10 +28,14 @@ public class ID3V2Tag {
     header.put("revisionNumber", revisionNumber);
     header.put("flags", flags);
     header.put("size", size);
-    if(mp3.length >= 20) {
-      frame = new Frame[]{new Frame(Arrays.copyOfRange(mp3, ID3V2_TAG_HEADER_SIZE, 20))};
-    } else {
+    
+    if(mp3.length < Frame.FRAME_HEADER_SIZE + ID3V2_TAG_HEADER_SIZE) {
       frame = new Frame[]{};
+    } else {
+      int[] frameHeader = Arrays.copyOfRange(mp3, ID3V2_TAG_HEADER_SIZE, Frame.FRAME_HEADER_SIZE + ID3V2_TAG_HEADER_SIZE);
+      int frameSize = Frame.calculateFrameSizeExcludingHeader(frameHeader);
+      int[] frameArray = Arrays.copyOfRange(mp3, ID3V2_TAG_HEADER_SIZE, Frame.FRAME_HEADER_SIZE + ID3V2_TAG_HEADER_SIZE + frameSize);
+      frame = new Frame[]{new Frame(frameArray)};
     }
   }
 
