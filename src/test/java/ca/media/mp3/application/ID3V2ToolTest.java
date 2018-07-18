@@ -1,7 +1,6 @@
 package ca.media.mp3.application;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -15,8 +14,8 @@ public class ID3V2ToolTest {
   @Test
   public void performOnMP3WithAnID3V2TagWithoutFrames() throws IOException {
     ID3Tool tool = new ID3Tool(e -> e.toString());
-    tool.read(new ByteArrayInputStream(new byte[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x02, 0x00}));
-    assertEquals(tool.perform(), "{\"header\":{\"version\":3, \"revision\":0, \"flags\":0, \"size\":256}, \"frames\":[]}");
+    tool.read(new ByteArrayInputStream(new byte[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x00, 0x00}));
+    assertEquals(tool.perform(), "{\"header\":{\"version\":3, \"revision\":0, \"flags\":0, \"size\":0}, \"frames\":[]}");
   }
 
   @Test
@@ -28,11 +27,11 @@ public class ID3V2ToolTest {
     assertEquals(tool.perform(), expected);
   }
 
-  @Test
+  @Test(expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "The stream does not contain an ID3 V2 tag")
   public void performOnMP3WithoutID3V2Tag() throws IOException {
     ID3Tool tool = new ID3Tool(e -> e.toString());
     tool.read(new ByteArrayInputStream(new byte[]{60, 60, 33, 03, 00, 00, 00, 00, 0x02, 0x00}));
-    assertEquals(tool.perform(), "Array does not contain an ID3 V2 tag");
+    tool.perform();
   }
 
   @Test(expectedExceptions = {IllegalArgumentException.class})
@@ -40,26 +39,12 @@ public class ID3V2ToolTest {
     new ID3Tool(null);
   }
 
-  @Test
-  public void readOnNonNullArray() throws IOException {
-    InputStream stream = new ByteArrayInputStream(new byte[]{60, 60, 33, 03, 00, 00, 00, 00, 0x02, 0x00});
-    ID3Tool tool = new ID3Tool(e -> e.toString());
-    assertNotNull(tool.read(stream));
-  }
-
   @Test(expectedExceptions = {IllegalArgumentException.class})
   public void readANullStream() throws IOException {
     new ID3Tool(e -> e.toString()).read(null);
   }
 
-  @Test
-  public void readOnlyTenBytes() throws IOException {
-    InputStream stream = new ByteArrayInputStream(new byte[]{60, 60, 33, 03, 00, 00, 00, 00, 0x02, 0x00, 127});
-    ID3Tool tool = new ID3Tool(e -> e.toString());
-    assertEquals(tool.read(stream).length, 11);
-  }
-
-  @Test
+  @Test(expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "The stream'size is less than the tag's header size")
   public void readUptoTenBytes() throws IOException {
     InputStream stream = new ByteArrayInputStream(new byte[]{60, 60, 33, 03, 00, 00});
     ID3Tool tool = new ID3Tool(e -> e.toString());
