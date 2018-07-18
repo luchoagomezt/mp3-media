@@ -1,6 +1,7 @@
 package ca.media.mp3.entity;
 
 public class Frame {
+  public static final int FRAME_HEADER_SIZE = 10;
   private final int[] id;
   private final int size;
   private final int[] flags;
@@ -19,7 +20,7 @@ public class Frame {
     if(array == null) {
       throw new IllegalArgumentException("Array is null");
     }
-    if(array.length < 10) {
+    if(array.length < FRAME_HEADER_SIZE) {
       throw new IllegalArgumentException("Array is too small");
     }
 
