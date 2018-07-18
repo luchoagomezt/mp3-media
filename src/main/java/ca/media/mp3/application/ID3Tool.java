@@ -29,16 +29,30 @@ public class ID3Tool implements ID3Reader {
   @Override
   public int[] read(InputStream stream) throws IOException {
     if (stream == null) {
-      throw new IllegalArgumentException("The Inputstream is null");
+      throw new IllegalArgumentException("The InputStream parameter is null ");
+    }
+    
+    if(stream.available() < ID3V2Tag.ID3V2_TAG_HEADER_SIZE) {
+      throw new IllegalArgumentException("The stream'size is less than the tag's header size");
+    }
+    
+    int[] header = new int[ID3V2Tag.ID3V2_TAG_HEADER_SIZE];
+    for(int i = 0; i < header.length; i++) {
+      header[i] = stream.read();
+    }
+    
+    if (!ID3V2Tag.isAnID3V2tag(header)) {
+      throw new IllegalArgumentException("The stream does not contain an ID3 V2 tag");
+    }
+    
+    int sizeExcludingHeader = ID3V2Tag.calculateTagSizeExcludingHeader(header);  
+    int totalTagSize = sizeExcludingHeader + ID3V2Tag.ID3V2_TAG_HEADER_SIZE;
+    byteArray = new int[totalTagSize];
+    for(int i = 0; i < header.length; i++) {
+      byteArray[i] = header[i];
     }
 
-    if(stream.available() > 20) {
-      byteArray = new int[20];
-    } else {
-      byteArray = new int[stream.available()];
-    }
-
-    for(int i = 0; i < byteArray.length; i++) {
+    for(int i = ID3V2Tag.ID3V2_TAG_HEADER_SIZE; i < byteArray.length; i++) {
       byteArray[i] = stream.read();
     }
 
