@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ID3V2Tag {
+  public static final int ID3V2_TAG_HEADER_SIZE = 10;
+  
   private final Map<String, Integer> header;
   private final Frame[] frame;
   private final int majorVersion;
@@ -12,7 +14,7 @@ public class ID3V2Tag {
   private final int flags;
   private final int size;
   
-  public ID3V2Tag(final int[] mp3) throws IllegalArgumentException {
+  public ID3V2Tag(final int[] mp3) {
     if(!isAnID3V2tag(mp3)) {
       throw new IllegalArgumentException("Array does not contain an ID3 V2 tag");
     }
@@ -20,26 +22,42 @@ public class ID3V2Tag {
     majorVersion = mp3[3];
     revisionNumber = mp3[4];
     flags = mp3[5];
-    size = ((mp3[6] * 0x80 + mp3[7]) * 0x80 + mp3[8]) * 0x80 + mp3[9];
+    size = calculateTagSizeExcludingHeader(mp3);
     header = new HashMap<>();
     header.put("majorVersion", majorVersion);
     header.put("revisionNumber", revisionNumber);
     header.put("flags", flags);
     header.put("size", size);
-    if(mp3.length >= 20) {
-      frame = new Frame[]{new Frame(Arrays.copyOfRange(mp3, 10, 20))};
+    if(size >= 10) {
+      frame = new Frame[]{new Frame(Arrays.copyOfRange(mp3, ID3V2_TAG_HEADER_SIZE, 20))};
     } else {
       frame = new Frame[]{};
     }
   }
-  
-  public static boolean isAnID3V2tag(final int[] mp3) throws IllegalArgumentException {
-    if(mp3 == null) {
-      throw new IllegalArgumentException("Array is null");
+
+  public static int calculateTagSizeExcludingHeader(final int[] header) {
+    if (header == null) {
+      throw new IllegalArgumentException("Parameter is null");
     }
 
-    if(mp3.length < 10) {
-      throw new IllegalArgumentException("Array is too small");
+    if (header.length < ID3V2_TAG_HEADER_SIZE) {
+      throw new IllegalArgumentException("Array's length is less than header's size");
+    }
+    
+    if(header[6] > 0x7F || header[7] > 0x7F || header[8] > 0x7F || header[9] > 0x7F) {
+      throw new IllegalArgumentException("One or more of the four size bytes is more than 0x7F");
+    } 
+
+    return ((header[6] * 0x80 +header[7]) * 0x80 + header[8]) * 0x80 + header[9];
+  }
+
+  public static boolean isAnID3V2tag(final int[] mp3) {
+    if(mp3 == null) {
+      throw new IllegalArgumentException("Parameter array is null");
+    }
+
+    if(mp3.length < ID3V2_TAG_HEADER_SIZE) {
+      throw new IllegalArgumentException("Array's length is less than header's size");
     }
 
     return 

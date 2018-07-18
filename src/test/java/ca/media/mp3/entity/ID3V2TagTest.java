@@ -8,6 +8,26 @@ import static org.testng.Assert.assertNotNull;
 
 @Test
 public class ID3V2TagTest {
+  @Test(expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "Parameter is null")
+  public void calculateTagSizeOnNullArray() {
+    ID3V2Tag.calculateTagSizeExcludingHeader(null);
+  }
+
+  @Test(expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "Array's length is less than header's size")
+  public void calculateTagSizeOnArrayWithLessBytesThanHeaderSize() {
+    ID3V2Tag.calculateTagSizeExcludingHeader(new int[]{0, 0, 0});
+  }
+
+  @Test(expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "One or more of the four size bytes is more than 0x7F")
+  public void calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F() {
+    ID3V2Tag.calculateTagSizeExcludingHeader(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 0x80, 0x00, 0x80, 0x00});
+  }
+
+  @Test
+  public void calculateTagSizeOnAValidArray() {
+    assertEquals(ID3V2Tag.calculateTagSizeExcludingHeader(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 0x00, 0x00, 0x02, 0x01}), 257);
+  }
+
   @Test(expectedExceptions = {IllegalArgumentException.class})
   public void arrayIsNull() {
     new ID3V2Tag(null);
