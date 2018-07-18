@@ -25,6 +25,8 @@ public class ID3ToolMain {
       System.out.println(args[0] + " (No such file or directory)");
     } catch (IOException e) {
       System.out.println(e.getMessage());
+    } catch (IllegalArgumentException e) {
+      System.out.println(e.getMessage());
     }
   }
 }
