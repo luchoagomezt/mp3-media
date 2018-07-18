@@ -28,7 +28,7 @@ public class ID3V2Tag {
     header.put("revisionNumber", revisionNumber);
     header.put("flags", flags);
     header.put("size", size);
-    if(size >= 10) {
+    if(mp3.length >= 20) {
       frame = new Frame[]{new Frame(Arrays.copyOfRange(mp3, ID3V2_TAG_HEADER_SIZE, 20))};
     } else {
       frame = new Frame[]{};
