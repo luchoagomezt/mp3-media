@@ -21,9 +21,9 @@ public class ID3V2ToolTest {
   @Test
   public void performOnMP3WithAnID3V2TagWithOneFrame() throws IOException {
     ID3Tool tool = new ID3Tool(e -> e.toString());
-    byte[] data = new byte[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x02, 0x00, 0x49, 0x49, 0x49, 0x49, 0x00, 0x00, 0x02, 0x01, 0x00, 0x00};
+    byte[] data = new byte[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x00, 0x0A, 0x49, 0x49, 0x49, 0x49, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
     tool.read(new ByteArrayInputStream(data));
-    String expected = "{\"header\":{\"version\":3, \"revision\":0, \"flags\":0, \"size\":256}, \"frames\":[{\"id\":\"IIII\", \"size\":257, \"flags\":0}]}";
+    String expected = "{\"header\":{\"version\":3, \"revision\":0, \"flags\":0, \"size\":10}, \"frames\":[{\"id\":\"IIII\", \"size\":0, \"flags\":{\"first\":0, \"second\":0}, \"content\":[]}]}";
     assertEquals(tool.perform(), expected);
   }
 
