@@ -1,5 +1,6 @@
 package ca.media.mp3.entity;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static org.testng.AssertJUnit.assertTrue;
 import static org.testng.AssertJUnit.assertFalse;
@@ -18,9 +19,19 @@ public class ID3V2TagTest {
     ID3V2Tag.calculateTagSizeExcludingHeader(new int[]{0, 0, 0});
   }
 
-  @Test(expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "One or more of the four size bytes is more than 0x7F")
-  public void calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F() {
-    ID3V2Tag.calculateTagSizeExcludingHeader(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 0x80, 0x00, 0x80, 0x00});
+  @DataProvider(name = "tagArrayDataProvider")
+  private Object[][] tagArrayDataProvider() {
+    return new Object[][]{
+      {new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 0x80, 0x00, 0x00, 0x00}},
+      {new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 0x7F, 0x80, 0x00, 0x00}},
+      {new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 0x7F, 0x7F, 0x80, 0x00}},
+      {new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 0x7F, 0x00, 0x7F, 0x80}},
+    };
+  }
+
+  @Test(dataProvider = "tagArrayDataProvider", expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "One or more of the four size bytes is more than 0x7F")
+  public void calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F(int[] tagArray) {
+    ID3V2Tag.calculateTagSizeExcludingHeader(tagArray);
   }
 
   @Test
