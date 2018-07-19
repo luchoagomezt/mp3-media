@@ -15,7 +15,7 @@ public class Frame {
     }
     
     id = new int[]{intArray[0], intArray[1], intArray[2], intArray[3]};
-    size = ((intArray[4] * 0x80 + intArray[5]) * 0x80 + intArray[6]) * 0x80 + intArray[7];
+    size = calculateFrameSizeExcludingHeader(intArray);
     flags = new int[]{intArray[8], intArray[9]};
     content = Arrays.copyOfRange(intArray, FRAME_HEADER_SIZE, intArray.length);
   }
