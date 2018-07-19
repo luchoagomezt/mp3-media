@@ -1,5 +1,6 @@
 package ca.media.mp3.entity;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertTrue;
@@ -62,5 +63,30 @@ public class FrameTest {
   public void frameToString() {
     Frame frame = new Frame(new int[]{84, 73, 84, 50, 0, 0, 0, 6, 0, 0, 0, 84, 105, 116, 118, 101});
     assertEquals(frame.toString(), "{\"id\":\"TIT2\", \"size\":6, \"flags\":{\"first\":0, \"second\":0}, \"content\":[0, 84, 105, 116, 118, 101]}");
+  }
+  
+  @Test(expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "Parameter is null")
+  void calculateSizeOnANullArray() {
+    Frame.calculateFrameSizeExcludingHeader(null);
+  }
+
+  @Test(expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "Array's length is less than header's size")
+  void calculateSizeOnEmptyArray() {
+    Frame.calculateFrameSizeExcludingHeader(new int[] {});
+  }
+
+  @DataProvider(name = "frameArrayProvider")
+  private Object[][] frameArrayDataProvider() {
+    return new Object[][]{
+      {new int[]{0x49, 0x49, 0x49, 0x49, 0x80, 0x7F, 0x7F, 0x7F, 0x00, 0x00}},
+      {new int[]{0x49, 0x49, 0x49, 0x49, 0x7F, 0x80, 0x7F, 0x7F, 0x00, 0x00}},
+      {new int[]{0x49, 0x49, 0x49, 0x49, 0x7F, 0x7F, 0x80, 0x7F, 0x00, 0x00}},
+      {new int[]{0x49, 0x49, 0x49, 0x49, 0x7F, 0x7F, 0x7F, 0x80, 0x00, 0x00}},
+    };
+  }
+
+  @Test(dataProvider = "frameArrayProvider", expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "One or more of the four size bytes is more than 0x7F")
+  void calculateSizeOnInvalidArray(int[] frameArray) {
+    Frame.calculateFrameSizeExcludingHeader(frameArray);
   }
 }
