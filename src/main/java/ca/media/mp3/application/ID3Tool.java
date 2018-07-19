@@ -17,13 +17,7 @@ public class ID3Tool implements ID3Reader {
   
   @Override
   public String perform() {
-    String outputString;
-    try {
-      outputString = formatter.tagToString(new ID3V2Tag(byteArray));
-    } catch(IllegalArgumentException e) {
-      outputString = e.getMessage();
-    }
-    return outputString;
+    return formatter.tagToString(new ID3V2Tag(byteArray));
   }
 
   @Override
