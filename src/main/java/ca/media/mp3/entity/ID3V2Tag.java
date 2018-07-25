@@ -6,20 +6,16 @@ public class ID3V2Tag {
   public static final int ID3V2_TAG_HEADER_SIZE = 10;
   
   private final Frame[] frame;
-  private final int majorVersion;
-  private final int revisionNumber;
-  private final int flags;
   private final int size;
+  private final int[] header;
   
   public ID3V2Tag(final int[] mp3) {
     if(!isAnID3V2tag(mp3)) {
       throw new IllegalArgumentException("Array does not contain an ID3 V2 tag");
     }
 
-    majorVersion = mp3[3];
-    revisionNumber = mp3[4];
-    flags = mp3[5];
     size = calculateTagSizeExcludingHeader(mp3);
+    header = Arrays.copyOfRange(mp3, 0, ID3V2_TAG_HEADER_SIZE);
     
     if(mp3.length < Frame.FRAME_HEADER_SIZE + ID3V2_TAG_HEADER_SIZE) {
       frame = new Frame[]{};
@@ -70,27 +66,27 @@ public class ID3V2Tag {
   }
     
   public int majorVersion() {
-    return majorVersion;
+    return header[3];
   }
   
   public int revisionNumber() {
-    return revisionNumber;
+    return header[4];
   }
   
   public boolean unsynchronisation() {
-    return (flags & 0x80) == 0x80;
+    return (header[5] & 0x80) == 0x80;
   }
   
   public boolean extendedHeader() {
-    return (flags & 0x40) == 0x40;
+    return (header[5] & 0x40) == 0x40;
   }
   
   public boolean experimental() {
-    return (flags & 0x20) == 0x20;
+    return (header[5] & 0x20) == 0x20;
   }
   
   public int flags() {
-    return flags;
+    return header[5];
   }
   
   public int size() {
@@ -101,6 +97,6 @@ public class ID3V2Tag {
   public String toString() {
     return 
       String.format("{\"header\":{\"version\":%d, \"revision\":%d, \"flags\":%d, \"size\":%d}, \"frames\":%s}", 
-      majorVersion, revisionNumber, flags, size, Arrays.toString(frame));
+      majorVersion(), revisionNumber(), flags(), size(), Arrays.toString(frame));
   }  
 }
