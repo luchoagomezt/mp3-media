@@ -23,7 +23,7 @@ public class ID3V2ToolTest {
     ID3Tool tool = new ID3Tool(e -> e.toString());
     byte[] data = new byte[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x00, 0x0A, 0x49, 0x49, 0x49, 0x49, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
     tool.read(new ByteArrayInputStream(data));
-    String expected = "{\"header\":{\"version\":3, \"revision\":0, \"flags\":0, \"size\":10}, \"frames\":[{\"id\":\"IIII\", \"size\":0, \"flags\":{\"first\":0, \"second\":0}, \"content\":[]}]}";
+    String expected = "{\"header\":{\"version\":3, \"revision\":0, \"flags\":0, \"size\":10}, \"frames\":[{\"id\":\"IIII\", \"size\":0, \"flags\":{\"first\":0, \"second\":0}, \"content\":\"\"}]}";
     assertEquals(tool.perform(), expected);
   }
 

@@ -51,7 +51,7 @@ public class FrameTest {
 
   @Test
   public void constructorReceivesAValidFrameArray() {
-    new Frame(new int[]{0x49, 0x49, 0x49, 0x49, 0x7F, 0x7F, 0x7F, 0x7F, 0x00, 0x00});
+    new Frame(new int[]{0x49, 0x49, 0x49, 0x49, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00});
   }
 
   @Test(expectedExceptions = {IllegalArgumentException.class})
@@ -62,7 +62,7 @@ public class FrameTest {
   @Test
   public void frameToString() {
     Frame frame = new Frame(new int[]{84, 73, 84, 50, 0, 0, 0, 6, 0, 0, 0, 84, 105, 116, 118, 101});
-    assertEquals(frame.toString(), "{\"id\":\"TIT2\", \"size\":6, \"flags\":{\"first\":0, \"second\":0}, \"content\":[0, 84, 105, 116, 118, 101]}");
+    assertEquals(frame.toString(), "{\"id\":\"TIT2\", \"size\":6, \"flags\":{\"first\":0, \"second\":0}, \"content\":\"Titve\"}");
   }
   
   @Test(expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "Parameter is null")
