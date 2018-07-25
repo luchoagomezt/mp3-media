@@ -1,11 +1,13 @@
 package ca.media.mp3.entity;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class ID3V2Tag {
   public static final int ID3V2_TAG_HEADER_SIZE = 10;
   
-  private final Frame[] frame;
+  private final List<Frame> frameList;
   private final int size;
   private final int[] header;
   
@@ -16,18 +18,20 @@ public class ID3V2Tag {
 
     size = calculateTagSizeExcludingHeader(mp3);
     header = Arrays.copyOfRange(mp3, 0, ID3V2_TAG_HEADER_SIZE);
-    frame = buildFrames(mp3);  
+    frameList = buildFrames(mp3);  
   }
 
-  private Frame[] buildFrames(final int[] mp3) {
+  private List<Frame> buildFrames(final int[] mp3) {
+    List<Frame> list = new ArrayList<Frame>();
     if(mp3.length < Frame.FRAME_HEADER_SIZE + ID3V2_TAG_HEADER_SIZE) {
-      return new Frame[]{};
+      return list;
     }
     
     int[] frameHeader = Arrays.copyOfRange(mp3, ID3V2_TAG_HEADER_SIZE, Frame.FRAME_HEADER_SIZE + ID3V2_TAG_HEADER_SIZE);
     int frameSize = Frame.calculateFrameSizeExcludingHeader(frameHeader);
     int[] frameArray = Arrays.copyOfRange(mp3, ID3V2_TAG_HEADER_SIZE, Frame.FRAME_HEADER_SIZE + ID3V2_TAG_HEADER_SIZE + frameSize);
-    return new Frame[]{new Frame(frameArray)};
+    list.add(new Frame(frameArray));
+    return list;
   }
 
   public static int calculateTagSizeExcludingHeader(final int[] header) {
@@ -99,7 +103,8 @@ public class ID3V2Tag {
   @Override
   public String toString() {
     return 
-      String.format("{\"header\":{\"version\":%d, \"revision\":%d, \"flags\":%d, \"size\":%d}, \"frames\":%s}", 
-      majorVersion(), revisionNumber(), flags(), size(), Arrays.toString(frame));
-  }  
+      String.format("{\"header\":{\"version\":%d, \"revision\":%d, \"flags\":%d, \"size\":%d}, \"frames\":[%s]}", 
+      majorVersion(), revisionNumber(), flags(), size(), frameList.stream().map(e -> e.toString()).
+      reduce((s1, s2) -> s1.concat(", ").concat(s2)).orElse(""));
+  }
 }
