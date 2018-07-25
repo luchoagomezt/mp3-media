@@ -5,8 +5,6 @@ import org.testng.annotations.Test;
 import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertTrue;
 
-import java.util.Arrays;
-
 import static org.testng.Assert.assertEquals;
 
 public class FrameTest {
