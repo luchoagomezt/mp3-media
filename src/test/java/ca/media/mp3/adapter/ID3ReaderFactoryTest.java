@@ -17,11 +17,6 @@ public class ID3ReaderFactoryTest {
   }
 
   @Test
-  public void presentJustTheHeader() {
-    assertNotNull(ID3ReaderFactory.makeAnID3Reader(ID3ReaderFactory.HEADER_PRESENTER));
-  }
-
-  @Test
   public void presentAJSONString() {
     assertNotNull(ID3ReaderFactory.makeAnID3Reader(ID3ReaderFactory.SIMPLE_PRESENTER));
   }

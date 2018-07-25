@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import static org.testng.AssertJUnit.assertTrue;
 import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
 
 @Test
 public class ID3V2TagTest {
@@ -82,12 +81,6 @@ public class ID3V2TagTest {
   @Test
   public void itHasExtendedHeader() {
     assertTrue(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 64, 00, 12, 27, 76}).extendedHeader());
-  }
-  
-  @Test
-  public void getTheHeaderMap() {
-    ID3V2Tag tag = new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 64, 00, 12, 27, 76});
-    assertNotNull(tag.header());
   }
   
   @Test

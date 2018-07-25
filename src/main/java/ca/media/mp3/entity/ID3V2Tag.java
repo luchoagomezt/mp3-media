@@ -1,13 +1,10 @@
 package ca.media.mp3.entity;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ID3V2Tag {
   public static final int ID3V2_TAG_HEADER_SIZE = 10;
   
-  private final Map<String, Integer> header;
   private final Frame[] frame;
   private final int majorVersion;
   private final int revisionNumber;
@@ -23,11 +20,6 @@ public class ID3V2Tag {
     revisionNumber = mp3[4];
     flags = mp3[5];
     size = calculateTagSizeExcludingHeader(mp3);
-    header = new HashMap<>();
-    header.put("majorVersion", majorVersion);
-    header.put("revisionNumber", revisionNumber);
-    header.put("flags", flags);
-    header.put("size", size);
     
     if(mp3.length < Frame.FRAME_HEADER_SIZE + ID3V2_TAG_HEADER_SIZE) {
       frame = new Frame[]{};
@@ -110,9 +102,5 @@ public class ID3V2Tag {
     return 
       String.format("{\"header\":{\"version\":%d, \"revision\":%d, \"flags\":%d, \"size\":%d}, \"frames\":%s}", 
       majorVersion, revisionNumber, flags, size, Arrays.toString(frame));
-  }
-  
-  public Map<String, Integer> header() {
-    return header;
-  }
+  }  
 }
