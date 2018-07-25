@@ -16,15 +16,18 @@ public class ID3V2Tag {
 
     size = calculateTagSizeExcludingHeader(mp3);
     header = Arrays.copyOfRange(mp3, 0, ID3V2_TAG_HEADER_SIZE);
-    
+    frame = buildFrames(mp3);  
+  }
+
+  private Frame[] buildFrames(final int[] mp3) {
     if(mp3.length < Frame.FRAME_HEADER_SIZE + ID3V2_TAG_HEADER_SIZE) {
-      frame = new Frame[]{};
-    } else {
-      int[] frameHeader = Arrays.copyOfRange(mp3, ID3V2_TAG_HEADER_SIZE, Frame.FRAME_HEADER_SIZE + ID3V2_TAG_HEADER_SIZE);
-      int frameSize = Frame.calculateFrameSizeExcludingHeader(frameHeader);
-      int[] frameArray = Arrays.copyOfRange(mp3, ID3V2_TAG_HEADER_SIZE, Frame.FRAME_HEADER_SIZE + ID3V2_TAG_HEADER_SIZE + frameSize);
-      frame = new Frame[]{new Frame(frameArray)};
+      return new Frame[]{};
     }
+    
+    int[] frameHeader = Arrays.copyOfRange(mp3, ID3V2_TAG_HEADER_SIZE, Frame.FRAME_HEADER_SIZE + ID3V2_TAG_HEADER_SIZE);
+    int frameSize = Frame.calculateFrameSizeExcludingHeader(frameHeader);
+    int[] frameArray = Arrays.copyOfRange(mp3, ID3V2_TAG_HEADER_SIZE, Frame.FRAME_HEADER_SIZE + ID3V2_TAG_HEADER_SIZE + frameSize);
+    return new Frame[]{new Frame(frameArray)};
   }
 
   public static int calculateTagSizeExcludingHeader(final int[] header) {
