@@ -4,26 +4,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Frame {
+  private class Header {
+  	final String id;
+  	final int size;
+  	final int firstFlag;
+  	final int secondFlag;
+  	
+  	Header(int[] data) {
+  		id = String.format("%c%c%c%c", data[0], data[1], data[2], data[3]);
+  		size = calculateFrameSizeExcludingHeader(data);
+  		firstFlag = data[8];
+  		secondFlag = data[9];
+  	}
+  }
+
   public static final int FRAME_HEADER_SIZE = 10;
-  private final int[] id;
-  private final int size;
-  private final int[] flags;
+  public static final int MAXIMUM_SIZE_VALUE = 128;
   private final String content;
-  
-  public Frame(int[] intArray) throws IllegalArgumentException {
-    if(!isAFrameTag(intArray)) {
+  private final Header header;
+
+  public Frame(int[] data) throws IllegalArgumentException {
+    if(!isAFrameTag(data)) {
       throw new IllegalArgumentException("Array is not a valid frame");
     }
     
-    id = new int[]{intArray[0], intArray[1], intArray[2], intArray[3]};
-    size = calculateFrameSizeExcludingHeader(intArray);
-    flags = new int[]{intArray[8], intArray[9]};
-    content = getFrameContent(intArray);
+    header = new Header(data);
+    content = getFrameContent(data);
   }
 
   private String getFrameContent(final int[] intArray) {
     List<Character> content = new ArrayList<>();
-    if (size == 0) {
+    if (header.size == 0) {
       return "";
     }
     int encoding = intArray[FRAME_HEADER_SIZE];
@@ -37,39 +48,39 @@ public class Frame {
     return content.stream().map(c -> c.toString()).reduce((s1, s2) -> s1.concat(s2)).orElse("");
   }
 
-  public static boolean isAFrameTag(final int[] array) throws IllegalArgumentException {
-    if(array == null) {
+  public static boolean isAFrameTag(final int[] data) throws IllegalArgumentException {
+    if(data == null) {
       throw new IllegalArgumentException("Array is null");
     }
-    if(array.length < FRAME_HEADER_SIZE) {
+    if(data.length < FRAME_HEADER_SIZE) {
       throw new IllegalArgumentException("Array is too small");
     }
 
     return 
-        array[4] < 0x80 && 
-        array[5] < 0x80 && 
-        array[6] < 0x80 && 
-        array[7] < 0x80;
+        data[4] < MAXIMUM_SIZE_VALUE && 
+        data[5] < MAXIMUM_SIZE_VALUE && 
+        data[6] < MAXIMUM_SIZE_VALUE && 
+        data[7] < MAXIMUM_SIZE_VALUE;
   }
 
-  public static int calculateFrameSizeExcludingHeader(final int[] header) {
-    if (header == null) {
+  public static int calculateFrameSizeExcludingHeader(final int[] data) {
+    if (data == null) {
       throw new IllegalArgumentException("Parameter is null");
     }
 
-    if (header.length < FRAME_HEADER_SIZE) {
+    if (data.length < FRAME_HEADER_SIZE) {
       throw new IllegalArgumentException("Array's length is less than header's size");
     }
-    
-    if(header[4] > 0x7F || header[5] > 0x7F || header[6] > 0x7F || header[7] > 0x7F) {
-      throw new IllegalArgumentException("One or more of the four size bytes is more than 0x7F");
+
+    if(data[4] >= MAXIMUM_SIZE_VALUE || data[5] >= MAXIMUM_SIZE_VALUE || data[6] >= MAXIMUM_SIZE_VALUE || data[7] >= MAXIMUM_SIZE_VALUE) {
+      throw new IllegalArgumentException("One or more of the four size bytes is more or equal to " + MAXIMUM_SIZE_VALUE);
     } 
 
-    return ((header[4] * 0x80 + header[5]) * 0x80 + header[6]) * 0x80 + header[7];
+    return ((data[4] * MAXIMUM_SIZE_VALUE + data[5]) * MAXIMUM_SIZE_VALUE + data[6]) * MAXIMUM_SIZE_VALUE + data[7];
   }
 
   public String toString() {
-    return String.format("{\"id\":\"%c%c%c%c\", \"size\":%d, \"flags\":{\"first\":%d, \"second\":%d}, \"content\":\"%s\"}", 
-        id[0], id[1], id[2], id[3], size, flags[0], flags[1], content);
+    return String.format("{\"id\":\"%s\", \"size\":%d, \"flags\":{\"first\":%d, \"second\":%d}, \"content\":\"%s\"}", 
+        header.id, header.size, header.firstFlag, header.secondFlag, content);
   }
 }

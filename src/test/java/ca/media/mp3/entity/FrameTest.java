@@ -83,7 +83,7 @@ public class FrameTest {
     };
   }
 
-  @Test(dataProvider = "frameArrayProvider", expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "One or more of the four size bytes is more than 0x7F")
+  @Test(dataProvider = "frameArrayProvider", expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "One or more of the four size bytes is more or equal to 128")
   void calculateSizeOnInvalidArray(int[] frameArray) {
     Frame.calculateFrameSizeExcludingHeader(frameArray);
   }
