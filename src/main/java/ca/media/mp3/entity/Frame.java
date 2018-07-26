@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Frame {
-  public static final int FRAME_HEADER_SIZE = 10;  
+  public static final int HEADER_SIZE = 10;  
   private final String content;
   private final Header header;
 
@@ -22,12 +22,12 @@ public class Frame {
     if (header.size == 0) {
       return "";
     }
-    int encoding = intArray[Header.HEADER_SIZE];
+    int encoding = intArray[HEADER_SIZE];
     int offset = 1;
     if (encoding == 0xFF || encoding == 0xFE) {
       offset = 2;
     }
-    for(int i = Header.HEADER_SIZE + offset; i < intArray.length; i++) {
+    for(int i = HEADER_SIZE + offset; i < intArray.length; i++) {
       content.add(new Character((char)intArray[i]));
     }
     return content.stream().map(c -> c.toString()).reduce((s1, s2) -> s1.concat(s2)).orElse("");
@@ -37,7 +37,7 @@ public class Frame {
     if(data == null) {
       throw new IllegalArgumentException("Array is null");
     }
-    if(data.length < Header.HEADER_SIZE) {
+    if(data.length < HEADER_SIZE) {
       throw new IllegalArgumentException("Array is too small");
     }
 
@@ -49,7 +49,7 @@ public class Frame {
       throw new IllegalArgumentException("Parameter is null");
     }
 
-    if (data.length < Header.HEADER_SIZE) {
+    if (data.length < HEADER_SIZE) {
       throw new IllegalArgumentException("Array's length is less than header's size");
     }
 
@@ -66,9 +66,7 @@ public class Frame {
   }
 
   private static class Header {
-    public static final int MAXIMUM_SIZE_VALUE = 128;
-    public static final int HEADER_SIZE = 10;   
-
+    static final int MAXIMUM_SIZE_VALUE = 128;
     final String id;
     final int size;
     final int firstFlag;
