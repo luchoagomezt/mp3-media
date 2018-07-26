@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Frame {
+  public static final int FRAME_HEADER_SIZE = 10;  
   private static class Header {
+    public static final int MAXIMUM_SIZE_VALUE = 128;
+    public static final int HEADER_SIZE = 10;   
+
   	final String id;
   	final int size;
   	final int firstFlag;
@@ -24,10 +28,12 @@ public class Frame {
         data[6] < MAXIMUM_SIZE_VALUE && 
         data[7] < MAXIMUM_SIZE_VALUE;
   	}
+  	
+  	static int calculateTheContentLength(final int[] data) {
+  	  return ((data[4] * MAXIMUM_SIZE_VALUE + data[5]) * MAXIMUM_SIZE_VALUE + data[6]) * MAXIMUM_SIZE_VALUE + data[7];
+  	}
   }
 
-  public static final int FRAME_HEADER_SIZE = 10;
-  public static final int MAXIMUM_SIZE_VALUE = 128;
   private final String content;
   private final Header header;
 
@@ -45,12 +51,12 @@ public class Frame {
     if (header.size == 0) {
       return "";
     }
-    int encoding = intArray[FRAME_HEADER_SIZE];
+    int encoding = intArray[Header.HEADER_SIZE];
     int offset = 1;
     if (encoding == 0xFF || encoding == 0xFE) {
       offset = 2;
     }
-    for(int i = FRAME_HEADER_SIZE + offset; i < intArray.length; i++) {
+    for(int i = Header.HEADER_SIZE + offset; i < intArray.length; i++) {
       content.add(new Character((char)intArray[i]));
     }
     return content.stream().map(c -> c.toString()).reduce((s1, s2) -> s1.concat(s2)).orElse("");
@@ -60,7 +66,7 @@ public class Frame {
     if(data == null) {
       throw new IllegalArgumentException("Array is null");
     }
-    if(data.length < FRAME_HEADER_SIZE) {
+    if(data.length < Header.HEADER_SIZE) {
       throw new IllegalArgumentException("Array is too small");
     }
 
@@ -72,19 +78,19 @@ public class Frame {
       throw new IllegalArgumentException("Parameter is null");
     }
 
-    if (data.length < FRAME_HEADER_SIZE) {
+    if (data.length < Header.HEADER_SIZE) {
       throw new IllegalArgumentException("Array's length is less than header's size");
     }
 
     if(!Header.isItAValidSize(data)) {
-      throw new IllegalArgumentException("One or more of the four size bytes is more or equal to " + MAXIMUM_SIZE_VALUE);
+      throw new IllegalArgumentException("One or more of the four size bytes is more or equal to " + Header.MAXIMUM_SIZE_VALUE);
     } 
 
-    return ((data[4] * MAXIMUM_SIZE_VALUE + data[5]) * MAXIMUM_SIZE_VALUE + data[6]) * MAXIMUM_SIZE_VALUE + data[7];
+    return Header.calculateTheContentLength(data);
   }
 
   public String toString() {
     return String.format("{\"id\":\"%s\", \"size\":%d, \"flags\":{\"first\":%d, \"second\":%d}, \"content\":\"%s\"}", 
-        header.id, header.size, header.firstFlag, header.secondFlag, content);
+      header.id, header.size, header.firstFlag, header.secondFlag, content);
   }
 }
