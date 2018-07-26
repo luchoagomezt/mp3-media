@@ -11,18 +11,18 @@ public class Frame {
   	final int secondFlag;
   	
   	Header(int[] data) {
-  		id = String.format("%c%c%c%c", data[0], data[1], data[2], data[3]);
-  		size = calculateFrameSizeExcludingHeader(data);
-  		firstFlag = data[8];
-  		secondFlag = data[9];
+  	  id = String.format("%c%c%c%c", data[0], data[1], data[2], data[3]);
+  	  size = calculateFrameSizeExcludingHeader(data);
+  	  firstFlag = data[8];
+  	  secondFlag = data[9];
   	}
   	
   	static boolean isItAValidSize(final int[] data) {
-  		return         
-  				data[4] < MAXIMUM_SIZE_VALUE && 
-          data[5] < MAXIMUM_SIZE_VALUE && 
-          data[6] < MAXIMUM_SIZE_VALUE && 
-          data[7] < MAXIMUM_SIZE_VALUE;
+  	  return         
+  	    data[4] < MAXIMUM_SIZE_VALUE && 
+        data[5] < MAXIMUM_SIZE_VALUE && 
+        data[6] < MAXIMUM_SIZE_VALUE && 
+        data[7] < MAXIMUM_SIZE_VALUE;
   	}
   }
 
@@ -76,7 +76,7 @@ public class Frame {
       throw new IllegalArgumentException("Array's length is less than header's size");
     }
 
-    if(data[4] >= MAXIMUM_SIZE_VALUE || data[5] >= MAXIMUM_SIZE_VALUE || data[6] >= MAXIMUM_SIZE_VALUE || data[7] >= MAXIMUM_SIZE_VALUE) {
+    if(!Header.isItAValidSize(data)) {
       throw new IllegalArgumentException("One or more of the four size bytes is more or equal to " + MAXIMUM_SIZE_VALUE);
     } 
 
