@@ -5,35 +5,6 @@ import java.util.List;
 
 public class Frame {
   public static final int FRAME_HEADER_SIZE = 10;  
-  private static class Header {
-    public static final int MAXIMUM_SIZE_VALUE = 128;
-    public static final int HEADER_SIZE = 10;   
-
-  	final String id;
-  	final int size;
-  	final int firstFlag;
-  	final int secondFlag;
-  	
-  	Header(int[] data) {
-  	  id = String.format("%c%c%c%c", data[0], data[1], data[2], data[3]);
-  	  size = calculateFrameSizeExcludingHeader(data);
-  	  firstFlag = data[8];
-  	  secondFlag = data[9];
-  	}
-  	
-  	static boolean isItAValidSize(final int[] data) {
-  	  return         
-  	    data[4] < MAXIMUM_SIZE_VALUE && 
-        data[5] < MAXIMUM_SIZE_VALUE && 
-        data[6] < MAXIMUM_SIZE_VALUE && 
-        data[7] < MAXIMUM_SIZE_VALUE;
-  	}
-  	
-  	static int calculateTheContentLength(final int[] data) {
-  	  return ((data[4] * MAXIMUM_SIZE_VALUE + data[5]) * MAXIMUM_SIZE_VALUE + data[6]) * MAXIMUM_SIZE_VALUE + data[7];
-  	}
-  }
-
   private final String content;
   private final Header header;
 
@@ -92,5 +63,34 @@ public class Frame {
   public String toString() {
     return String.format("{\"id\":\"%s\", \"size\":%d, \"flags\":{\"first\":%d, \"second\":%d}, \"content\":\"%s\"}", 
       header.id, header.size, header.firstFlag, header.secondFlag, content);
+  }
+
+  private static class Header {
+    public static final int MAXIMUM_SIZE_VALUE = 128;
+    public static final int HEADER_SIZE = 10;   
+
+    final String id;
+    final int size;
+    final int firstFlag;
+    final int secondFlag;
+    
+    Header(int[] data) {
+      id = String.format("%c%c%c%c", data[0], data[1], data[2], data[3]);
+      size = calculateFrameSizeExcludingHeader(data);
+      firstFlag = data[8];
+      secondFlag = data[9];
+    }
+    
+    static boolean isItAValidSize(final int[] data) {
+      return         
+        data[4] < MAXIMUM_SIZE_VALUE && 
+        data[5] < MAXIMUM_SIZE_VALUE && 
+        data[6] < MAXIMUM_SIZE_VALUE && 
+        data[7] < MAXIMUM_SIZE_VALUE;
+    }
+    
+    static int calculateTheContentLength(final int[] data) {
+      return ((data[4] * MAXIMUM_SIZE_VALUE + data[5]) * MAXIMUM_SIZE_VALUE + data[6]) * MAXIMUM_SIZE_VALUE + data[7];
+    }
   }
 }
