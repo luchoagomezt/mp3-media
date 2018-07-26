@@ -23,13 +23,13 @@ public class ID3V2Tag {
 
   private List<Frame> buildFrames(final int[] mp3) {
     List<Frame> list = new ArrayList<Frame>();
-    if(mp3.length < Frame.FRAME_HEADER_SIZE + ID3V2_TAG_HEADER_SIZE) {
+    if(mp3.length < Frame.HEADER_SIZE + ID3V2_TAG_HEADER_SIZE) {
       return list;
     }
     
-    int[] frameHeader = Arrays.copyOfRange(mp3, ID3V2_TAG_HEADER_SIZE, Frame.FRAME_HEADER_SIZE + ID3V2_TAG_HEADER_SIZE);
+    int[] frameHeader = Arrays.copyOfRange(mp3, ID3V2_TAG_HEADER_SIZE, Frame.HEADER_SIZE + ID3V2_TAG_HEADER_SIZE);
     int frameSize = Frame.calculateFrameSizeExcludingHeader(frameHeader);
-    int[] frameArray = Arrays.copyOfRange(mp3, ID3V2_TAG_HEADER_SIZE, Frame.FRAME_HEADER_SIZE + ID3V2_TAG_HEADER_SIZE + frameSize);
+    int[] frameArray = Arrays.copyOfRange(mp3, ID3V2_TAG_HEADER_SIZE, Frame.HEADER_SIZE + ID3V2_TAG_HEADER_SIZE + frameSize);
     list.add(new Frame(frameArray));
     return list;
   }
