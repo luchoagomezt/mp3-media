@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Frame {
-  private class Header {
+  private static class Header {
   	final String id;
   	final int size;
   	final int firstFlag;
@@ -15,6 +15,14 @@ public class Frame {
   		size = calculateFrameSizeExcludingHeader(data);
   		firstFlag = data[8];
   		secondFlag = data[9];
+  	}
+  	
+  	static boolean isItAValidSize(final int[] data) {
+  		return         
+  				data[4] < MAXIMUM_SIZE_VALUE && 
+          data[5] < MAXIMUM_SIZE_VALUE && 
+          data[6] < MAXIMUM_SIZE_VALUE && 
+          data[7] < MAXIMUM_SIZE_VALUE;
   	}
   }
 
@@ -56,11 +64,7 @@ public class Frame {
       throw new IllegalArgumentException("Array is too small");
     }
 
-    return 
-        data[4] < MAXIMUM_SIZE_VALUE && 
-        data[5] < MAXIMUM_SIZE_VALUE && 
-        data[6] < MAXIMUM_SIZE_VALUE && 
-        data[7] < MAXIMUM_SIZE_VALUE;
+    return Header.isItAValidSize(data);
   }
 
   public static int calculateFrameSizeExcludingHeader(final int[] data) {
