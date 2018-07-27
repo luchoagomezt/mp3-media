@@ -74,7 +74,7 @@ public class Frame {
     
     Header(int[] data) {
       id = String.format("%c%c%c%c", data[0], data[1], data[2], data[3]);
-      size = calculateFrameSizeExcludingHeader(data);
+      size = calculateTheContentLength(data);
       firstFlag = data[8];
       secondFlag = data[9];
     }
