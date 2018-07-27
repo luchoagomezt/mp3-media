@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ID3V2Tag {
-  public static final int ID3V2_TAG_HEADER_SIZE = 10;
+  public static final int HEADER_SIZE = 10;
   
   private final List<Frame> frameList;
   private final int size;
@@ -17,19 +17,19 @@ public class ID3V2Tag {
     }
 
     size = calculateTagSizeExcludingHeader(mp3);
-    header = Arrays.copyOfRange(mp3, 0, ID3V2_TAG_HEADER_SIZE);
+    header = Arrays.copyOfRange(mp3, 0, HEADER_SIZE);
     frameList = buildFrames(mp3);  
   }
 
   private List<Frame> buildFrames(final int[] mp3) {
     List<Frame> list = new ArrayList<Frame>();
-    if(mp3.length < Frame.HEADER_SIZE + ID3V2_TAG_HEADER_SIZE) {
+    if(mp3.length < Frame.HEADER_SIZE + HEADER_SIZE) {
       return list;
     }
     
-    int[] frameHeader = Arrays.copyOfRange(mp3, ID3V2_TAG_HEADER_SIZE, Frame.HEADER_SIZE + ID3V2_TAG_HEADER_SIZE);
+    int[] frameHeader = Arrays.copyOfRange(mp3, HEADER_SIZE, Frame.HEADER_SIZE + HEADER_SIZE);
     int frameSize = Frame.calculateFrameSizeExcludingHeader(frameHeader);
-    int[] frameArray = Arrays.copyOfRange(mp3, ID3V2_TAG_HEADER_SIZE, Frame.HEADER_SIZE + ID3V2_TAG_HEADER_SIZE + frameSize);
+    int[] frameArray = Arrays.copyOfRange(mp3, HEADER_SIZE, Frame.HEADER_SIZE + HEADER_SIZE + frameSize);
     list.add(new Frame(frameArray));
     return list;
   }
@@ -39,7 +39,7 @@ public class ID3V2Tag {
       throw new IllegalArgumentException("Parameter is null");
     }
 
-    if (header.length < ID3V2_TAG_HEADER_SIZE) {
+    if (header.length < HEADER_SIZE) {
       throw new IllegalArgumentException("Array's length is less than header's size");
     }
     
@@ -55,7 +55,7 @@ public class ID3V2Tag {
       throw new IllegalArgumentException("Parameter array is null");
     }
 
-    if(mp3.length < ID3V2_TAG_HEADER_SIZE) {
+    if(mp3.length < HEADER_SIZE) {
       throw new IllegalArgumentException("Array's length is less than header's size");
     }
 

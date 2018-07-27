@@ -26,11 +26,11 @@ public class ID3Tool implements ID3Reader {
       throw new IllegalArgumentException("The InputStream parameter is null ");
     }
     
-    if(stream.available() < ID3V2Tag.ID3V2_TAG_HEADER_SIZE) {
+    if(stream.available() < ID3V2Tag.HEADER_SIZE) {
       throw new IllegalArgumentException("The stream'size is less than the tag's header size");
     }
     
-    int[] header = new int[ID3V2Tag.ID3V2_TAG_HEADER_SIZE];
+    int[] header = new int[ID3V2Tag.HEADER_SIZE];
     for(int i = 0; i < header.length; i++) {
       header[i] = stream.read();
     }
@@ -40,13 +40,13 @@ public class ID3Tool implements ID3Reader {
     }
     
     int sizeExcludingHeader = ID3V2Tag.calculateTagSizeExcludingHeader(header);  
-    int totalTagSize = sizeExcludingHeader + ID3V2Tag.ID3V2_TAG_HEADER_SIZE;
+    int totalTagSize = sizeExcludingHeader + ID3V2Tag.HEADER_SIZE;
     byteArray = new int[totalTagSize];
     for(int i = 0; i < header.length; i++) {
       byteArray[i] = header[i];
     }
 
-    for(int i = ID3V2Tag.ID3V2_TAG_HEADER_SIZE; i < byteArray.length; i++) {
+    for(int i = ID3V2Tag.HEADER_SIZE; i < byteArray.length; i++) {
       byteArray[i] = stream.read();
     }
 
