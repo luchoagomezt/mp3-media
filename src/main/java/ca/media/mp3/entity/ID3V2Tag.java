@@ -6,18 +6,15 @@ import java.util.List;
 
 public class ID3V2Tag {
   public static final int HEADER_SIZE = 10;
-  
   private final List<Frame> frameList;
-  private final int size;
-  private final int[] header;
-  
+  private final Header header;
+
   public ID3V2Tag(final int[] mp3) {
     if(!isAnID3V2tag(mp3)) {
       throw new IllegalArgumentException("Array does not contain an ID3 V2 tag");
     }
 
-    size = calculateTagSizeExcludingHeader(mp3);
-    header = Arrays.copyOfRange(mp3, 0, HEADER_SIZE);
+    header = new Header(mp3);
     frameList = buildFrames(mp3);  
   }
 
@@ -73,31 +70,31 @@ public class ID3V2Tag {
   }
     
   public int majorVersion() {
-    return header[3];
+    return header.majorVersion;
   }
   
   public int revisionNumber() {
-    return header[4];
+    return header.revisionNumber;
   }
   
   public boolean unsynchronisation() {
-    return (header[5] & 0x80) == 0x80;
+    return (header.flag & 0x80) == 0x80;
   }
   
   public boolean extendedHeader() {
-    return (header[5] & 0x40) == 0x40;
+    return (header.flag & 0x40) == 0x40;
   }
   
   public boolean experimental() {
-    return (header[5] & 0x20) == 0x20;
+    return (header.flag & 0x20) == 0x20;
   }
   
   public int flags() {
-    return header[5];
+    return header.flag;
   }
   
   public int size() {
-    return size;
+    return header.size;
   }
   
   @Override
@@ -106,5 +103,19 @@ public class ID3V2Tag {
       String.format("{\"header\":{\"version\":%d, \"revision\":%d, \"flags\":%d, \"size\":%d}, \"frames\":[%s]}", 
       majorVersion(), revisionNumber(), flags(), size(), frameList.stream().map(e -> e.toString()).
       reduce((s1, s2) -> s1.concat(", ").concat(s2)).orElse(""));
+  }
+  
+  private class Header {
+    private final int majorVersion;
+    private final int revisionNumber;
+    private final int flag;
+    private final int size;
+    
+    Header(final int[] data) {
+      majorVersion = data[3];
+      revisionNumber = data[4];
+      flag = data[5];
+      size = calculateTagSizeExcludingHeader(data);      
+    }
   }
 }
