@@ -9,7 +9,7 @@ public class Frame {
   private final Header header;
 
   public Frame(int[] data) throws IllegalArgumentException {
-    if(!isAFrameTag(data)) {
+    if(!isAValidFrame(data)) {
       throw new IllegalArgumentException("Array is not a valid frame");
     }
     
@@ -33,7 +33,7 @@ public class Frame {
     return content.stream().map(c -> c.toString()).reduce((s1, s2) -> s1.concat(s2)).orElse("");
   }
 
-  public static boolean isAFrameTag(final int[] data) throws IllegalArgumentException {
+  public static boolean isAValidFrame(final int[] data) throws IllegalArgumentException {
     if(data == null) {
       throw new IllegalArgumentException("Array is null");
     }
