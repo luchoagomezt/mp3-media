@@ -63,12 +63,12 @@ public class FrameTest {
     assertEquals(frame.toString(), "{\"id\":\"TIT2\", \"size\":6, \"flags\":{\"first\":0, \"second\":0}, \"content\":\"Titve\"}");
   }
   
-  @Test(expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "Parameter is null")
+  @Test(expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "Data array passed as a parameter is null")
   void calculateSizeOnANullArray() {
     Frame.calculateContentSize(null);
   }
 
-  @Test(expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "Array's length is less than header's size")
+  @Test(expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "Length of the data array passed as a parameter is less than the valid size for a frame's header")
   void calculateSizeOnEmptyArray() {
     Frame.calculateContentSize(new int[] {});
   }

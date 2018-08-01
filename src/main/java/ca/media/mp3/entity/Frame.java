@@ -12,90 +12,112 @@ public class Frame
   public Frame(
     int[] data) 
   {
-    if(!isValid(
-      data)) 
-    {
-      throw new IllegalArgumentException("Array is not a valid frame");
-    }
+    checkIfDataIsNullorTooShort(data);
+    checkIfSizeDescriptorIsValid(data); 
     
     header = new Header(data);
-    content = getFrameContent(data);
+    if (header.contentSize > 0) 
+    {
+      content = getContent(data);
+    } 
+    else 
+    {
+      content = "";
+    }
   }
 
-  private String getFrameContent(
-    final int[] intArray) 
+  private String getContent(
+    final int[] data) 
   {
-    List<Character> content = new ArrayList<>();
-    if (header.size == 0) 
-    {
-      return "";
-    }
-    int encoding = intArray[HEADER_SIZE];
-    int offset = 1;
-    if (encoding == 0xFF || encoding == 0xFE) 
-    {
-      offset = 2;
-    }
-    for(int i = HEADER_SIZE + offset; i < intArray.length; i++) 
-    {
-      content.add(new Character((char)intArray[i]));
-    }
+    List<Character> characterList = getContentAsACharacterList(data);
+    return characterListToString(characterList);
+  }
+
+  private String characterListToString(
+    List<Character> characterList) 
+  {
     return 
-      content.
+      characterList.
       stream().
       map(c -> c.toString()).
       reduce((s1, s2) -> s1.concat(s2)).
       orElse("");
   }
 
+  private List<Character> getContentAsACharacterList(
+    final int[] data) 
+  {
+    List<Character> contentList = new ArrayList<>();
+    for(int i = HEADER_SIZE + getOffset(data); i < data.length; i++) 
+    {
+      contentList.add(new Character((char)data[i]));
+    }
+    return contentList;
+  }
+
+  private int getOffset(
+    final int[] data) 
+  {
+    if (data[HEADER_SIZE] == 0x00) 
+    {
+      return 1;
+    }
+    
+    if (data[HEADER_SIZE] == 0xFF || data[HEADER_SIZE] == 0xFE) 
+    {
+      return 2;
+    }
+    
+    throw new IllegalArgumentException("Encoding byte is invalid");
+  }
+
   public static boolean isValid(
     final int[] data) 
   {
+    checkIfDataIsNullorTooShort(data);
+    return Header.isSizeDescriptorValid(data);
+  }
+
+  private static void checkIfDataIsNullorTooShort(final int[] data) {
     if(data == null) 
     {
-      throw new IllegalArgumentException("Array is null");
+      throw new IllegalArgumentException("Data array passed as a parameter is null");
     }
 
     if(data.length < HEADER_SIZE) 
     {
-      throw new IllegalArgumentException("Array is too small");
+      throw new IllegalArgumentException(
+        "Length of the data array passed as a parameter is less than the valid size for a frame's header");
     }
-
-    return Header.isItAValidSize(data);
   }
 
   public static int calculateContentSize(
     final int[] data) 
   {
-    if (data == null) 
-    {
-      throw new IllegalArgumentException("Parameter is null");
-    }
+    checkIfDataIsNullorTooShort(data);
+    checkIfSizeDescriptorIsValid(data); 
+    return Header.calculateContentSize(data);
+  }
 
-    if (data.length < HEADER_SIZE) 
-    {
-      throw new IllegalArgumentException("Array's length is less than header's size");
-    }
-
-    if(!Header.isItAValidSize(data)) 
+  private static void checkIfSizeDescriptorIsValid(
+    final int[] data) 
+  {
+    if(!Header.isSizeDescriptorValid(data)) 
     {
       throw new IllegalArgumentException("One or more of the four size bytes is more or equal to " + Header.MAXIMUM_SIZE_VALUE);
-    } 
-
-    return Header.calculateContentSize(data);
+    }
   }
 
   public String toString() 
   {
-    String format = "{\"id\":\"%s\", \"size\":%d, \"flags\":{\"first\":%d, \"second\":%d}, \"content\":\"%s\"}";
-    return String.format(format, header.id, header.size, header.firstFlag, header.secondFlag, content);
+    return String.format("{%s, \"content\":\"%s\"}", header.toString(), content);
   }
 
   private static class Header 
   {
     static final int MAXIMUM_SIZE_VALUE = 128;
     final String id;
-    final int size;
+    final int contentSize;
     final int firstFlag;
     final int secondFlag;
     
@@ -103,12 +125,12 @@ public class Frame
       int[] data) 
     {
       id = String.format("%c%c%c%c", data[0], data[1], data[2], data[3]);
-      size = calculateContentSize(data);
+      contentSize = calculateContentSize(data);
       firstFlag = data[8];
       secondFlag = data[9];
     }
     
-    static boolean isItAValidSize(
+    static boolean isSizeDescriptorValid(
       final int[] data) 
     {
       return 
@@ -126,6 +148,11 @@ public class Frame
         data[5] * Math.pow(MAXIMUM_SIZE_VALUE, 2) +
         data[6] * MAXIMUM_SIZE_VALUE +
         data[7]);
+    }
+    
+    public String toString() {
+      String format = "\"id\":\"%s\", \"size\":%d, \"flags\":{\"first\":%d, \"second\":%d}";
+      return String.format(format, id, contentSize, firstFlag, secondFlag);
     }
   }
 }
