@@ -12,7 +12,8 @@ public class Frame
   public Frame(
     int[] data) 
   {
-    checkIfDataIsNullorTooShort(data);
+    checkIfDataIsNull(data);
+    checkIfDataIsTooShort(data);
     checkIfSizeDescriptorIsValid(data); 
     
     header = new Header(data);
@@ -74,16 +75,14 @@ public class Frame
   public static boolean isValid(
     final int[] data) 
   {
-    checkIfDataIsNullorTooShort(data);
+    checkIfDataIsNull(data);
+    checkIfDataIsTooShort(data);
     return Header.isSizeDescriptorValid(data);
   }
 
-  private static void checkIfDataIsNullorTooShort(final int[] data) {
-    if(data == null) 
-    {
-      throw new IllegalArgumentException("Data array passed as a parameter is null");
-    }
-
+  private static void checkIfDataIsTooShort(
+    final int[] data) 
+  {
     if(data.length < HEADER_SIZE) 
     {
       throw new IllegalArgumentException(
@@ -91,10 +90,20 @@ public class Frame
     }
   }
 
+  private static void checkIfDataIsNull(
+    final int[] data) 
+  {
+    if(data == null) 
+    {
+      throw new IllegalArgumentException("Data array passed as a parameter is null");
+    }
+  }
+
   public static int calculateContentSize(
     final int[] data) 
   {
-    checkIfDataIsNullorTooShort(data);
+    checkIfDataIsNull(data);
+    checkIfDataIsTooShort(data);
     checkIfSizeDescriptorIsValid(data); 
     return Header.calculateContentSize(data);
   }
