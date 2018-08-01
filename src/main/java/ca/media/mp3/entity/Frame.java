@@ -14,7 +14,7 @@ public class Frame
   {
     checkIfDataIsNull(data);
     checkIfDataIsTooShort(data);
-    checkIfSizeDescriptorIsValid(data); 
+    checkIfSizeDescriptorIsValid(data);
     
     header = new Header(data);
     if (header.contentSize > 0) 
@@ -48,36 +48,22 @@ public class Frame
   private List<Character> getContentAsACharacterList(
     final int[] data) 
   {
+    checkIfEncodingIsValid(data);
     List<Character> contentList = new ArrayList<>();
-    for(int i = HEADER_SIZE + getOffset(data); i < data.length; i++) 
+    for(int i = HEADER_SIZE + 1; i < data.length; i++) 
     {
       contentList.add(new Character((char)data[i]));
     }
     return contentList;
   }
 
-  private int getOffset(
+  private void checkIfEncodingIsValid(
     final int[] data) 
   {
-    if (data[HEADER_SIZE] == 0x00) 
+    if (data[HEADER_SIZE] != 0x00) 
     {
-      return 1;
+      throw new IllegalArgumentException("Encoding byte is invalid");
     }
-    
-    if (data[HEADER_SIZE] == 0xFF || data[HEADER_SIZE] == 0xFE) 
-    {
-      return 2;
-    }
-    
-    throw new IllegalArgumentException("Encoding byte is invalid");
-  }
-
-  public static boolean isValid(
-    final int[] data) 
-  {
-    checkIfDataIsNull(data);
-    checkIfDataIsTooShort(data);
-    return Header.isSizeDescriptorValid(data);
   }
 
   private static void checkIfDataIsTooShort(
@@ -99,15 +85,6 @@ public class Frame
     }
   }
 
-  public static int calculateContentSize(
-    final int[] data) 
-  {
-    checkIfDataIsNull(data);
-    checkIfDataIsTooShort(data);
-    checkIfSizeDescriptorIsValid(data); 
-    return Header.calculateContentSize(data);
-  }
-
   private static void checkIfSizeDescriptorIsValid(
     final int[] data) 
   {
@@ -115,6 +92,23 @@ public class Frame
     {
       throw new IllegalArgumentException("One or more of the four size bytes is more or equal to " + Header.MAXIMUM_SIZE_VALUE);
     }
+  }
+
+  public static boolean isValid(
+      final int[] data) 
+    {
+      checkIfDataIsNull(data);
+      checkIfDataIsTooShort(data);
+      return Header.isSizeDescriptorValid(data);
+    }
+
+  public static int calculateContentSize(
+    final int[] data) 
+  {
+    checkIfDataIsNull(data);
+    checkIfDataIsTooShort(data);
+    checkIfSizeDescriptorIsValid(data); 
+    return Header.calculateContentSize(data);
   }
 
   public String toString() 
