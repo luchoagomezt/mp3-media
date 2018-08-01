@@ -13,7 +13,7 @@ public class Frame
     int[] data) 
   {
     if(!isAValidFrame(
-       data)) 
+      data)) 
     {
       throw new IllegalArgumentException("Array is not a valid frame");
     }
@@ -98,7 +98,8 @@ public class Frame
     final int firstFlag;
     final int secondFlag;
     
-    Header(int[] data) 
+    Header(
+      int[] data) 
     {
       id = String.format("%c%c%c%c", data[0], data[1], data[2], data[3]);
       size = calculateTheContentLength(data);
@@ -116,9 +117,14 @@ public class Frame
         data[7] < MAXIMUM_SIZE_VALUE;
     }
     
-    static int calculateTheContentLength(final int[] data) 
+    static int calculateTheContentLength(
+      final int[] data) 
     {
-      return ((data[4] * MAXIMUM_SIZE_VALUE + data[5]) * MAXIMUM_SIZE_VALUE + data[6]) * MAXIMUM_SIZE_VALUE + data[7];
+      return (int)(
+        data[4] * Math.pow(MAXIMUM_SIZE_VALUE, 3) +
+        data[5] * Math.pow(MAXIMUM_SIZE_VALUE, 2) +
+        data[6] * MAXIMUM_SIZE_VALUE +
+        data[7]);
     }
   }
 }
