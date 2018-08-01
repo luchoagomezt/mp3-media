@@ -64,7 +64,7 @@ public class Frame
     return Header.isItAValidSize(data);
   }
 
-  public static int calculateFrameSizeExcludingHeader(
+  public static int calculateContentSize(
     final int[] data) 
   {
     if (data == null) 
@@ -82,7 +82,7 @@ public class Frame
       throw new IllegalArgumentException("One or more of the four size bytes is more or equal to " + Header.MAXIMUM_SIZE_VALUE);
     } 
 
-    return Header.calculateTheContentLength(data);
+    return Header.calculateContentSize(data);
   }
 
   public String toString() 
@@ -103,7 +103,7 @@ public class Frame
       int[] data) 
     {
       id = String.format("%c%c%c%c", data[0], data[1], data[2], data[3]);
-      size = calculateTheContentLength(data);
+      size = calculateContentSize(data);
       firstFlag = data[8];
       secondFlag = data[9];
     }
@@ -118,7 +118,7 @@ public class Frame
         data[7] < MAXIMUM_SIZE_VALUE;
     }
     
-    static int calculateTheContentLength(
+    static int calculateContentSize(
       final int[] data) 
     {
       return (int)(

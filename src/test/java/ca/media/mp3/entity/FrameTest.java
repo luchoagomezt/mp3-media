@@ -10,36 +10,36 @@ import static org.testng.Assert.assertEquals;
 public class FrameTest {
   @Test(expectedExceptions = {IllegalArgumentException.class})
   public void aNullArrayIsNotAframe() {
-    Frame.isAValidFrame(null);
+    Frame.isValid(null);
   }
 
   @Test(expectedExceptions = {IllegalArgumentException.class})
   public void aTooShortArrayIsNotAFrame() {
-    Frame.isAValidFrame(new int[]{});
+    Frame.isValid(new int[]{});
   }
 
   @Test
   public void firstSizeByteIsMoreThan0x7F() {
-    assertFalse(Frame.isAValidFrame(new int[]{0x49, 0x49, 0x49, 0x49, 0x80, 0x7F, 0x7F, 0x7F, 0x00, 0x00}));
+    assertFalse(Frame.isValid(new int[]{0x49, 0x49, 0x49, 0x49, 0x80, 0x7F, 0x7F, 0x7F, 0x00, 0x00}));
   }
 
   @Test
   public void secondSizeByteIsMoreThan0x7F() {
-    assertFalse(Frame.isAValidFrame(new int[]{0x49, 0x49, 0x49, 0x49, 0x7F, 0x80, 0x7F, 0x7F, 0x00, 0x00}));
+    assertFalse(Frame.isValid(new int[]{0x49, 0x49, 0x49, 0x49, 0x7F, 0x80, 0x7F, 0x7F, 0x00, 0x00}));
   }
   @Test
   public void thirdSizeByteIsMoreThan0x7F() {
-    assertFalse(Frame.isAValidFrame(new int[]{0x49, 0x49, 0x49, 0x49, 0x7F, 0x7F, 0x80, 0x7F, 0x00, 0x00}));
+    assertFalse(Frame.isValid(new int[]{0x49, 0x49, 0x49, 0x49, 0x7F, 0x7F, 0x80, 0x7F, 0x00, 0x00}));
   }
 
   @Test
   public void lastSizeByteIsMoreThan0x7F() {
-    assertFalse(Frame.isAValidFrame(new int[]{0x49, 0x49, 0x49, 0x49, 0x7F, 0x7F, 0x7F, 0x80, 0x00, 0x00}));
+    assertFalse(Frame.isValid(new int[]{0x49, 0x49, 0x49, 0x49, 0x7F, 0x7F, 0x7F, 0x80, 0x00, 0x00}));
   }
 
   @Test
   public void thisArrayIsAValidFrame() {
-    assertTrue(Frame.isAValidFrame(new int[]{0x49, 0x49, 0x49, 0x49, 0x7F, 0x7F, 0x7F, 0x7F, 0x00, 0x00}));
+    assertTrue(Frame.isValid(new int[]{0x49, 0x49, 0x49, 0x49, 0x7F, 0x7F, 0x7F, 0x7F, 0x00, 0x00}));
   }
 
   @Test(expectedExceptions = {IllegalArgumentException.class})
@@ -65,12 +65,12 @@ public class FrameTest {
   
   @Test(expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "Parameter is null")
   void calculateSizeOnANullArray() {
-    Frame.calculateFrameSizeExcludingHeader(null);
+    Frame.calculateContentSize(null);
   }
 
   @Test(expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "Array's length is less than header's size")
   void calculateSizeOnEmptyArray() {
-    Frame.calculateFrameSizeExcludingHeader(new int[] {});
+    Frame.calculateContentSize(new int[] {});
   }
 
   @DataProvider(name = "frameArrayProvider")
@@ -85,6 +85,6 @@ public class FrameTest {
 
   @Test(dataProvider = "frameArrayProvider", expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "One or more of the four size bytes is more or equal to 128")
   void calculateSizeOnInvalidArray(int[] frameArray) {
-    Frame.calculateFrameSizeExcludingHeader(frameArray);
+    Frame.calculateContentSize(frameArray);
   }
 }

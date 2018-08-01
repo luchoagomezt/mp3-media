@@ -25,7 +25,7 @@ public class ID3V2Tag {
     }
     
     int[] frameHeader = Arrays.copyOfRange(mp3, HEADER_SIZE, Frame.HEADER_SIZE + HEADER_SIZE);
-    int frameSize = Frame.calculateFrameSizeExcludingHeader(frameHeader);
+    int frameSize = Frame.calculateContentSize(frameHeader);
     int[] frameArray = Arrays.copyOfRange(mp3, HEADER_SIZE, Frame.HEADER_SIZE + HEADER_SIZE + frameSize);
     list.add(new Frame(frameArray));
     return list;
