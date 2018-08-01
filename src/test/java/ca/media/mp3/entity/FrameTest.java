@@ -2,7 +2,6 @@ package ca.media.mp3.entity;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertTrue;
 
 import static org.testng.Assert.assertEquals;
