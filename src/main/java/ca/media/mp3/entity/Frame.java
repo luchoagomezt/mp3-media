@@ -10,21 +10,15 @@ public class Frame
   private final Header header;
 
   public Frame(
-    int[] data) 
+    int[] data)
   {
     checkIfDataIsNull(data);
     checkIfDataIsTooShort(data);
     checkIfSizeDescriptorIsValid(data);
-    
+    checkIfEncodingIsValid(data);
+
     header = new Header(data);
-    if (header.contentSize > 0) 
-    {
-      content = getContent(data);
-    } 
-    else 
-    {
-      content = "";
-    }
+    content = getContent(data);
   }
 
   private String getContent(
@@ -48,7 +42,6 @@ public class Frame
   private List<Character> getContentAsACharacterList(
     final int[] data) 
   {
-    checkIfEncodingIsValid(data);
     List<Character> contentList = new ArrayList<>();
     for(int i = HEADER_SIZE + 1; i < data.length; i++) 
     {
@@ -57,10 +50,10 @@ public class Frame
     return contentList;
   }
 
-  private void checkIfEncodingIsValid(
+  private static void checkIfEncodingIsValid(
     final int[] data) 
   {
-    if (data[HEADER_SIZE] != 0x00) 
+    if (data.length > HEADER_SIZE && data[HEADER_SIZE] != 0x00) 
     {
       throw new IllegalArgumentException("Encoding byte is invalid");
     }
@@ -99,7 +92,9 @@ public class Frame
     {
       checkIfDataIsNull(data);
       checkIfDataIsTooShort(data);
-      return Header.isSizeDescriptorValid(data);
+      checkIfEncodingIsValid(data);
+      checkIfSizeDescriptorIsValid(data);
+      return true;
     }
 
   public static int calculateContentSize(
