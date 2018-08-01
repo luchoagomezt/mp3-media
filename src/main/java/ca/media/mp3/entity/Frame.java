@@ -110,16 +110,24 @@ public class Frame
   {
     return String.format("{%s, \"content\":\"%s\"}", header.toString(), content);
   }
+  
+  public String getContent() {
+  	return content;
+  }
+  
+  public Header getHeader() {
+  	return header;
+  }
 
   private static class Header 
   {
-    static final int MAXIMUM_SIZE_VALUE = 128;
-    final String id;
-    final int contentSize;
-    final int firstFlag;
-    final int secondFlag;
+    public static final int MAXIMUM_SIZE_VALUE = 128;
+    private final String id;
+    private final int contentSize;
+    private final int firstFlag;
+    private final int secondFlag;
     
-    Header(
+    public Header(
       int[] data) 
     {
       id = String.format("%c%c%c%c", data[0], data[1], data[2], data[3]);
@@ -128,7 +136,7 @@ public class Frame
       secondFlag = data[9];
     }
     
-    static boolean isSizeDescriptorValid(
+    public static boolean isSizeDescriptorValid(
       final int[] data) 
     {
       return 
@@ -138,7 +146,7 @@ public class Frame
         data[7] < MAXIMUM_SIZE_VALUE;
     }
     
-    static int calculateContentSize(
+    public static int calculateContentSize(
       final int[] data) 
     {
       return (int)(
@@ -146,6 +154,22 @@ public class Frame
         data[5] * Math.pow(MAXIMUM_SIZE_VALUE, 2) +
         data[6] * MAXIMUM_SIZE_VALUE +
         data[7]);
+    }
+    
+    public String getId() {
+    	return id;
+    }
+    
+    public int getContentSize() {
+    	return contentSize;
+    }
+    
+    public int firstFlag() {
+    	return firstFlag;
+    }
+    
+    public int secondFlag() {
+    	return secondFlag;
     }
     
     public String toString()
