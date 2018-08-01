@@ -88,14 +88,14 @@ public class Frame
   }
 
   public static boolean isValid(
-      final int[] data) 
-    {
-      checkIfDataIsNull(data);
-      checkIfDataIsTooShort(data);
-      checkIfEncodingIsValid(data);
-      checkIfSizeDescriptorIsValid(data);
-      return true;
-    }
+    final int[] data) 
+  {
+    checkIfDataIsNull(data);
+    checkIfDataIsTooShort(data);
+    checkIfEncodingIsValid(data);
+    checkIfSizeDescriptorIsValid(data);
+    return true;
+  }
 
   public static int calculateContentSize(
     final int[] data) 
@@ -148,7 +148,8 @@ public class Frame
         data[7]);
     }
     
-    public String toString() {
+    public String toString()
+    {
       String format = "\"id\":\"%s\", \"size\":%d, \"flags\":{\"first\":%d, \"second\":%d}";
       return String.format(format, id, contentSize, firstFlag, secondFlag);
     }
