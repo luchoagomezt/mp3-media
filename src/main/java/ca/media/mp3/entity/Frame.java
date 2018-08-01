@@ -12,7 +12,7 @@ public class Frame
   public Frame(
     int[] data) 
   {
-    if(!isAValidFrame(
+    if(!isValid(
       data)) 
     {
       throw new IllegalArgumentException("Array is not a valid frame");
@@ -48,13 +48,14 @@ public class Frame
       orElse("");
   }
 
-  public static boolean isAValidFrame(
+  public static boolean isValid(
     final int[] data) 
   {
     if(data == null) 
     {
       throw new IllegalArgumentException("Array is null");
     }
+
     if(data.length < HEADER_SIZE) 
     {
       throw new IllegalArgumentException("Array is too small");
