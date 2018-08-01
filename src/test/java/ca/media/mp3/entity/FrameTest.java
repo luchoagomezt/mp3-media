@@ -88,4 +88,12 @@ public class FrameTest {
   {
     Frame.calculateContentSize(frameArray);
   }
+  
+  @Test(
+    expectedExceptions = {IllegalArgumentException.class},
+    expectedExceptionsMessageRegExp = "Encoding byte is invalid")
+  public void receivesAnInvalidEncodingByte() 
+  {
+    new Frame(new int[]{0x49, 0x49, 0x49, 0x49, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x01, 84, 105, 116, 118, 101});
+  }
 }
