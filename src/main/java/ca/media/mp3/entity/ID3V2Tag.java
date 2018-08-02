@@ -22,7 +22,7 @@ public class ID3V2Tag
     checkIfID3TagIsValid(data);
 
     header = new Header(data);
-    frameList = buildFrames(data);  
+    frameList = buildFrameList(data);  
   }
 
   public List<Frame> getFrameList() {
@@ -86,8 +86,7 @@ public class ID3V2Tag
       getFrameList().
       stream().
       map(e -> e.toString()).
-      reduce((s1, s2) -> s1.concat(", ").
-      concat(s2)).
+      reduce((s1, s2) -> s1.concat(", ").concat(s2)).
       orElse(""));
   }
 
@@ -98,7 +97,7 @@ public class ID3V2Tag
     }
   }
 
-  private List<Frame> buildFrames(final int[] data) {
+  private List<Frame> buildFrameList(final int[] data) {
     List<Frame> list = new ArrayList<Frame>();
     if(data.length < Frame.HEADER_SIZE + HEADER_SIZE) {
       return list;
