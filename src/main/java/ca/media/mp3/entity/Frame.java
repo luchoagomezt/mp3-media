@@ -108,15 +108,17 @@ public class Frame
 
   public String toString() 
   {
-    return String.format("{%s, \"content\":\"%s\"}", header.toString(), content);
+    return String.format("{%s, \"content\":\"%s\"}", getHeader().toString(), getContent());
   }
   
-  public String getContent() {
-  	return content;
+  public String getContent() 
+  {
+    return content;
   }
   
-  public Header getHeader() {
-  	return header;
+  public Header getHeader() 
+  {
+    return header;
   }
 
   private static class Header 
@@ -156,26 +158,30 @@ public class Frame
         data[7]);
     }
     
-    public String getId() {
-    	return id;
+    public String getId() 
+    {
+      return id;
     }
     
-    public int getContentSize() {
-    	return contentSize;
+    public int getContentSize() 
+    {
+      return contentSize;
     }
     
-    public int firstFlag() {
-    	return firstFlag;
+    public int getFirstFlag() 
+    {
+      return firstFlag;
     }
     
-    public int secondFlag() {
-    	return secondFlag;
+    public int getSecondFlag() 
+    {
+      return secondFlag;
     }
     
     public String toString()
     {
       String format = "\"id\":\"%s\", \"size\":%d, \"flags\":{\"first\":%d, \"second\":%d}";
-      return String.format(format, id, contentSize, firstFlag, secondFlag);
+      return String.format(format, getId(), getContentSize(), getFirstFlag(), getSecondFlag());
     }
   }
 }
