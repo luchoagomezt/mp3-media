@@ -39,7 +39,7 @@ public class ID3Tool implements ID3Reader {
       throw new IllegalArgumentException("The stream does not contain an ID3 V2 tag");
     }
     
-    int sizeExcludingHeader = ID3V2Tag.calculateTagSizeExcludingHeader(header);  
+    int sizeExcludingHeader = ID3V2Tag.calculateTagSize(header);  
     int totalTagSize = sizeExcludingHeader + ID3V2Tag.HEADER_SIZE;
     byteArray = new int[totalTagSize];
     for(int i = 0; i < header.length; i++) {

@@ -7,9 +7,13 @@ import java.util.List;
 public class ID3V2Tag 
 {
   public static final int HEADER_SIZE = 10;
-  private static final int MAXIMUM_REVISION_NUMBER = 255;
-  private static final int MAXIMUM_VERSION_NUMBER = 255;
-  private static final int MAXIMUM_SIZE_VALUE = 128;
+  private static final int CHAR_I = 0x49;
+  private static final int CHAR_D = 0x44;
+  private static final int CHAR_3 = 0x33;
+  private static final int MAXIMUM_REVISION_NUMBER = 0xFF;
+  private static final int MAXIMUM_VERSION_NUMBER = 0xFF;
+  private static final int FLAG_MASK = 0xE0;
+  private static final int MAXIMUM_SIZE_VALUE = 0x80;
   private final List<Frame> frameList;
   private final Header header;
 
@@ -21,81 +25,31 @@ public class ID3V2Tag
     frameList = buildFrames(data);  
   }
 
-  private void checkIfID3TagIsValid(final int[] data) 
+  public List<Frame> getFrameList() {
+    return frameList;
+  }
+
+  public Header getHeader() {
+    return header;
+  }
+
+	public static int calculateTagSize(final int[] data) 
+	{
+    checkIfDataIsNull(data);
+    checkIfDataIsTooShort(data);
+    checkIfSizeDescriptorIsValid(data); 
+
+    return calculateSize(data);
+  }
+
+	public static boolean isAnID3V2tag(final int[] data) 
   {
-    if(!isAnID3V2tag(data)) {
-      throw new IllegalArgumentException("Array does not contain an ID3 V2 tag");
-    }
+    checkIfDataIsNull(data);
+    checkIfDataIsTooShort(data);
+
+    return isATagPattern(data);
   }
 
-  private List<Frame> buildFrames(final int[] data) {
-    List<Frame> list = new ArrayList<Frame>();
-    if(data.length < Frame.HEADER_SIZE + HEADER_SIZE) {
-      return list;
-    }
-    
-    int[] frameHeader = Arrays.copyOfRange(data, HEADER_SIZE, Frame.HEADER_SIZE + HEADER_SIZE);
-    int frameSize = Frame.calculateContentSize(frameHeader);
-    int[] frameArray = Arrays.copyOfRange(data, HEADER_SIZE, Frame.HEADER_SIZE + HEADER_SIZE + frameSize);
-    list.add(new Frame(frameArray));
-    return list;
-  }
-
-  public static int calculateTagSizeExcludingHeader(final int[] header) 
-  {
-    checkIfHeaderIsNull(header);
-    checkIfHeaderIsTooShort(header);
-    checkIfSizeDescriptorIsValid(header); 
-
-    return (int)(
-      header[6] * Math.pow(MAXIMUM_SIZE_VALUE, 3) + 
-      header[7] * Math.pow(MAXIMUM_SIZE_VALUE, 2) +
-      header[8] * MAXIMUM_SIZE_VALUE +
-      header[9]);
-  }
-
-  private static void checkIfSizeDescriptorIsValid(final int[] header) 
-  {
-    if(header[6] > 0x7F || header[7] > 0x7F || header[8] > 0x7F || header[9] > 0x7F) {
-      throw new IllegalArgumentException("One or more of the four size bytes is more than 0x7F");
-    }
-  }
-
-  private static void checkIfHeaderIsTooShort(final int[] header) 
-  {
-    if (header.length < HEADER_SIZE) {
-      throw new IllegalArgumentException("Array's length is less than header's size");
-    }
-  }
-
-  private static void checkIfHeaderIsNull(final int[] header) 
-  {
-    if (header == null) {
-      throw new IllegalArgumentException("Parameter is null");
-    }
-  }
-
-  public static boolean isAnID3V2tag(final int[] data) 
-  {
-    if(data == null) {
-      throw new IllegalArgumentException("Parameter array is null");
-    }
-
-    checkIfHeaderIsTooShort(data);
-
-    return 
-        data[0] == 0x49 &&
-        data[1] == 0x44 &&
-        data[2] == 0x33 &&
-        data[3] < MAXIMUM_VERSION_NUMBER &&
-        data[4] < MAXIMUM_REVISION_NUMBER &&
-        data[5] == (data[5] & 0xE0) &&
-        data[6] < MAXIMUM_SIZE_VALUE &&
-        data[7] < MAXIMUM_SIZE_VALUE &&
-        data[8] < MAXIMUM_SIZE_VALUE &&
-        data[9] < MAXIMUM_SIZE_VALUE;
-  }
-    
   public int majorVersion() {
     return getHeader().getMajorVersion();
   }
@@ -136,13 +90,69 @@ public class ID3V2Tag
       concat(s2)).
       orElse(""));
   }
-  
-  private Header getHeader() {
-    return header;
+
+  private void checkIfID3TagIsValid(final int[] data) 
+  {
+    if(!isAnID3V2tag(data)) {
+      throw new IllegalArgumentException("Array does not contain an ID3 V2 tag");
+    }
   }
 
-  private List<Frame> getFrameList() {
-    return frameList;
+  private List<Frame> buildFrames(final int[] data) {
+    List<Frame> list = new ArrayList<Frame>();
+    if(data.length < Frame.HEADER_SIZE + HEADER_SIZE) {
+      return list;
+    }
+    
+    int[] frameHeader = Arrays.copyOfRange(data, HEADER_SIZE, Frame.HEADER_SIZE + HEADER_SIZE);
+    int frameSize = Frame.calculateContentSize(frameHeader);
+    int[] frameArray = Arrays.copyOfRange(data, HEADER_SIZE, Frame.HEADER_SIZE + HEADER_SIZE + frameSize);
+    list.add(new Frame(frameArray));
+    return list;
+  }
+
+  private static int calculateSize(final int[] data) {
+    return (int)(
+      data[6] * Math.pow(MAXIMUM_SIZE_VALUE, 3) + 
+      data[7] * Math.pow(MAXIMUM_SIZE_VALUE, 2) +
+      data[8] * MAXIMUM_SIZE_VALUE +
+      data[9]);
+    }
+
+  private static void checkIfSizeDescriptorIsValid(final int[] header) 
+  {
+    if(header[6] > 0x7F || header[7] > 0x7F || header[8] > 0x7F || header[9] > 0x7F) {
+      throw new IllegalArgumentException("One or more of the four size bytes is more than 0x7F");
+    }
+  }
+
+  private static void checkIfDataIsTooShort(final int[] data) 
+  {
+    if (data.length < HEADER_SIZE) {
+      throw new IllegalArgumentException("Array's length is less than header's size");
+    }
+  }
+
+  private static void checkIfDataIsNull(final int[] data) 
+  {
+    if (data == null) {
+      throw new IllegalArgumentException("Parameter is null");
+    }
+  }
+
+  private static boolean isATagPattern(final int[] data)
+  {
+    return 
+      data[0] == CHAR_I &&
+      data[1] == CHAR_D &&
+      data[2] == CHAR_3 &&
+      data[3] < MAXIMUM_VERSION_NUMBER &&
+      data[4] < MAXIMUM_REVISION_NUMBER &&
+      data[5] == (data[5] & FLAG_MASK) &&
+      data[6] < MAXIMUM_SIZE_VALUE &&
+      data[7] < MAXIMUM_SIZE_VALUE &&
+      data[8] < MAXIMUM_SIZE_VALUE &&
+      data[9] < MAXIMUM_SIZE_VALUE;
   }
 
   private class Header 
@@ -151,12 +161,13 @@ public class ID3V2Tag
     private final int revisionNumber;
     private final int flag;
     private final int size;
-    
-    public Header(final int[] data) {
+
+    public Header(final int[] data) 
+    {
       majorVersion = data[3];
       revisionNumber = data[4];
       flag = data[5];
-      size = calculateTagSizeExcludingHeader(data);      
+      size = calculateTagSize(data);      
     }
 
     public int getMajorVersion() {
@@ -177,8 +188,9 @@ public class ID3V2Tag
     
     public String toString() {
       return 
-        String.format("{\"header\":{\"version\":%d, \"revision\":%d, \"flags\":%d, \"size\":%d}", 
-        majorVersion(), revisionNumber(), flags(), size());
+        String.format(
+          "{\"header\":{\"version\":%d, \"revision\":%d, \"flags\":%d, \"size\":%d}",
+          majorVersion(), revisionNumber(), flags(), size());
     }
   }
 }
