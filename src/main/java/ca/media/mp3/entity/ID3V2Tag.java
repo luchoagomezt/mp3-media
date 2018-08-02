@@ -33,8 +33,8 @@ public class ID3V2Tag
     return header;
   }
 
-	public static int calculateTagSize(final int[] data) 
-	{
+  public static int calculateTagSize(final int[] data) 
+  {
     checkIfDataIsNull(data);
     checkIfDataIsTooShort(data);
     checkIfSizeDescriptorIsValid(data); 
@@ -42,7 +42,7 @@ public class ID3V2Tag
     return calculateSize(data);
   }
 
-	public static boolean isAnID3V2tag(final int[] data) 
+  public static boolean isAnID3V2tag(final int[] data) 
   {
     checkIfDataIsNull(data);
     checkIfDataIsTooShort(data);
@@ -57,7 +57,7 @@ public class ID3V2Tag
   public int revisionNumber() {
     return getHeader().getRevisionNumber();
   }
-  
+
   public boolean unsynchronisation() {
     return (getHeader().getFlag() & 0x80) == 0x80;
   }
@@ -77,7 +77,7 @@ public class ID3V2Tag
   public int size() {
     return getHeader().getSize();
   }
-  
+
   @Override
   public String toString() {
     return 
@@ -102,7 +102,7 @@ public class ID3V2Tag
     if(data.length < Frame.HEADER_SIZE + HEADER_SIZE) {
       return list;
     }
-    
+
     int[] frameHeader = Arrays.copyOfRange(data, HEADER_SIZE, Frame.HEADER_SIZE + HEADER_SIZE);
     int frameSize = Frame.calculateContentSize(frameHeader);
     int[] frameArray = Arrays.copyOfRange(data, HEADER_SIZE, Frame.HEADER_SIZE + HEADER_SIZE + frameSize);
@@ -118,9 +118,11 @@ public class ID3V2Tag
       data[9]);
     }
 
-  private static void checkIfSizeDescriptorIsValid(final int[] header) 
+  private static void checkIfSizeDescriptorIsValid(final int[] data) 
   {
-    if(header[6] > 0x7F || header[7] > 0x7F || header[8] > 0x7F || header[9] > 0x7F) {
+    if(data[6] >= MAXIMUM_SIZE_VALUE || data[7] >= MAXIMUM_SIZE_VALUE || 
+      data[8] >= MAXIMUM_SIZE_VALUE || data[9] >= MAXIMUM_SIZE_VALUE) 
+    {
       throw new IllegalArgumentException("One or more of the four size bytes is more than 0x7F");
     }
   }
