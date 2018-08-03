@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ ${#} -lt 1 ] ; then
+        echo "Missing argument (path to MP3 file)"
+        exit 1
+fi
+
+java -jar target/id3tool-1.0.26.jar $1
