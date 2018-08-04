@@ -108,11 +108,6 @@ public class ID3V2TagTest {
     assertEquals(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x02, 0x01}).size(), 257);
   }
 
-  @Test
-  public void flagsIsZero() {
-    assertEquals(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x02, 0x00}).flags(), 0);
-  }
-  
   @DataProvider(name = "isATagDataProvider")
   private Object[][] isATagDataProvider() {
     return new Object[][]{
