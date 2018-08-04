@@ -21,13 +21,14 @@ public class ID3V2Tag
   private List<Frame> buildFrameList(final int[] data)
   {
     List<Frame> list = new ArrayList<Frame>();
-    if(data.length < Frame.HEADER_SIZE + HEADER_SIZE) {
+    int current = HEADER_SIZE;
+    if(header.getSize() < Frame.HEADER_SIZE + current) {
       return list;
     }
 
-    int[] frameHeader = Arrays.copyOfRange(data, HEADER_SIZE, Frame.HEADER_SIZE + HEADER_SIZE);
+    int[] frameHeader = Arrays.copyOfRange(data, current, Frame.HEADER_SIZE + current);
     int frameSize = Frame.calculateContentSize(frameHeader);
-    int[] frameArray = Arrays.copyOfRange(data, HEADER_SIZE, Frame.HEADER_SIZE + HEADER_SIZE + frameSize);
+    int[] frameArray = Arrays.copyOfRange(data, current, Frame.HEADER_SIZE + current + frameSize);
     list.add(new Frame(frameArray));
     return list;
   }
@@ -143,7 +144,7 @@ public class ID3V2Tag
       majorVersion = data[3];
       revisionNumber = data[4];
       flag = data[5];
-      size = calculateTagSize(data);      
+      size = calculateSize(data);
     }
 
     private static boolean isATagPattern(final int[] data)
