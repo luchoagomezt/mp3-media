@@ -169,7 +169,7 @@ public class ID3V2Tag
         data[7] * Math.pow(MAXIMUM_SIZE_VALUE, 2) +
         data[8] * MAXIMUM_SIZE_VALUE +
         data[9]);
-      }
+    }
 
     public static boolean areSizeDescriptorsValid(int[] data)
     {
