@@ -44,7 +44,7 @@ public class ID3V2ToolTest {
     new ID3Tool(e -> e.toString()).read(null);
   }
 
-  @Test(expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "The stream'size is less than the tag's header size")
+  @Test(expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "The stream does not contain an ID3 V2 tag")
   public void readUptoTenBytes() throws IOException {
     InputStream stream = new ByteArrayInputStream(new byte[]{60, 60, 33, 03, 00, 00});
     ID3Tool tool = new ID3Tool(e -> e.toString());

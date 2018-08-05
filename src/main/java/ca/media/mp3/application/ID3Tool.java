@@ -4,11 +4,13 @@ import java.io.InputStream;
 import java.io.IOException;
 import ca.media.mp3.entity.ID3V2Tag;
 
-public class ID3Tool implements ID3Reader {
+public class ID3Tool implements ID3Reader 
+{
   private int[] byteArray;
   private final ID3TagFormatter formatter;
 
-  public ID3Tool(ID3TagFormatter formatter) {
+  public ID3Tool(ID3TagFormatter formatter) 
+  {
     if (formatter == null) {
       throw new IllegalArgumentException("The ID3 Formatter is null");
     }
@@ -16,18 +18,16 @@ public class ID3Tool implements ID3Reader {
   }
   
   @Override
-  public String perform() {
+  public String perform() 
+  {
     return formatter.tagToString(new ID3V2Tag(byteArray));
   }
 
   @Override
-  public int[] read(InputStream stream) throws IOException {
+  public int[] read(InputStream stream) throws IOException 
+  {
     if (stream == null) {
       throw new IllegalArgumentException("The InputStream parameter is null ");
-    }
-    
-    if(stream.available() < ID3V2Tag.HEADER_SIZE) {
-      throw new IllegalArgumentException("The stream'size is less than the tag's header size");
     }
     
     int[] header = new int[ID3V2Tag.HEADER_SIZE];
