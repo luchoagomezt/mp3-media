@@ -25,6 +25,9 @@ public class ID3V2Tag
     int last = header.getSize();
     while ((Frame.HEADER_SIZE + current) < last && (Frame.HEADER_SIZE + current) < data.length) {
       int[] frameHeader = Arrays.copyOfRange(data, current, Frame.HEADER_SIZE + current);
+      if(!Frame.isValid(frameHeader)) {
+        break;
+      }
       int frameSize = Frame.calculateContentSize(frameHeader);
       int[] frameArray = Arrays.copyOfRange(data, current, Frame.HEADER_SIZE + current + frameSize);
       list.add(new Frame(frameArray));

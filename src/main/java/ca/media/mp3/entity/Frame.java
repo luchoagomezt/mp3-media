@@ -94,7 +94,7 @@ public class Frame
     checkIfDataIsTooShort(data);
     checkIfEncodingIsValid(data);
     checkIfSizeDescriptorIsValid(data);
-    return true;
+    return Header.isValidID(data);
   }
 
   public static int calculateContentSize(
@@ -146,6 +146,15 @@ public class Frame
         data[5] < MAXIMUM_SIZE_VALUE && 
         data[6] < MAXIMUM_SIZE_VALUE && 
         data[7] < MAXIMUM_SIZE_VALUE;
+    }
+    
+    public static boolean isValidID(final int[] data) 
+    {
+      return 
+        data[0] != 0x00 && 
+        data[1] != 0x00 && 
+        data[2] != 0x00 && 
+        data[3] != 0x00;
     }
     
     public static int calculateContentSize(
