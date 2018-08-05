@@ -6,5 +6,5 @@ import java.io.InputStream;
 public interface ID3Reader {
 
   String perform();
-  int[] read(InputStream stream) throws IOException;
+  void read(InputStream stream) throws IOException;
 }

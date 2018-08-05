@@ -48,7 +48,8 @@ public class ID3V2ToolTest {
   public void readUptoTenBytes() throws IOException {
     InputStream stream = new ByteArrayInputStream(new byte[]{60, 60, 33, 03, 00, 00});
     ID3Tool tool = new ID3Tool(e -> e.toString());
-    assertEquals(tool.read(stream).length, 6);
+    tool.read(stream);
+    assertEquals(tool.perform().length(), 6);
   }
 
   @Test(expectedExceptions = {IllegalArgumentException.class})

@@ -11,11 +11,15 @@ public class ID3Tool implements ID3Reader
 
   public ID3Tool(ID3TagFormatter formatter) 
   {
-    if (formatter == null) {
-      throw new IllegalArgumentException("The ID3 Formatter is null");
-    }
+    checkFormatterIsNull(formatter);
     this.formatter = formatter;
   }
+
+	private void checkFormatterIsNull(ID3TagFormatter formatter) {
+		if (formatter == null) {
+      throw new IllegalArgumentException("The ID3 Formatter is null");
+    }
+	}
   
   @Override
   public String perform() 
@@ -24,16 +28,9 @@ public class ID3Tool implements ID3Reader
   }
 
   @Override
-  public int[] read(InputStream stream) throws IOException 
+  public void read(InputStream stream) throws IOException 
   {
-    if (stream == null) {
-      throw new IllegalArgumentException("The InputStream parameter is null ");
-    }
-    
-    int[] header = new int[ID3V2Tag.HEADER_SIZE];
-    for(int i = 0; i < header.length; i++) {
-      header[i] = stream.read();
-    }
+    int[] header = readHeader(stream);
     
     if (!ID3V2Tag.isAnID3V2tag(header)) {
       throw new IllegalArgumentException("The stream does not contain an ID3 V2 tag");
@@ -49,7 +46,18 @@ public class ID3Tool implements ID3Reader
     for(int i = ID3V2Tag.HEADER_SIZE; i < byteArray.length; i++) {
       byteArray[i] = stream.read();
     }
+  }
 
-    return byteArray;
+  private int[] readHeader(InputStream stream) throws IOException 
+  {
+    if (stream == null) {
+      throw new IllegalArgumentException("The InputStream parameter is null ");
+    }
+
+    int[] header = new int[ID3V2Tag.HEADER_SIZE];
+    for(int i = 0; i < header.length; i++) {
+      header[i] = stream.read();
+    }
+    return header;
   }
 }
