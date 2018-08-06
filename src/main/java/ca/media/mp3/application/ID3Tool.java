@@ -6,7 +6,9 @@ import ca.media.mp3.entity.ID3V2Tag;
 
 public class ID3Tool implements ID3Reader 
 {
-  private int[] byteArray;
+  private int[] header;
+  private int[] data;
+  private InputStream stream;
   private final ID3TagFormatter formatter;
 
   public ID3Tool(ID3TagFormatter formatter) 
@@ -24,40 +26,51 @@ public class ID3Tool implements ID3Reader
   @Override
   public String perform() 
   {
-    return formatter.tagToString(new ID3V2Tag(byteArray));
+    return formatter.tagToString(new ID3V2Tag(data));
   }
 
   @Override
   public void read(InputStream stream) throws IOException 
   {
-    int[] header = readHeader(stream);
+    checkStreamNotNull(stream);
+    this.stream = stream;
     
-    if (!ID3V2Tag.isAnID3V2tag(header)) {
-      throw new IllegalArgumentException("The stream does not contain an ID3 V2 tag");
-    }
-    
-    int sizeExcludingHeader = ID3V2Tag.calculateTagSize(header);  
-    int totalTagSize = sizeExcludingHeader + ID3V2Tag.HEADER_SIZE;
-    byteArray = new int[totalTagSize];
-    for(int i = 0; i < header.length; i++) {
-      byteArray[i] = header[i];
-    }
-
-    for(int i = ID3V2Tag.HEADER_SIZE; i < byteArray.length; i++) {
-      byteArray[i] = stream.read();
-    }
+    readHeader();
+    checkForValidHeader();
+    readData();
   }
 
-  private int[] readHeader(InputStream stream) throws IOException 
-  {
+  private void checkStreamNotNull(InputStream stream) {
     if (stream == null) {
       throw new IllegalArgumentException("The InputStream parameter is null ");
     }
+  }
 
-    int[] header = new int[ID3V2Tag.HEADER_SIZE];
+  private void readHeader() throws IOException 
+  {
+    header = new int[ID3V2Tag.HEADER_SIZE];
     for(int i = 0; i < header.length; i++) {
       header[i] = stream.read();
     }
-    return header;
   }
+
+  private void checkForValidHeader() {
+    if (!ID3V2Tag.isAnID3V2tag(header)) {
+      throw new IllegalArgumentException("The stream does not contain an ID3 V2 tag");
+    }
+  }
+
+  private void readData() throws IOException {
+    int sizeExcludingHeader = ID3V2Tag.calculateTagSize(header);  
+    int totalTagSize = sizeExcludingHeader + ID3V2Tag.HEADER_SIZE;
+    data = new int[totalTagSize];
+    for(int i = 0; i < header.length; i++) {
+      data[i] = header[i];
+    }
+
+    for(int i = ID3V2Tag.HEADER_SIZE; i < data.length; i++) {
+      data[i] = stream.read();
+    }
+  }
+
 }
