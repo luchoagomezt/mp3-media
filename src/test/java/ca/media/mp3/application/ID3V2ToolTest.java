@@ -34,16 +34,6 @@ public class ID3V2ToolTest {
     tool.perform();
   }
 
-  @Test(expectedExceptions = {IllegalArgumentException.class})
-  public void performOnNullArray() throws IOException {
-    new ID3Tool(null);
-  }
-
-  @Test(expectedExceptions = {IllegalArgumentException.class})
-  public void readANullStream() throws IOException {
-    new ID3Tool(e -> e.toString()).read(null);
-  }
-
   @Test(expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "The stream does not contain an ID3 V2 tag")
   public void readUptoTenBytes() throws IOException {
     InputStream stream = new ByteArrayInputStream(new byte[]{60, 60, 33, 03, 00, 00});
@@ -52,8 +42,4 @@ public class ID3V2ToolTest {
     assertEquals(tool.perform().length(), 6);
   }
 
-  @Test(expectedExceptions = {IllegalArgumentException.class})
-  public void formatterIsNull() {
-    new ID3Tool(null);
-  }
 }
