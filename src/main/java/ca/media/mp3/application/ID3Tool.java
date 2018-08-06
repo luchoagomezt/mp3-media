@@ -13,15 +13,7 @@ public class ID3Tool implements ID3Reader
 
   public ID3Tool(ID3TagFormatter formatter) 
   {
-    checkFormatterIsNull(formatter);
     this.formatter = formatter;
-  }
-
-  private void checkFormatterIsNull(ID3TagFormatter formatter) 
-  {
-    if (formatter == null) {
-      throw new IllegalArgumentException("The ID3 Formatter is null");
-    }
   }
 
   @Override
@@ -33,19 +25,11 @@ public class ID3Tool implements ID3Reader
   @Override
   public void read(InputStream stream) throws IOException 
   {
-    checkStreamNotNull(stream);
     this.stream = stream;
     
     readHeader();
     checkForValidHeader();
     readData();
-  }
-
-  private void checkStreamNotNull(InputStream stream)
-  {
-    if (stream == null) {
-      throw new IllegalArgumentException("The InputStream parameter is null ");
-    }
   }
 
   private void readHeader() throws IOException 
