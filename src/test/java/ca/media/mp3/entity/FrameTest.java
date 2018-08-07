@@ -38,8 +38,7 @@ public class FrameTest {
     assertEquals(frame.toString(), "{\"id\":\"TIT2\", \"size\":6, \"flags\":{\"first\":0, \"second\":0}, \"content\":\"Titve\"}");
   }
 
-  @Test(
-    expectedExceptions = {IllegalArgumentException.class}, 
+  @Test(expectedExceptions = {IllegalArgumentException.class}, 
     expectedExceptionsMessageRegExp = 
       "Length of the data array passed as a parameter is less than the valid size for a frame's header")
   public void calculateSizeOnEmptyArray() 
@@ -58,18 +57,14 @@ public class FrameTest {
     };
   }
 
-  @Test(
-    dataProvider = "frameArrayProvider", 
-    expectedExceptions = {IllegalArgumentException.class}, 
+  @Test(dataProvider = "frameArrayProvider", expectedExceptions = {IllegalArgumentException.class}, 
     expectedExceptionsMessageRegExp = "One or more of the four size bytes is more or equal to 128")
-  public void calculateSizeOnInvalidArray(
-    int[] frameArray) 
+  public void calculateSizeOnInvalidArray(int[] frameArray) 
   {
     Frame.calculateContentSize(frameArray);
   }
   
-  @Test(
-    expectedExceptions = {IllegalArgumentException.class},
+  @Test(expectedExceptions = {IllegalArgumentException.class}, 
     expectedExceptionsMessageRegExp = "Encoding byte is invalid")
   public void receivesAnInvalidEncodingByte() 
   {
