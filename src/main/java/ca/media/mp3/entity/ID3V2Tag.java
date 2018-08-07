@@ -38,7 +38,6 @@ public class ID3V2Tag
 
   public static int calculateTagSize(final int[] data) 
   {
-    checkIfDataIsNull(data);
     checkIfDataIsTooShort(data);
     checkIfSizeDescriptorsAreValid(data); 
 
@@ -47,7 +46,6 @@ public class ID3V2Tag
 
   public static boolean isAnID3V2tag(final int[] data) 
   {
-    checkIfDataIsNull(data);
     checkIfDataIsTooShort(data);
 
     return Header.isATagPattern(data);
@@ -72,13 +70,6 @@ public class ID3V2Tag
   {
     if (data.length < HEADER_SIZE) {
       throw new IllegalArgumentException("Array's length is less than header's size");
-    }
-  }
-
-  private static void checkIfDataIsNull(final int[] data) 
-  {
-    if (data == null) {
-      throw new IllegalArgumentException("Parameter is null");
     }
   }
 
