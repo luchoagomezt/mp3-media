@@ -18,8 +18,6 @@ public class ID3ReaderFactory {
       return reader;
     } catch (FileNotFoundException e) {
       throw new MP3MediaException(filePath + " (No such file or directory)");
-    } catch (IllegalArgumentException e) {
-      throw new MP3MediaException(e);
     }
 
   }
