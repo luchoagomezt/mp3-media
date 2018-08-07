@@ -20,6 +20,6 @@ public class ID3ReaderFactoryTest {
 
   @Test
   public void returnAReader() {
-  	assertNotNull(ID3ReaderFactory.makeAnID3Reader("src/test/resources/journey.mp3"));
+    assertNotNull(ID3ReaderFactory.makeAnID3Reader("src/test/resources/journey.mp3"));
   }
 }
