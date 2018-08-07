@@ -1,10 +1,9 @@
 package ca.media.mp3.application;
 
-import java.io.IOException;
-import java.io.InputStream;
+import ca.media.mp3.entity.ID3V2Tag;
 
+@FunctionalInterface
 public interface ID3Reader {
 
-  String perform();
-  void read(InputStream stream) throws IOException;
+	ID3V2Tag perform();
 }
