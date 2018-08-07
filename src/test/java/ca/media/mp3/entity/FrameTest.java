@@ -9,13 +9,6 @@ import static org.testng.Assert.assertEquals;
 public class FrameTest {
   @Test(
     expectedExceptions = {IllegalArgumentException.class})
-  public void aNullArrayIsNotAframe() 
-  {
-    Frame.isValid(null);
-  }
-
-  @Test(
-    expectedExceptions = {IllegalArgumentException.class})
   public void aTooShortArrayIsNotAFrame() 
   {
     Frame.isValid(new int[]{});
@@ -25,12 +18,6 @@ public class FrameTest {
   public void thisArrayIsAValidFrame() 
   {
     assertTrue(Frame.isValid(new int[]{0x49, 0x49, 0x49, 0x49, 0x7F, 0x7F, 0x7F, 0x7F, 0x00, 0x00}));
-  }
-
-  @Test(expectedExceptions = {IllegalArgumentException.class})
-  public void constructorReceivesANullArray() 
-  {
-    new Frame(null);
   }
 
   @Test
@@ -49,14 +36,6 @@ public class FrameTest {
   {
     Frame frame = new Frame(new int[]{84, 73, 84, 50, 0, 0, 0, 6, 0, 0, 0, 84, 105, 116, 118, 101});
     assertEquals(frame.toString(), "{\"id\":\"TIT2\", \"size\":6, \"flags\":{\"first\":0, \"second\":0}, \"content\":\"Titve\"}");
-  }
-  
-  @Test(
-    expectedExceptions = {IllegalArgumentException.class}, 
-    expectedExceptionsMessageRegExp = "Data array passed as a parameter is null")
-  public void calculateSizeOnANullArray() 
-  {
-    Frame.calculateContentSize(null);
   }
 
   @Test(
