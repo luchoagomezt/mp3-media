@@ -5,5 +5,5 @@ import ca.media.mp3.entity.ID3V2Tag;
 @FunctionalInterface
 public interface ID3Reader {
 
-	ID3V2Tag perform();
+  ID3V2Tag perform();
 }
