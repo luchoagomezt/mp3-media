@@ -9,8 +9,7 @@ public class Frame
   private final String content;
   private final Header header;
 
-  public Frame(
-    int[] data)
+  public Frame(int[] data)
   {
     checkIfDataIsTooShort(data);
     checkIfSizeDescriptorIsValid(data);
@@ -20,15 +19,13 @@ public class Frame
     content = getContent(data);
   }
 
-  private String getContent(
-    final int[] data) 
+  private String getContent(final int[] data) 
   {
     List<Character> characterList = getContentAsACharacterList(data);
     return characterListToString(characterList);
   }
 
-  private String characterListToString(
-    List<Character> characterList) 
+  private String characterListToString(List<Character> characterList) 
   {
     return 
       characterList.
@@ -38,8 +35,7 @@ public class Frame
       orElse("");
   }
 
-  private List<Character> getContentAsACharacterList(
-    final int[] data) 
+  private List<Character> getContentAsACharacterList(final int[] data) 
   {
     List<Character> contentList = new ArrayList<>();
     for(int i = HEADER_SIZE + 1; i < data.length; i++) 
@@ -49,8 +45,7 @@ public class Frame
     return contentList;
   }
 
-  private static void checkIfEncodingIsValid(
-    final int[] data) 
+  private static void checkIfEncodingIsValid(final int[] data) 
   {
     if (data.length > HEADER_SIZE && data[HEADER_SIZE] != 0x00) 
     {
@@ -58,8 +53,7 @@ public class Frame
     }
   }
 
-  private static void checkIfDataIsTooShort(
-    final int[] data) 
+  private static void checkIfDataIsTooShort(final int[] data) 
   {
     if(data.length < HEADER_SIZE) 
     {
@@ -68,8 +62,7 @@ public class Frame
     }
   }
 
-  private static void checkIfSizeDescriptorIsValid(
-    final int[] data) 
+  private static void checkIfSizeDescriptorIsValid(final int[] data) 
   {
     if(!Header.isSizeDescriptorValid(data)) 
     {
@@ -77,8 +70,7 @@ public class Frame
     }
   }
 
-  public static boolean isValid(
-    final int[] data) 
+  public static boolean isValid(final int[] data) 
   {
     checkIfDataIsTooShort(data);
     checkIfEncodingIsValid(data);
@@ -86,8 +78,7 @@ public class Frame
     return Header.isValidID(data);
   }
 
-  public static int calculateContentSize(
-    final int[] data) 
+  public static int calculateContentSize(final int[] data) 
   {
     checkIfDataIsTooShort(data);
     checkIfSizeDescriptorIsValid(data); 
@@ -117,8 +108,7 @@ public class Frame
     private final int firstFlag;
     private final int secondFlag;
     
-    public Header(
-      int[] data) 
+    public Header(int[] data) 
     {
       id = String.format("%c%c%c%c", data[0], data[1], data[2], data[3]);
       contentSize = calculateContentSize(data);
@@ -126,8 +116,7 @@ public class Frame
       secondFlag = data[9];
     }
     
-    public static boolean isSizeDescriptorValid(
-      final int[] data) 
+    public static boolean isSizeDescriptorValid(final int[] data) 
     {
       return 
         data[4] < MAXIMUM_SIZE_VALUE && 
@@ -145,8 +134,7 @@ public class Frame
         data[3] != 0x00;
     }
     
-    public static int calculateContentSize(
-      final int[] data) 
+    public static int calculateContentSize(final int[] data) 
     {
       return (int)(
         data[4] * Math.pow(MAXIMUM_SIZE_VALUE, 3) +
