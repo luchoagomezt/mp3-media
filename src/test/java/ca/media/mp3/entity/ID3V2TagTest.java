@@ -8,11 +8,6 @@ import static org.testng.Assert.assertEquals;
 
 @Test
 public class ID3V2TagTest {
-  @Test(expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "Parameter is null")
-  public void calculateTagSizeOnNullArray() {
-    ID3V2Tag.calculateTagSize(null);
-  }
-
   @Test(expectedExceptions = {IllegalArgumentException.class}, expectedExceptionsMessageRegExp = "Array's length is less than header's size")
   public void calculateTagSizeOnArrayWithLessBytesThanHeaderSize() {
     ID3V2Tag.calculateTagSize(new int[]{0, 0, 0});
@@ -38,11 +33,6 @@ public class ID3V2TagTest {
     assertEquals(ID3V2Tag.calculateTagSize(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 0x00, 0x00, 0x02, 0x01}), 257);
   }
 
-  @Test(expectedExceptions = {IllegalArgumentException.class})
-  public void arrayIsNull() {
-    new ID3V2Tag(null);
-  }
-  
   @Test(expectedExceptions = {IllegalArgumentException.class})
   public void arrayIsTooSmall() {
     new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 12, 27});
@@ -129,11 +119,6 @@ public class ID3V2TagTest {
     assertEquals(returnValue, ID3V2Tag.isAnID3V2tag(tagArray));
   }
 
-  @Test(expectedExceptions = {IllegalArgumentException.class})
-  void isAnID3V2tagReceivesANullArray() {
-    assertFalse(ID3V2Tag.isAnID3V2tag(null));
-  }
-  
   @Test(expectedExceptions = {IllegalArgumentException.class})
   void isAnID3V2tagReceivesATooShortArray() {
     assertFalse(ID3V2Tag.isAnID3V2tag(new int[]{0x49, 0x44, 0x33, 0x03, 00}));

@@ -35,7 +35,7 @@ public class ID3ToolMainTest {
   @Test
   public void emptyParameters() {
     ID3ToolMain.main(new String[]{});
-    assertEquals(outContent.toString(), "");
+    assertEquals(outContent.toString(), String.format("%s%n", "usage: id3 <path to MP3 file>"));
   }
 
   @Test

@@ -1,7 +1,9 @@
 package ca.media.mp3.adapter;
 
 import org.testng.annotations.Test;
-import static org.testng.Assert.assertNull;
+
+import ca.media.mp3.application.MP3MediaException;
+
 import static org.testng.Assert.assertNotNull;
 
 public class ID3ReaderFactoryTest {
@@ -11,13 +13,13 @@ public class ID3ReaderFactoryTest {
     assertNotNull(new ID3ReaderFactory());
   }
 
-  @Test
-  public void returnsANullObject() {
-    assertNull(ID3ReaderFactory.makeAnID3Reader("NOTHING"));
+  @Test(expectedExceptions = {MP3MediaException.class})
+  public void checkFileNotFound() {
+    ID3ReaderFactory.makeAnID3Reader("");
   }
 
   @Test
-  public void presentAJSONString() {
-    assertNotNull(ID3ReaderFactory.makeAnID3Reader(ID3ReaderFactory.SIMPLE_PRESENTER));
+  public void returnAReader() {
+  	assertNotNull(ID3ReaderFactory.makeAnID3Reader("src/test/resources/journey.mp3"));
   }
 }
