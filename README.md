@@ -21,3 +21,7 @@ V1.0.108 is the latest and first production release.
 ## Cobertura Report
 
 Please refer to the [Cobertura report](./docs/cobertura). 
+
+## TestNG Report
+
+The TestNG report is [here](./docs/test-output). 
