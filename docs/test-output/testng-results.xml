@@ -1,0 +1,1140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="55" passed="55">
+  <reporter-output>
+  </reporter-output>
+  <suite name="ID3 V2 Tool" duration-ms="155" started-at="2018-08-08T05:32:59Z" finished-at="2018-08-08T05:32:59Z">
+    <groups>
+    </groups>
+    <test name="entity test" duration-ms="102" started-at="2018-08-08T05:32:59Z" finished-at="2018-08-08T05:32:59Z">
+      <class name="ca.media.mp3.entity.FrameTest">
+        <test-method status="PASS" signature="aTooShortArrayIsNotAFrame()[pri:0, instance:ca.media.mp3.entity.FrameTest@3abbfa04]" name="aTooShortArrayIsNotAFrame" duration-ms="1" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[Length of the data array passed as a parameter is less than the valid size for a frame's header]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: Length of the data array passed as a parameter is less than the valid size for a frame's header
+	at ca.media.mp3.entity.Frame.checkIfDataIsTooShort(Frame.java:60)
+	at ca.media.mp3.entity.Frame.isValid(Frame.java:75)
+	at ca.media.mp3.entity.FrameTest.aTooShortArrayIsNotAFrame(FrameTest.java:14)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- aTooShortArrayIsNotAFrame -->
+        <test-method status="PASS" signature="calculateSizeOnEmptyArray()[pri:0, instance:ca.media.mp3.entity.FrameTest@3abbfa04]" name="calculateSizeOnEmptyArray" duration-ms="1" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[Length of the data array passed as a parameter is less than the valid size for a frame's header]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: Length of the data array passed as a parameter is less than the valid size for a frame's header
+	at ca.media.mp3.entity.Frame.checkIfDataIsTooShort(Frame.java:60)
+	at ca.media.mp3.entity.Frame.calculateContentSize(Frame.java:83)
+	at ca.media.mp3.entity.FrameTest.calculateSizeOnEmptyArray(FrameTest.java:46)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- calculateSizeOnEmptyArray -->
+        <test-method status="PASS" signature="calculateSizeOnInvalidArray([I)[pri:0, instance:ca.media.mp3.entity.FrameTest@3abbfa04]" name="calculateSizeOnInvalidArray" duration-ms="0" started-at="2018-08-08T01:32:59Z" data-provider="frameArrayProvider" finished-at="2018-08-08T01:32:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[I@3bd08510]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[One or more of the four size bytes is more or equal to 128]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: One or more of the four size bytes is more or equal to 128
+	at ca.media.mp3.entity.Frame.checkIfSizeDescriptorIsValid(Frame.java:69)
+	at ca.media.mp3.entity.Frame.calculateContentSize(Frame.java:84)
+	at ca.media.mp3.entity.FrameTest.calculateSizeOnInvalidArray(FrameTest.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- calculateSizeOnInvalidArray -->
+        <test-method status="PASS" signature="calculateSizeOnInvalidArray([I)[pri:0, instance:ca.media.mp3.entity.FrameTest@3abbfa04]" name="calculateSizeOnInvalidArray" duration-ms="0" started-at="2018-08-08T01:32:59Z" data-provider="frameArrayProvider" finished-at="2018-08-08T01:32:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[I@704d62cb]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[One or more of the four size bytes is more or equal to 128]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: One or more of the four size bytes is more or equal to 128
+	at ca.media.mp3.entity.Frame.checkIfSizeDescriptorIsValid(Frame.java:69)
+	at ca.media.mp3.entity.Frame.calculateContentSize(Frame.java:84)
+	at ca.media.mp3.entity.FrameTest.calculateSizeOnInvalidArray(FrameTest.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- calculateSizeOnInvalidArray -->
+        <test-method status="PASS" signature="calculateSizeOnInvalidArray([I)[pri:0, instance:ca.media.mp3.entity.FrameTest@3abbfa04]" name="calculateSizeOnInvalidArray" duration-ms="0" started-at="2018-08-08T01:32:59Z" data-provider="frameArrayProvider" finished-at="2018-08-08T01:32:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[I@69312234]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[One or more of the four size bytes is more or equal to 128]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: One or more of the four size bytes is more or equal to 128
+	at ca.media.mp3.entity.Frame.checkIfSizeDescriptorIsValid(Frame.java:69)
+	at ca.media.mp3.entity.Frame.calculateContentSize(Frame.java:84)
+	at ca.media.mp3.entity.FrameTest.calculateSizeOnInvalidArray(FrameTest.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- calculateSizeOnInvalidArray -->
+        <test-method status="PASS" signature="calculateSizeOnInvalidArray([I)[pri:0, instance:ca.media.mp3.entity.FrameTest@3abbfa04]" name="calculateSizeOnInvalidArray" duration-ms="0" started-at="2018-08-08T01:32:59Z" data-provider="frameArrayProvider" finished-at="2018-08-08T01:32:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[I@16361892]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[One or more of the four size bytes is more or equal to 128]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: One or more of the four size bytes is more or equal to 128
+	at ca.media.mp3.entity.Frame.checkIfSizeDescriptorIsValid(Frame.java:69)
+	at ca.media.mp3.entity.Frame.calculateContentSize(Frame.java:84)
+	at ca.media.mp3.entity.FrameTest.calculateSizeOnInvalidArray(FrameTest.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- calculateSizeOnInvalidArray -->
+        <test-method status="PASS" signature="constructorReceivesAValidFrameArray()[pri:0, instance:ca.media.mp3.entity.FrameTest@3abbfa04]" name="constructorReceivesAValidFrameArray" duration-ms="37" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- constructorReceivesAValidFrameArray -->
+        <test-method status="PASS" signature="constructorReceivesAnInvalidFrameArray()[pri:0, instance:ca.media.mp3.entity.FrameTest@3abbfa04]" name="constructorReceivesAnInvalidFrameArray" duration-ms="0" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[One or more of the four size bytes is more or equal to 128]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: One or more of the four size bytes is more or equal to 128
+	at ca.media.mp3.entity.Frame.checkIfSizeDescriptorIsValid(Frame.java:69)
+	at ca.media.mp3.entity.Frame.<init>(Frame.java:15)
+	at ca.media.mp3.entity.FrameTest.constructorReceivesAnInvalidFrameArray(FrameTest.java:31)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- constructorReceivesAnInvalidFrameArray -->
+        <test-method status="PASS" signature="frameToString()[pri:0, instance:ca.media.mp3.entity.FrameTest@3abbfa04]" name="frameToString" duration-ms="1" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- frameToString -->
+        <test-method status="PASS" signature="receivesAnInvalidEncodingByte()[pri:0, instance:ca.media.mp3.entity.FrameTest@3abbfa04]" name="receivesAnInvalidEncodingByte" duration-ms="0" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[Encoding byte is invalid]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: Encoding byte is invalid
+	at ca.media.mp3.entity.Frame.checkIfEncodingIsValid(Frame.java:52)
+	at ca.media.mp3.entity.Frame.<init>(Frame.java:16)
+	at ca.media.mp3.entity.FrameTest.receivesAnInvalidEncodingByte(FrameTest.java:71)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- receivesAnInvalidEncodingByte -->
+        <test-method status="PASS" signature="thisArrayIsAValidFrame()[pri:0, instance:ca.media.mp3.entity.FrameTest@3abbfa04]" name="thisArrayIsAValidFrame" duration-ms="0" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- thisArrayIsAValidFrame -->
+      </class> <!-- ca.media.mp3.entity.FrameTest -->
+      <class name="ca.media.mp3.entity.ID3V2TagTest">
+        <test-method status="PASS" signature="arrayIsTooSmall()[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="arrayIsTooSmall" duration-ms="8" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[Array's length is less than header's size]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: Array's length is less than header's size
+	at ca.media.mp3.entity.ID3V2Tag.checkIfDataIsTooShort(ID3V2Tag.java:72)
+	at ca.media.mp3.entity.ID3V2Tag.isAnID3V2tag(ID3V2Tag.java:49)
+	at ca.media.mp3.entity.ID3V2Tag.checkIfID3TagIsValid(ID3V2Tag.java:56)
+	at ca.media.mp3.entity.ID3V2Tag.<init>(ID3V2Tag.java:15)
+	at ca.media.mp3.entity.ID3V2TagTest.arrayIsTooSmall(ID3V2TagTest.java:38)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- arrayIsTooSmall -->
+        <test-method status="PASS" signature="calculateTagSizeOnAValidArray()[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="calculateTagSizeOnAValidArray" duration-ms="2" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- calculateTagSizeOnAValidArray -->
+        <test-method status="PASS" signature="calculateTagSizeOnArrayWithLessBytesThanHeaderSize()[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="calculateTagSizeOnArrayWithLessBytesThanHeaderSize" duration-ms="1" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[Array's length is less than header's size]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: Array's length is less than header's size
+	at ca.media.mp3.entity.ID3V2Tag.checkIfDataIsTooShort(ID3V2Tag.java:72)
+	at ca.media.mp3.entity.ID3V2Tag.calculateTagSize(ID3V2Tag.java:41)
+	at ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithLessBytesThanHeaderSize(ID3V2TagTest.java:13)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- calculateTagSizeOnArrayWithLessBytesThanHeaderSize -->
+        <test-method status="PASS" signature="calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F([I)[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F" duration-ms="0" started-at="2018-08-08T01:32:59Z" data-provider="tagArrayDataProvider" finished-at="2018-08-08T01:32:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[I@2971e741]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[One or more of the four size bytes is more than 0x7F]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: One or more of the four size bytes is more than 0x7F
+	at ca.media.mp3.entity.ID3V2Tag.checkIfSizeDescriptorsAreValid(ID3V2Tag.java:65)
+	at ca.media.mp3.entity.ID3V2Tag.calculateTagSize(ID3V2Tag.java:42)
+	at ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F(ID3V2TagTest.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F -->
+        <test-method status="PASS" signature="calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F([I)[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F" duration-ms="1" started-at="2018-08-08T01:32:59Z" data-provider="tagArrayDataProvider" finished-at="2018-08-08T01:32:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[I@3231939e]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[One or more of the four size bytes is more than 0x7F]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: One or more of the four size bytes is more than 0x7F
+	at ca.media.mp3.entity.ID3V2Tag.checkIfSizeDescriptorsAreValid(ID3V2Tag.java:65)
+	at ca.media.mp3.entity.ID3V2Tag.calculateTagSize(ID3V2Tag.java:42)
+	at ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F(ID3V2TagTest.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F -->
+        <test-method status="PASS" signature="calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F([I)[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F" duration-ms="0" started-at="2018-08-08T01:32:59Z" data-provider="tagArrayDataProvider" finished-at="2018-08-08T01:32:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[I@5271276e]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[One or more of the four size bytes is more than 0x7F]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: One or more of the four size bytes is more than 0x7F
+	at ca.media.mp3.entity.ID3V2Tag.checkIfSizeDescriptorsAreValid(ID3V2Tag.java:65)
+	at ca.media.mp3.entity.ID3V2Tag.calculateTagSize(ID3V2Tag.java:42)
+	at ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F(ID3V2TagTest.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F -->
+        <test-method status="PASS" signature="calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F([I)[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F" duration-ms="1" started-at="2018-08-08T01:32:59Z" data-provider="tagArrayDataProvider" finished-at="2018-08-08T01:32:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[I@7425473a]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[One or more of the four size bytes is more than 0x7F]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: One or more of the four size bytes is more than 0x7F
+	at ca.media.mp3.entity.ID3V2Tag.checkIfSizeDescriptorsAreValid(ID3V2Tag.java:65)
+	at ca.media.mp3.entity.ID3V2Tag.calculateTagSize(ID3V2Tag.java:42)
+	at ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F(ID3V2TagTest.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F -->
+        <test-method status="PASS" signature="firstByteIsNot49()[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="firstByteIsNot49" duration-ms="0" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[Array does not contain an ID3 V2 tag]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: Array does not contain an ID3 V2 tag
+	at ca.media.mp3.entity.ID3V2Tag.checkIfID3TagIsValid(ID3V2Tag.java:57)
+	at ca.media.mp3.entity.ID3V2Tag.<init>(ID3V2Tag.java:15)
+	at ca.media.mp3.entity.ID3V2TagTest.firstByteIsNot49(ID3V2TagTest.java:43)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- firstByteIsNot49 -->
+        <test-method status="PASS" signature="isAnID3V2tagReceivesATooShortArray()[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="isAnID3V2tagReceivesATooShortArray" duration-ms="1" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[Array's length is less than header's size]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: Array's length is less than header's size
+	at ca.media.mp3.entity.ID3V2Tag.checkIfDataIsTooShort(ID3V2Tag.java:72)
+	at ca.media.mp3.entity.ID3V2Tag.isAnID3V2tag(ID3V2Tag.java:49)
+	at ca.media.mp3.entity.ID3V2TagTest.isAnID3V2tagReceivesATooShortArray(ID3V2TagTest.java:124)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- isAnID3V2tagReceivesATooShortArray -->
+        <test-method status="PASS" signature="itDoesNotHaveExtendedHeader()[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="itDoesNotHaveExtendedHeader" duration-ms="2" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- itDoesNotHaveExtendedHeader -->
+        <test-method status="PASS" signature="itHasExtendedHeader()[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="itHasExtendedHeader" duration-ms="1" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- itHasExtendedHeader -->
+        <test-method status="PASS" signature="itIsAnID3V2Tag(boolean, [I)[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="itIsAnID3V2Tag" duration-ms="1" started-at="2018-08-08T01:32:59Z" data-provider="isATagDataProvider" finished-at="2018-08-08T01:32:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[true]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[[I@5248ed10]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- itIsAnID3V2Tag -->
+        <test-method status="PASS" signature="itIsAnID3V2Tag(boolean, [I)[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="itIsAnID3V2Tag" duration-ms="1" started-at="2018-08-08T01:32:59Z" data-provider="isATagDataProvider" finished-at="2018-08-08T01:32:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[[I@6cdb29a4]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- itIsAnID3V2Tag -->
+        <test-method status="PASS" signature="itIsAnID3V2Tag(boolean, [I)[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="itIsAnID3V2Tag" duration-ms="1" started-at="2018-08-08T01:32:59Z" data-provider="isATagDataProvider" finished-at="2018-08-08T01:32:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[[I@37ca3906]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- itIsAnID3V2Tag -->
+        <test-method status="PASS" signature="itIsAnID3V2Tag(boolean, [I)[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="itIsAnID3V2Tag" duration-ms="0" started-at="2018-08-08T01:32:59Z" data-provider="isATagDataProvider" finished-at="2018-08-08T01:32:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[[I@6988b452]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- itIsAnID3V2Tag -->
+        <test-method status="PASS" signature="itIsAnID3V2Tag(boolean, [I)[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="itIsAnID3V2Tag" duration-ms="0" started-at="2018-08-08T01:32:59Z" data-provider="isATagDataProvider" finished-at="2018-08-08T01:32:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[[I@7cbdf41e]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- itIsAnID3V2Tag -->
+        <test-method status="PASS" signature="itIsAnID3V2Tag(boolean, [I)[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="itIsAnID3V2Tag" duration-ms="0" started-at="2018-08-08T01:32:59Z" data-provider="isATagDataProvider" finished-at="2018-08-08T01:32:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[[I@499e6424]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- itIsAnID3V2Tag -->
+        <test-method status="PASS" signature="itIsAnID3V2Tag(boolean, [I)[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="itIsAnID3V2Tag" duration-ms="1" started-at="2018-08-08T01:32:59Z" data-provider="isATagDataProvider" finished-at="2018-08-08T01:32:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[[I@2ffa7618]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- itIsAnID3V2Tag -->
+        <test-method status="PASS" signature="itIsAnID3V2Tag(boolean, [I)[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="itIsAnID3V2Tag" duration-ms="1" started-at="2018-08-08T01:32:59Z" data-provider="isATagDataProvider" finished-at="2018-08-08T01:32:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[[I@3fc6d91]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- itIsAnID3V2Tag -->
+        <test-method status="PASS" signature="itIsAnID3V2Tag(boolean, [I)[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="itIsAnID3V2Tag" duration-ms="0" started-at="2018-08-08T01:32:59Z" data-provider="isATagDataProvider" finished-at="2018-08-08T01:32:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[[I@107264f4]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- itIsAnID3V2Tag -->
+        <test-method status="PASS" signature="itIsAnID3V2Tag(boolean, [I)[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="itIsAnID3V2Tag" duration-ms="1" started-at="2018-08-08T01:32:59Z" data-provider="isATagDataProvider" finished-at="2018-08-08T01:32:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[[I@56c1646a]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- itIsAnID3V2Tag -->
+        <test-method status="PASS" signature="itIsAnID3V2Tag(boolean, [I)[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="itIsAnID3V2Tag" duration-ms="0" started-at="2018-08-08T01:32:59Z" data-provider="isATagDataProvider" finished-at="2018-08-08T01:32:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[[I@2af79d9a]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- itIsAnID3V2Tag -->
+        <test-method status="PASS" signature="itIsExperimental()[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="itIsExperimental" duration-ms="0" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- itIsExperimental -->
+        <test-method status="PASS" signature="itIsNotExperimental()[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="itIsNotExperimental" duration-ms="0" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- itIsNotExperimental -->
+        <test-method status="PASS" signature="itIsNotUnsynchronisation()[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="itIsNotUnsynchronisation" duration-ms="0" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- itIsNotUnsynchronisation -->
+        <test-method status="PASS" signature="itIsUnsynchronisation()[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="itIsUnsynchronisation" duration-ms="0" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- itIsUnsynchronisation -->
+        <test-method status="PASS" signature="revisionNumberIs0()[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="revisionNumberIs0" duration-ms="1" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- revisionNumberIs0 -->
+        <test-method status="PASS" signature="majorVersionIs3()[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="majorVersionIs3" duration-ms="0" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- majorVersionIs3 -->
+        <test-method status="PASS" signature="secondByteIsNot44()[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="secondByteIsNot44" duration-ms="1" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[Array does not contain an ID3 V2 tag]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: Array does not contain an ID3 V2 tag
+	at ca.media.mp3.entity.ID3V2Tag.checkIfID3TagIsValid(ID3V2Tag.java:57)
+	at ca.media.mp3.entity.ID3V2Tag.<init>(ID3V2Tag.java:15)
+	at ca.media.mp3.entity.ID3V2TagTest.secondByteIsNot44(ID3V2TagTest.java:48)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- secondByteIsNot44 -->
+        <test-method status="PASS" signature="sizeaIs257()[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="sizeaIs257" duration-ms="1" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- sizeaIs257 -->
+        <test-method status="PASS" signature="thirdByteIsNot33()[pri:0, instance:ca.media.mp3.entity.ID3V2TagTest@e25b2fe]" name="thirdByteIsNot33" duration-ms="0" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[Array does not contain an ID3 V2 tag]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: Array does not contain an ID3 V2 tag
+	at ca.media.mp3.entity.ID3V2Tag.checkIfID3TagIsValid(ID3V2Tag.java:57)
+	at ca.media.mp3.entity.ID3V2Tag.<init>(ID3V2Tag.java:15)
+	at ca.media.mp3.entity.ID3V2TagTest.thirdByteIsNot33(ID3V2TagTest.java:53)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- thirdByteIsNot33 -->
+      </class> <!-- ca.media.mp3.entity.ID3V2TagTest -->
+    </test> <!-- entity test -->
+    <test name="application test" duration-ms="5" started-at="2018-08-08T05:32:59Z" finished-at="2018-08-08T05:32:59Z">
+      <class name="ca.media.mp3.application.ID3V2ToolTest">
+        <test-method status="PASS" signature="performOnMP3WithAnID3V2TagWithOneFrame()[pri:0, instance:ca.media.mp3.application.ID3V2ToolTest@cb644e]" name="performOnMP3WithAnID3V2TagWithOneFrame" duration-ms="2" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- performOnMP3WithAnID3V2TagWithOneFrame -->
+        <test-method status="PASS" signature="performOnMP3WithAnID3V2TagWithoutFrames()[pri:0, instance:ca.media.mp3.application.ID3V2ToolTest@cb644e]" name="performOnMP3WithAnID3V2TagWithoutFrames" duration-ms="1" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- performOnMP3WithAnID3V2TagWithoutFrames -->
+        <test-method status="PASS" signature="performOnMP3WithoutID3V2Tag()[pri:0, instance:ca.media.mp3.application.ID3V2ToolTest@cb644e]" name="performOnMP3WithoutID3V2Tag" duration-ms="0" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <exception class="ca.media.mp3.application.MP3MediaException">
+            <message>
+              <![CDATA[The stream does not contain an ID3 V2 tag]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[ca.media.mp3.application.MP3MediaException: The stream does not contain an ID3 V2 tag
+	at ca.media.mp3.application.ID3Tool.checkForValidHeader(ID3Tool.java:47)
+	at ca.media.mp3.application.ID3Tool.read(ID3Tool.java:28)
+	at ca.media.mp3.application.ID3Tool.perform(ID3Tool.java:21)
+	at ca.media.mp3.application.ID3V2ToolTest.performOnMP3WithoutID3V2Tag(ID3V2ToolTest.java:31)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+]]>
+            </full-stacktrace>
+          </exception> <!-- ca.media.mp3.application.MP3MediaException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- performOnMP3WithoutID3V2Tag -->
+        <test-method status="PASS" signature="readUptoTenBytes()[pri:0, instance:ca.media.mp3.application.ID3V2ToolTest@cb644e]" name="readUptoTenBytes" duration-ms="0" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <exception class="ca.media.mp3.application.MP3MediaException">
+            <message>
+              <![CDATA[The stream does not contain an ID3 V2 tag]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[ca.media.mp3.application.MP3MediaException: The stream does not contain an ID3 V2 tag
+	at ca.media.mp3.application.ID3Tool.checkForValidHeader(ID3Tool.java:47)
+	at ca.media.mp3.application.ID3Tool.read(ID3Tool.java:28)
+	at ca.media.mp3.application.ID3Tool.perform(ID3Tool.java:21)
+	at ca.media.mp3.application.ID3V2ToolTest.readUptoTenBytes(ID3V2ToolTest.java:38)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+]]>
+            </full-stacktrace>
+          </exception> <!-- ca.media.mp3.application.MP3MediaException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- readUptoTenBytes -->
+      </class> <!-- ca.media.mp3.application.ID3V2ToolTest -->
+    </test> <!-- application test -->
+    <test name="adapter test" duration-ms="5" started-at="2018-08-08T05:32:59Z" finished-at="2018-08-08T05:32:59Z">
+      <class name="ca.media.mp3.adapter.ID3ReaderFactoryTest">
+        <test-method status="PASS" signature="checkFileNotFound()[pri:0, instance:ca.media.mp3.adapter.ID3ReaderFactoryTest@3159c4b8]" name="checkFileNotFound" duration-ms="1" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <exception class="ca.media.mp3.application.MP3MediaException">
+            <message>
+              <![CDATA[ (No such file or directory)]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[ca.media.mp3.application.MP3MediaException:  (No such file or directory)
+	at ca.media.mp3.adapter.ID3ReaderFactory.makeAnID3Reader(ID3ReaderFactory.java:20)
+	at ca.media.mp3.adapter.ID3ReaderFactoryTest.checkFileNotFound(ID3ReaderFactoryTest.java:18)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+]]>
+            </full-stacktrace>
+          </exception> <!-- ca.media.mp3.application.MP3MediaException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkFileNotFound -->
+        <test-method status="PASS" signature="instantiateAFactory()[pri:0, instance:ca.media.mp3.adapter.ID3ReaderFactoryTest@3159c4b8]" name="instantiateAFactory" duration-ms="0" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- instantiateAFactory -->
+        <test-method status="PASS" signature="returnAReader()[pri:0, instance:ca.media.mp3.adapter.ID3ReaderFactoryTest@3159c4b8]" name="returnAReader" duration-ms="1" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- returnAReader -->
+      </class> <!-- ca.media.mp3.adapter.ID3ReaderFactoryTest -->
+      <class name="ca.media.mp3.adapter.SimplePresenterTest">
+        <test-method status="PASS" signature="tagToStringWithNonNullParameter()[pri:0, instance:ca.media.mp3.adapter.SimplePresenterTest@4b952a2d]" name="tagToStringWithNonNullParameter" duration-ms="1" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tagToStringWithNonNullParameter -->
+      </class> <!-- ca.media.mp3.adapter.SimplePresenterTest -->
+    </test> <!-- adapter test -->
+    <test name="main test" duration-ms="15" started-at="2018-08-08T05:32:59Z" finished-at="2018-08-08T05:32:59Z">
+      <class name="ca.media.mp3.id3main.ID3ToolMainTest">
+        <test-method status="PASS" signature="setUpStreams()[pri:0, instance:ca.media.mp3.id3main.ID3ToolMainTest@55d56113]" name="setUpStreams" is-config="true" duration-ms="1" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpStreams -->
+        <test-method status="PASS" signature="resetOutContent()[pri:0, instance:ca.media.mp3.id3main.ID3ToolMainTest@55d56113]" name="resetOutContent" is-config="true" duration-ms="0" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- resetOutContent -->
+        <test-method status="PASS" signature="emptyParameters()[pri:0, instance:ca.media.mp3.id3main.ID3ToolMainTest@55d56113]" name="emptyParameters" duration-ms="1" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- emptyParameters -->
+        <test-method status="PASS" signature="fileNameWasFoundAndProcessed()[pri:0, instance:ca.media.mp3.id3main.ID3ToolMainTest@55d56113]" name="fileNameWasFoundAndProcessed" duration-ms="9" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fileNameWasFoundAndProcessed -->
+        <test-method status="PASS" signature="resetOutContent()[pri:0, instance:ca.media.mp3.id3main.ID3ToolMainTest@55d56113]" name="resetOutContent" is-config="true" duration-ms="0" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- resetOutContent -->
+        <test-method status="PASS" signature="resetOutContent()[pri:0, instance:ca.media.mp3.id3main.ID3ToolMainTest@55d56113]" name="resetOutContent" is-config="true" duration-ms="0" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- resetOutContent -->
+        <test-method status="PASS" signature="fileNameWasFoundButItWasNotAMP3File()[pri:0, instance:ca.media.mp3.id3main.ID3ToolMainTest@55d56113]" name="fileNameWasFoundButItWasNotAMP3File" duration-ms="1" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fileNameWasFoundButItWasNotAMP3File -->
+        <test-method status="PASS" signature="resetOutContent()[pri:0, instance:ca.media.mp3.id3main.ID3ToolMainTest@55d56113]" name="resetOutContent" is-config="true" duration-ms="0" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- resetOutContent -->
+        <test-method status="PASS" signature="fileNameWasNotFound()[pri:0, instance:ca.media.mp3.id3main.ID3ToolMainTest@55d56113]" name="fileNameWasNotFound" duration-ms="1" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fileNameWasNotFound -->
+        <test-method status="PASS" signature="resetOutContent()[pri:0, instance:ca.media.mp3.id3main.ID3ToolMainTest@55d56113]" name="resetOutContent" is-config="true" duration-ms="0" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- resetOutContent -->
+        <test-method status="PASS" signature="usingTheConstructorJustForCoverage()[pri:0, instance:ca.media.mp3.id3main.ID3ToolMainTest@55d56113]" name="usingTheConstructorJustForCoverage" duration-ms="1" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- usingTheConstructorJustForCoverage -->
+        <test-method status="PASS" signature="restoreStreams()[pri:0, instance:ca.media.mp3.id3main.ID3ToolMainTest@55d56113]" name="restoreStreams" is-config="true" duration-ms="0" started-at="2018-08-08T01:32:59Z" finished-at="2018-08-08T01:32:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- restoreStreams -->
+      </class> <!-- ca.media.mp3.id3main.ID3ToolMainTest -->
+    </test> <!-- main test -->
+  </suite> <!-- ID3 V2 Tool -->
+</testng-results>

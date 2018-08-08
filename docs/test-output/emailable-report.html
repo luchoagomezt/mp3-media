@@ -1,0 +1,424 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>TestNG:  Unit Test</title>
+<style type="text/css">
+table caption,table.info_table,table.result,table.passed,table.failed {margin-bottom:10px;border:1px solid #000099;border-collapse:collapse;empty-cells:show;}
+table.info_table td,table.info_table th,table.result td,table.result th,table.passed td,table.passed th,table.failed td,table.failed th {
+border:1px solid #000099;padding:.25em .5em .25em .5em
+}
+table.result th {vertical-align:bottom}
+tr.param th {padding-left:1em;padding-right:1em}
+tr.param td {padding-left:.5em;padding-right:2em}
+td.numi,th.numi,td.numi_attn {
+text-align:right
+}
+tr.total td {font-weight:bold}
+table caption {
+text-align:center;font-weight:bold;
+}
+table.passed tr.stripe td,table tr.passedodd td {background-color: #00AA00;}
+table.passed td,table tr.passedeven td {background-color: #33FF33;}
+table.passed tr.stripe td,table tr.skippedodd td {background-color: #cccccc;}
+table.passed td,table tr.skippedodd td {background-color: #dddddd;}
+table.failed tr.stripe td,table tr.failedodd td,table.result td.numi_attn {background-color: #FF3333;}
+table.failed td,table tr.failedeven td,table.result tr.stripe td.numi_attn {background-color: #DD0000;}
+tr.stripe td,tr.stripe th {background-color: #E6EBF9;}
+p.totop {font-size:85%;text-align:center;border-bottom:2px black solid}
+div.shootout {padding:2em;border:3px #4854A8 solid}
+</style>
+</head>
+<body>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr><th>Test</th><th class="numi">Methods<br/>Passed</th><th class="numi">Scenarios<br/>Passed</th><th class="numi"># skipped</th><th class="numi"># failed</th><th class="numi">Total<br/>Time</th><th class="numi">Included<br/>Groups</th><th class="numi">Excluded<br/>Groups</th></tr>
+<tr><td style="text-align:left;padding-right:2em">entity test</td><td class="numi">42</td><td class="numi">42</td><td class="numi">0</td><td class="numi">0</td><td class="numi">0.1 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+<tr class="stripe"><td style="text-align:left;padding-right:2em">application test</td><td class="numi">4</td><td class="numi">4</td><td class="numi">0</td><td class="numi">0</td><td class="numi">0.0 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+<tr><td style="text-align:left;padding-right:2em">adapter test</td><td class="numi">4</td><td class="numi">4</td><td class="numi">0</td><td class="numi">0</td><td class="numi">0.0 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+<tr class="stripe"><td style="text-align:left;padding-right:2em">main test</td><td class="numi">5</td><td class="numi">5</td><td class="numi">0</td><td class="numi">0</td><td class="numi">0.0 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+<tr class="total"><td>Total</td>
+<td class="numi">55</td><td class="numi">55</td><td class="numi">0</td><td class="numi">0</td><td class="numi">0.2 seconds</td><td colspan="2">&nbsp;</td></tr>
+</table>
+<table cellspacing="0" cellpadding="0" class="passed" id="summary">
+<tr><th>Class</th><th>Method</th><th># of<br/>Scenarios</th><th>Start</th><th>Time<br/>(ms)</th></tr>
+<tr><th colspan="4">entity test &#8212; passed</th></tr>
+<tr class="passedodd"><td rowspan="31">ca.media.mp3.entity.ID3V2TagTest</td><td><a href="#m1"><b>arrayIsTooSmall</b>  </a></td><td class="numi">1</td><td>1533706379497</td><td class="numi">8</td></tr><tr class="passedodd"><td><a href="#m2"><b>calculateTagSizeOnAValidArray</b>  </a></td><td class="numi">1</td><td>1533706379507</td><td class="numi">2</td></tr><tr class="passedodd"><td><a href="#m3"><b>calculateTagSizeOnArrayWithLessBytesThanHeaderSize</b>  </a></td><td class="numi">1</td><td>1533706379510</td><td class="numi">1</td></tr><tr class="passedodd"><td><a href="#m4"><b>calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F</b>  </a></td><td class="numi">4</td><td>1533706379513</td><td class="numi">5</td></tr><tr class="passedodd"><td><a href="#m5"><b>calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F</b>  </a></td><td class="numi">4</td><td>1533706379513</td><td class="numi">5</td></tr><tr class="passedodd"><td><a href="#m6"><b>calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F</b>  </a></td><td class="numi">4</td><td>1533706379513</td><td class="numi">5</td></tr><tr class="passedodd"><td><a href="#m7"><b>calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F</b>  </a></td><td class="numi">4</td><td>1533706379513</td><td class="numi">5</td></tr><tr class="passedodd"><td><a href="#m8"><b>firstByteIsNot49</b>  </a></td><td class="numi">1</td><td>1533706379519</td><td class="numi">0</td></tr><tr class="passedodd"><td><a href="#m9"><b>isAnID3V2tagReceivesATooShortArray</b>  </a></td><td class="numi">1</td><td>1533706379520</td><td class="numi">1</td></tr><tr class="passedodd"><td><a href="#m10"><b>itDoesNotHaveExtendedHeader</b>  </a></td><td class="numi">1</td><td>1533706379521</td><td class="numi">2</td></tr><tr class="passedodd"><td><a href="#m11"><b>itHasExtendedHeader</b>  </a></td><td class="numi">1</td><td>1533706379523</td><td class="numi">1</td></tr><tr class="passedodd"><td><a href="#m12"><b>itIsAnID3V2Tag</b>  </a></td><td class="numi">11</td><td>1533706379524</td><td class="numi">9</td></tr><tr class="passedodd"><td><a href="#m13"><b>itIsAnID3V2Tag</b>  </a></td><td class="numi">11</td><td>1533706379524</td><td class="numi">9</td></tr><tr class="passedodd"><td><a href="#m14"><b>itIsAnID3V2Tag</b>  </a></td><td class="numi">11</td><td>1533706379524</td><td class="numi">9</td></tr><tr class="passedodd"><td><a href="#m15"><b>itIsAnID3V2Tag</b>  </a></td><td class="numi">11</td><td>1533706379524</td><td class="numi">9</td></tr><tr class="passedodd"><td><a href="#m16"><b>itIsAnID3V2Tag</b>  </a></td><td class="numi">11</td><td>1533706379524</td><td class="numi">9</td></tr><tr class="passedodd"><td><a href="#m17"><b>itIsAnID3V2Tag</b>  </a></td><td class="numi">11</td><td>1533706379524</td><td class="numi">9</td></tr><tr class="passedodd"><td><a href="#m18"><b>itIsAnID3V2Tag</b>  </a></td><td class="numi">11</td><td>1533706379524</td><td class="numi">9</td></tr><tr class="passedodd"><td><a href="#m19"><b>itIsAnID3V2Tag</b>  </a></td><td class="numi">11</td><td>1533706379524</td><td class="numi">9</td></tr><tr class="passedodd"><td><a href="#m20"><b>itIsAnID3V2Tag</b>  </a></td><td class="numi">11</td><td>1533706379524</td><td class="numi">9</td></tr><tr class="passedodd"><td><a href="#m21"><b>itIsAnID3V2Tag</b>  </a></td><td class="numi">11</td><td>1533706379524</td><td class="numi">9</td></tr><tr class="passedodd"><td><a href="#m22"><b>itIsAnID3V2Tag</b>  </a></td><td class="numi">11</td><td>1533706379524</td><td class="numi">9</td></tr><tr class="passedodd"><td><a href="#m23"><b>itIsExperimental</b>  </a></td><td class="numi">1</td><td>1533706379533</td><td class="numi">0</td></tr><tr class="passedodd"><td><a href="#m24"><b>itIsNotExperimental</b>  </a></td><td class="numi">1</td><td>1533706379534</td><td class="numi">0</td></tr><tr class="passedodd"><td><a href="#m25"><b>itIsNotUnsynchronisation</b>  </a></td><td class="numi">1</td><td>1533706379535</td><td class="numi">0</td></tr><tr class="passedodd"><td><a href="#m26"><b>itIsUnsynchronisation</b>  </a></td><td class="numi">1</td><td>1533706379536</td><td class="numi">0</td></tr><tr class="passedodd"><td><a href="#m27"><b>majorVersionIs3</b>  </a></td><td class="numi">1</td><td>1533706379537</td><td class="numi">0</td></tr><tr class="passedodd"><td><a href="#m28"><b>revisionNumberIs0</b>  </a></td><td class="numi">1</td><td>1533706379537</td><td class="numi">1</td></tr><tr class="passedodd"><td><a href="#m29"><b>secondByteIsNot44</b>  </a></td><td class="numi">1</td><td>1533706379538</td><td class="numi">1</td></tr><tr class="passedodd"><td><a href="#m30"><b>sizeaIs257</b>  </a></td><td class="numi">1</td><td>1533706379539</td><td class="numi">1</td></tr><tr class="passedodd"><td><a href="#m31"><b>thirdByteIsNot33</b>  </a></td><td class="numi">1</td><td>1533706379540</td><td class="numi">0</td></tr>
+<tr class="passedeven"><td rowspan="11">ca.media.mp3.entity.FrameTest</td><td><a href="#m32"><b>aTooShortArrayIsNotAFrame</b>  </a></td><td class="numi">1</td><td>1533706379541</td><td class="numi">1</td></tr><tr class="passedeven"><td><a href="#m33"><b>calculateSizeOnEmptyArray</b>  </a></td><td class="numi">1</td><td>1533706379542</td><td class="numi">1</td></tr><tr class="passedeven"><td><a href="#m34"><b>calculateSizeOnInvalidArray</b>  </a></td><td class="numi">4</td><td>1533706379544</td><td class="numi">4</td></tr><tr class="passedeven"><td><a href="#m35"><b>calculateSizeOnInvalidArray</b>  </a></td><td class="numi">4</td><td>1533706379544</td><td class="numi">4</td></tr><tr class="passedeven"><td><a href="#m36"><b>calculateSizeOnInvalidArray</b>  </a></td><td class="numi">4</td><td>1533706379544</td><td class="numi">4</td></tr><tr class="passedeven"><td><a href="#m37"><b>calculateSizeOnInvalidArray</b>  </a></td><td class="numi">4</td><td>1533706379544</td><td class="numi">4</td></tr><tr class="passedeven"><td><a href="#m38"><b>constructorReceivesAValidFrameArray</b>  </a></td><td class="numi">1</td><td>1533706379549</td><td class="numi">37</td></tr><tr class="passedeven"><td><a href="#m39"><b>constructorReceivesAnInvalidFrameArray</b>  </a></td><td class="numi">1</td><td>1533706379587</td><td class="numi">0</td></tr><tr class="passedeven"><td><a href="#m40"><b>frameToString</b>  </a></td><td class="numi">1</td><td>1533706379588</td><td class="numi">1</td></tr><tr class="passedeven"><td><a href="#m41"><b>receivesAnInvalidEncodingByte</b>  </a></td><td class="numi">1</td><td>1533706379589</td><td class="numi">0</td></tr><tr class="passedeven"><td><a href="#m42"><b>thisArrayIsAValidFrame</b>  </a></td><td class="numi">1</td><td>1533706379591</td><td class="numi">0</td></tr>
+<tr><th colspan="4">application test &#8212; passed</th></tr>
+<tr class="passedodd"><td rowspan="4">ca.media.mp3.application.ID3V2ToolTest</td><td><a href="#m43"><b>performOnMP3WithAnID3V2TagWithOneFrame</b>  </a></td><td class="numi">1</td><td>1533706379616</td><td class="numi">2</td></tr><tr class="passedodd"><td><a href="#m44"><b>performOnMP3WithAnID3V2TagWithoutFrames</b>  </a></td><td class="numi">1</td><td>1533706379618</td><td class="numi">1</td></tr><tr class="passedodd"><td><a href="#m45"><b>performOnMP3WithoutID3V2Tag</b>  </a></td><td class="numi">1</td><td>1533706379619</td><td class="numi">0</td></tr><tr class="passedodd"><td><a href="#m46"><b>readUptoTenBytes</b>  </a></td><td class="numi">1</td><td>1533706379620</td><td class="numi">0</td></tr>
+<tr><th colspan="4">adapter test &#8212; passed</th></tr>
+<tr class="passedodd"><td rowspan="1">ca.media.mp3.adapter.SimplePresenterTest</td><td><a href="#m47"><b>tagToStringWithNonNullParameter</b>  </a></td><td class="numi">1</td><td>1533706379624</td><td class="numi">1</td></tr>
+<tr class="passedeven"><td rowspan="3">ca.media.mp3.adapter.ID3ReaderFactoryTest</td><td><a href="#m48"><b>checkFileNotFound</b>  </a></td><td class="numi">1</td><td>1533706379625</td><td class="numi">1</td></tr><tr class="passedeven"><td><a href="#m49"><b>instantiateAFactory</b>  </a></td><td class="numi">1</td><td>1533706379627</td><td class="numi">0</td></tr><tr class="passedeven"><td><a href="#m50"><b>returnAReader</b>  </a></td><td class="numi">1</td><td>1533706379627</td><td class="numi">1</td></tr>
+<tr><th colspan="4">main test &#8212; passed</th></tr>
+<tr class="passedodd"><td rowspan="5">ca.media.mp3.id3main.ID3ToolMainTest</td><td><a href="#m51"><b>emptyParameters</b>  </a></td><td class="numi">1</td><td>1533706379631</td><td class="numi">1</td></tr><tr class="passedodd"><td><a href="#m52"><b>fileNameWasFoundAndProcessed</b>  </a></td><td class="numi">1</td><td>1533706379633</td><td class="numi">9</td></tr><tr class="passedodd"><td><a href="#m53"><b>fileNameWasFoundButItWasNotAMP3File</b>  </a></td><td class="numi">1</td><td>1533706379642</td><td class="numi">1</td></tr><tr class="passedodd"><td><a href="#m54"><b>fileNameWasNotFound</b>  </a></td><td class="numi">1</td><td>1533706379643</td><td class="numi">1</td></tr><tr class="passedodd"><td><a href="#m55"><b>usingTheConstructorJustForCoverage</b>  </a></td><td class="numi">1</td><td>1533706379644</td><td class="numi">1</td></tr>
+</table>
+<h1>entity test</h1>
+<h2 id="m1">ca.media.mp3.entity.ID3V2TagTest:itIsAnID3V2Tag</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr>
+<tr class="param stripe"><td>true</td>
+<td>[73, 68, 51, 3, 0, 0, 0, 0, 2, 0]</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m2">ca.media.mp3.entity.ID3V2TagTest:calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th></tr>
+<tr class="param stripe"><td>[73, 68, 51, 3, 0, 0, 127, 128, 0, 0]</td>
+</tr>
+<tr><td style="padding-left:3em" colspan="1">
+<p>One or more of the four size bytes is more than 0x7F</p>
+ca.media.mp3.entity.ID3V2Tag.checkIfSizeDescriptorsAreValid(ID3V2Tag.java:65)
+<br/>at ca.media.mp3.entity.ID3V2Tag.calculateTagSize(ID3V2Tag.java:42)
+<br/>at ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F(ID3V2TagTest.java:28)
+<br/>21 lines not shown
+</td></tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m3">ca.media.mp3.entity.ID3V2TagTest:itDoesNotHaveExtendedHeader</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m4">ca.media.mp3.entity.ID3V2TagTest:itIsAnID3V2Tag</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr>
+<tr class="param stripe"><td>false</td>
+<td>[73, 69, 51, 3, 0, 0, 0, 0, 2, 0]</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m5">ca.media.mp3.entity.ID3V2TagTest:revisionNumberIs0</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m6">ca.media.mp3.entity.FrameTest:constructorReceivesAValidFrameArray</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m7">ca.media.mp3.entity.ID3V2TagTest:itHasExtendedHeader</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m8">ca.media.mp3.entity.FrameTest:calculateSizeOnInvalidArray</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th></tr>
+<tr class="param stripe"><td>[73, 73, 73, 73, 127, 127, 128, 127, 0, 0]</td>
+</tr>
+<tr><td style="padding-left:3em" colspan="1">
+<p>One or more of the four size bytes is more or equal to 128</p>
+ca.media.mp3.entity.Frame.checkIfSizeDescriptorIsValid(Frame.java:69)
+<br/>at ca.media.mp3.entity.Frame.calculateContentSize(Frame.java:84)
+<br/>at ca.media.mp3.entity.FrameTest.calculateSizeOnInvalidArray(FrameTest.java:64)
+<br/>21 lines not shown
+</td></tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m9">ca.media.mp3.entity.FrameTest:constructorReceivesAnInvalidFrameArray</h2>
+<div style="padding-left:3em">
+<p>One or more of the four size bytes is more or equal to 128</p>
+ca.media.mp3.entity.Frame.checkIfSizeDescriptorIsValid(Frame.java:69)
+<br/>at ca.media.mp3.entity.Frame.&lt;init&gt;(Frame.java:15)
+<br/>at ca.media.mp3.entity.FrameTest.constructorReceivesAnInvalidFrameArray(FrameTest.java:31)
+<br/>21 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m10">ca.media.mp3.entity.ID3V2TagTest:itIsNotUnsynchronisation</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m11">ca.media.mp3.entity.FrameTest:thisArrayIsAValidFrame</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m12">ca.media.mp3.entity.ID3V2TagTest:calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th></tr>
+<tr class="param stripe"><td>[73, 68, 51, 3, 0, 0, 127, 0, 127, 128]</td>
+</tr>
+<tr><td style="padding-left:3em" colspan="1">
+<p>One or more of the four size bytes is more than 0x7F</p>
+ca.media.mp3.entity.ID3V2Tag.checkIfSizeDescriptorsAreValid(ID3V2Tag.java:65)
+<br/>at ca.media.mp3.entity.ID3V2Tag.calculateTagSize(ID3V2Tag.java:42)
+<br/>at ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F(ID3V2TagTest.java:28)
+<br/>21 lines not shown
+</td></tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m13">ca.media.mp3.entity.ID3V2TagTest:itIsUnsynchronisation</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m14">ca.media.mp3.entity.ID3V2TagTest:calculateTagSizeOnAValidArray</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m15">ca.media.mp3.entity.ID3V2TagTest:itIsAnID3V2Tag</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr>
+<tr class="param stripe"><td>false</td>
+<td>[73, 68, 51, 3, 255, 0, 0, 0, 2, 0]</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m16">ca.media.mp3.entity.ID3V2TagTest:secondByteIsNot44</h2>
+<div style="padding-left:3em">
+<p>Array does not contain an ID3 V2 tag</p>
+ca.media.mp3.entity.ID3V2Tag.checkIfID3TagIsValid(ID3V2Tag.java:57)
+<br/>at ca.media.mp3.entity.ID3V2Tag.&lt;init&gt;(ID3V2Tag.java:15)
+<br/>at ca.media.mp3.entity.ID3V2TagTest.secondByteIsNot44(ID3V2TagTest.java:48)
+<br/>21 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m17">ca.media.mp3.entity.FrameTest:calculateSizeOnInvalidArray</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th></tr>
+<tr class="param stripe"><td>[73, 73, 73, 73, 127, 128, 127, 127, 0, 0]</td>
+</tr>
+<tr><td style="padding-left:3em" colspan="1">
+<p>One or more of the four size bytes is more or equal to 128</p>
+ca.media.mp3.entity.Frame.checkIfSizeDescriptorIsValid(Frame.java:69)
+<br/>at ca.media.mp3.entity.Frame.calculateContentSize(Frame.java:84)
+<br/>at ca.media.mp3.entity.FrameTest.calculateSizeOnInvalidArray(FrameTest.java:64)
+<br/>21 lines not shown
+</td></tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m18">ca.media.mp3.entity.ID3V2TagTest:itIsAnID3V2Tag</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr>
+<tr class="param stripe"><td>false</td>
+<td>[73, 68, 51, 3, 0, 225, 0, 0, 2, 0]</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m19">ca.media.mp3.entity.ID3V2TagTest:calculateTagSizeOnArrayWithLessBytesThanHeaderSize</h2>
+<div style="padding-left:3em">
+<p>Array&apos;s length is less than header&apos;s size</p>
+ca.media.mp3.entity.ID3V2Tag.checkIfDataIsTooShort(ID3V2Tag.java:72)
+<br/>at ca.media.mp3.entity.ID3V2Tag.calculateTagSize(ID3V2Tag.java:41)
+<br/>at ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithLessBytesThanHeaderSize(ID3V2TagTest.java:13)
+<br/>21 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m20">ca.media.mp3.entity.ID3V2TagTest:itIsAnID3V2Tag</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr>
+<tr class="param stripe"><td>false</td>
+<td>[73, 68, 51, 3, 0, 0, 0, 0, 2, 128]</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m21">ca.media.mp3.entity.ID3V2TagTest:firstByteIsNot49</h2>
+<div style="padding-left:3em">
+<p>Array does not contain an ID3 V2 tag</p>
+ca.media.mp3.entity.ID3V2Tag.checkIfID3TagIsValid(ID3V2Tag.java:57)
+<br/>at ca.media.mp3.entity.ID3V2Tag.&lt;init&gt;(ID3V2Tag.java:15)
+<br/>at ca.media.mp3.entity.ID3V2TagTest.firstByteIsNot49(ID3V2TagTest.java:43)
+<br/>21 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m22">ca.media.mp3.entity.FrameTest:receivesAnInvalidEncodingByte</h2>
+<div style="padding-left:3em">
+<p>Encoding byte is invalid</p>
+ca.media.mp3.entity.Frame.checkIfEncodingIsValid(Frame.java:52)
+<br/>at ca.media.mp3.entity.Frame.&lt;init&gt;(Frame.java:16)
+<br/>at ca.media.mp3.entity.FrameTest.receivesAnInvalidEncodingByte(FrameTest.java:71)
+<br/>21 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m23">ca.media.mp3.entity.ID3V2TagTest:itIsNotExperimental</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m24">ca.media.mp3.entity.ID3V2TagTest:isAnID3V2tagReceivesATooShortArray</h2>
+<div style="padding-left:3em">
+<p>Array&apos;s length is less than header&apos;s size</p>
+ca.media.mp3.entity.ID3V2Tag.checkIfDataIsTooShort(ID3V2Tag.java:72)
+<br/>at ca.media.mp3.entity.ID3V2Tag.isAnID3V2tag(ID3V2Tag.java:49)
+<br/>at ca.media.mp3.entity.ID3V2TagTest.isAnID3V2tagReceivesATooShortArray(ID3V2TagTest.java:124)
+<br/>21 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m25">ca.media.mp3.entity.ID3V2TagTest:thirdByteIsNot33</h2>
+<div style="padding-left:3em">
+<p>Array does not contain an ID3 V2 tag</p>
+ca.media.mp3.entity.ID3V2Tag.checkIfID3TagIsValid(ID3V2Tag.java:57)
+<br/>at ca.media.mp3.entity.ID3V2Tag.&lt;init&gt;(ID3V2Tag.java:15)
+<br/>at ca.media.mp3.entity.ID3V2TagTest.thirdByteIsNot33(ID3V2TagTest.java:53)
+<br/>21 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m26">ca.media.mp3.entity.FrameTest:calculateSizeOnInvalidArray</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th></tr>
+<tr class="param stripe"><td>[73, 73, 73, 73, 128, 127, 127, 127, 0, 0]</td>
+</tr>
+<tr><td style="padding-left:3em" colspan="1">
+<p>One or more of the four size bytes is more or equal to 128</p>
+ca.media.mp3.entity.Frame.checkIfSizeDescriptorIsValid(Frame.java:69)
+<br/>at ca.media.mp3.entity.Frame.calculateContentSize(Frame.java:84)
+<br/>at ca.media.mp3.entity.FrameTest.calculateSizeOnInvalidArray(FrameTest.java:64)
+<br/>21 lines not shown
+</td></tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m27">ca.media.mp3.entity.FrameTest:aTooShortArrayIsNotAFrame</h2>
+<div style="padding-left:3em">
+<p>Length of the data array passed as a parameter is less than the valid size for a frame&apos;s header</p>
+ca.media.mp3.entity.Frame.checkIfDataIsTooShort(Frame.java:60)
+<br/>at ca.media.mp3.entity.Frame.isValid(Frame.java:75)
+<br/>at ca.media.mp3.entity.FrameTest.aTooShortArrayIsNotAFrame(FrameTest.java:14)
+<br/>21 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m28">ca.media.mp3.entity.ID3V2TagTest:majorVersionIs3</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m29">ca.media.mp3.entity.FrameTest:calculateSizeOnInvalidArray</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th></tr>
+<tr class="param stripe"><td>[73, 73, 73, 73, 127, 127, 127, 128, 0, 0]</td>
+</tr>
+<tr><td style="padding-left:3em" colspan="1">
+<p>One or more of the four size bytes is more or equal to 128</p>
+ca.media.mp3.entity.Frame.checkIfSizeDescriptorIsValid(Frame.java:69)
+<br/>at ca.media.mp3.entity.Frame.calculateContentSize(Frame.java:84)
+<br/>at ca.media.mp3.entity.FrameTest.calculateSizeOnInvalidArray(FrameTest.java:64)
+<br/>21 lines not shown
+</td></tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m30">ca.media.mp3.entity.ID3V2TagTest:itIsAnID3V2Tag</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr>
+<tr class="param stripe"><td>false</td>
+<td>[73, 68, 51, 255, 0, 0, 0, 0, 2, 0]</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m31">ca.media.mp3.entity.ID3V2TagTest:calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th></tr>
+<tr class="param stripe"><td>[73, 68, 51, 3, 0, 0, 127, 127, 128, 0]</td>
+</tr>
+<tr><td style="padding-left:3em" colspan="1">
+<p>One or more of the four size bytes is more than 0x7F</p>
+ca.media.mp3.entity.ID3V2Tag.checkIfSizeDescriptorsAreValid(ID3V2Tag.java:65)
+<br/>at ca.media.mp3.entity.ID3V2Tag.calculateTagSize(ID3V2Tag.java:42)
+<br/>at ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F(ID3V2TagTest.java:28)
+<br/>21 lines not shown
+</td></tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m32">ca.media.mp3.entity.ID3V2TagTest:itIsExperimental</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m33">ca.media.mp3.entity.ID3V2TagTest:calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th></tr>
+<tr class="param stripe"><td>[73, 68, 51, 3, 0, 0, 128, 0, 0, 0]</td>
+</tr>
+<tr><td style="padding-left:3em" colspan="1">
+<p>One or more of the four size bytes is more than 0x7F</p>
+ca.media.mp3.entity.ID3V2Tag.checkIfSizeDescriptorsAreValid(ID3V2Tag.java:65)
+<br/>at ca.media.mp3.entity.ID3V2Tag.calculateTagSize(ID3V2Tag.java:42)
+<br/>at ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F(ID3V2TagTest.java:28)
+<br/>21 lines not shown
+</td></tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m34">ca.media.mp3.entity.ID3V2TagTest:itIsAnID3V2Tag</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr>
+<tr class="param stripe"><td>false</td>
+<td>[73, 68, 51, 3, 0, 0, 128, 0, 2, 0]</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m35">ca.media.mp3.entity.FrameTest:calculateSizeOnEmptyArray</h2>
+<div style="padding-left:3em">
+<p>Length of the data array passed as a parameter is less than the valid size for a frame&apos;s header</p>
+ca.media.mp3.entity.Frame.checkIfDataIsTooShort(Frame.java:60)
+<br/>at ca.media.mp3.entity.Frame.calculateContentSize(Frame.java:83)
+<br/>at ca.media.mp3.entity.FrameTest.calculateSizeOnEmptyArray(FrameTest.java:46)
+<br/>21 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m36">ca.media.mp3.entity.ID3V2TagTest:arrayIsTooSmall</h2>
+<div style="padding-left:3em">
+<p>Array&apos;s length is less than header&apos;s size</p>
+ca.media.mp3.entity.ID3V2Tag.checkIfDataIsTooShort(ID3V2Tag.java:72)
+<br/>at ca.media.mp3.entity.ID3V2Tag.isAnID3V2tag(ID3V2Tag.java:49)
+<br/>at ca.media.mp3.entity.ID3V2Tag.checkIfID3TagIsValid(ID3V2Tag.java:56)
+<br/>at ca.media.mp3.entity.ID3V2Tag.&lt;init&gt;(ID3V2Tag.java:15)
+<br/>at ca.media.mp3.entity.ID3V2TagTest.arrayIsTooSmall(ID3V2TagTest.java:38)
+<br/>21 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m37">ca.media.mp3.entity.ID3V2TagTest:itIsAnID3V2Tag</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr>
+<tr class="param stripe"><td>false</td>
+<td>[74, 68, 51, 3, 0, 0, 0, 0, 2, 0]</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m38">ca.media.mp3.entity.ID3V2TagTest:itIsAnID3V2Tag</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr>
+<tr class="param stripe"><td>false</td>
+<td>[73, 68, 51, 3, 0, 0, 0, 128, 2, 0]</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m39">ca.media.mp3.entity.ID3V2TagTest:itIsAnID3V2Tag</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr>
+<tr class="param stripe"><td>false</td>
+<td>[73, 68, 51, 3, 0, 0, 0, 0, 128, 0]</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m40">ca.media.mp3.entity.ID3V2TagTest:sizeaIs257</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m41">ca.media.mp3.entity.FrameTest:frameToString</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m42">ca.media.mp3.entity.ID3V2TagTest:itIsAnID3V2Tag</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr>
+<tr class="param stripe"><td>false</td>
+<td>[73, 68, 52, 3, 0, 0, 0, 0, 2, 0]</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h1>application test</h1>
+<h2 id="m43">ca.media.mp3.application.ID3V2ToolTest:performOnMP3WithAnID3V2TagWithOneFrame</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m44">ca.media.mp3.application.ID3V2ToolTest:performOnMP3WithAnID3V2TagWithoutFrames</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m45">ca.media.mp3.application.ID3V2ToolTest:readUptoTenBytes</h2>
+<div style="padding-left:3em">
+<p>The stream does not contain an ID3 V2 tag</p>
+ca.media.mp3.application.ID3Tool.checkForValidHeader(ID3Tool.java:47)
+<br/>at ca.media.mp3.application.ID3Tool.read(ID3Tool.java:28)
+<br/>at ca.media.mp3.application.ID3Tool.perform(ID3Tool.java:21)
+<br/>at ca.media.mp3.application.ID3V2ToolTest.readUptoTenBytes(ID3V2ToolTest.java:38)
+<br/>21 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m46">ca.media.mp3.application.ID3V2ToolTest:performOnMP3WithoutID3V2Tag</h2>
+<div style="padding-left:3em">
+<p>The stream does not contain an ID3 V2 tag</p>
+ca.media.mp3.application.ID3Tool.checkForValidHeader(ID3Tool.java:47)
+<br/>at ca.media.mp3.application.ID3Tool.read(ID3Tool.java:28)
+<br/>at ca.media.mp3.application.ID3Tool.perform(ID3Tool.java:21)
+<br/>at ca.media.mp3.application.ID3V2ToolTest.performOnMP3WithoutID3V2Tag(ID3V2ToolTest.java:31)
+<br/>21 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h1>adapter test</h1>
+<h2 id="m47">ca.media.mp3.adapter.ID3ReaderFactoryTest:checkFileNotFound</h2>
+<div style="padding-left:3em">
+<p> (No such file or directory)</p>
+ca.media.mp3.adapter.ID3ReaderFactory.makeAnID3Reader(ID3ReaderFactory.java:20)
+<br/>at ca.media.mp3.adapter.ID3ReaderFactoryTest.checkFileNotFound(ID3ReaderFactoryTest.java:18)
+<br/>21 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m48">ca.media.mp3.adapter.SimplePresenterTest:tagToStringWithNonNullParameter</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m49">ca.media.mp3.adapter.ID3ReaderFactoryTest:instantiateAFactory</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m50">ca.media.mp3.adapter.ID3ReaderFactoryTest:returnAReader</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h1>main test</h1>
+<h2 id="m51">ca.media.mp3.id3main.ID3ToolMainTest:fileNameWasFoundAndProcessed</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m52">ca.media.mp3.id3main.ID3ToolMainTest:fileNameWasNotFound</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m53">ca.media.mp3.id3main.ID3ToolMainTest:fileNameWasFoundButItWasNotAMP3File</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m54">ca.media.mp3.id3main.ID3ToolMainTest:usingTheConstructorJustForCoverage</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m55">ca.media.mp3.id3main.ID3ToolMainTest:emptyParameters</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+</body></html>

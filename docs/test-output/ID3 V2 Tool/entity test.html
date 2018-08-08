@@ -1,0 +1,887 @@
+<html>
+<head>
+<title>TestNG:  entity test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>entity test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>42/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Wed Aug 08 01:32:59 EDT 2018</td>
+</tr>
+<tr><td>Total time:</td><td>0 seconds (102 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='ca.media.mp3.entity.FrameTest.aTooShortArrayIsNotAFrame()'><b>aTooShortArrayIsNotAFrame</b><br>Test class: ca.media.mp3.entity.FrameTest</td>
+<td><div><pre>java.lang.IllegalArgumentException: Length of the data array passed as a parameter is less than the valid size for a frame&apos;s header
+	at ca.media.mp3.entity.Frame.checkIfDataIsTooShort(Frame.java:60)
+	at ca.media.mp3.entity.Frame.isValid(Frame.java:75)
+	at ca.media.mp3.entity.FrameTest.aTooShortArrayIsNotAFrame(FrameTest.java:14)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1602665763", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1602665763'><pre>java.lang.IllegalArgumentException: Length of the data array passed as a parameter is less than the valid size for a frame&apos;s header
+	at ca.media.mp3.entity.Frame.checkIfDataIsTooShort(Frame.java:60)
+	at ca.media.mp3.entity.Frame.isValid(Frame.java:75)
+	at ca.media.mp3.entity.FrameTest.aTooShortArrayIsNotAFrame(FrameTest.java:14)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+</pre></div></td>
+<td>0</td>
+<td>ca.media.mp3.entity.FrameTest@3abbfa04</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.arrayIsTooSmall()'><b>arrayIsTooSmall</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest</td>
+<td><div><pre>java.lang.IllegalArgumentException: Array&apos;s length is less than header&apos;s size
+	at ca.media.mp3.entity.ID3V2Tag.checkIfDataIsTooShort(ID3V2Tag.java:72)
+	at ca.media.mp3.entity.ID3V2Tag.isAnID3V2tag(ID3V2Tag.java:49)
+	at ca.media.mp3.entity.ID3V2Tag.checkIfID3TagIsValid(ID3V2Tag.java:56)
+	at ca.media.mp3.entity.ID3V2Tag.&lt;init&gt;(ID3V2Tag.java:15)
+	at ca.media.mp3.entity.ID3V2TagTest.arrayIsTooSmall(ID3V2TagTest.java:38)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1878517442", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1878517442'><pre>java.lang.IllegalArgumentException: Array&apos;s length is less than header&apos;s size
+	at ca.media.mp3.entity.ID3V2Tag.checkIfDataIsTooShort(ID3V2Tag.java:72)
+	at ca.media.mp3.entity.ID3V2Tag.isAnID3V2tag(ID3V2Tag.java:49)
+	at ca.media.mp3.entity.ID3V2Tag.checkIfID3TagIsValid(ID3V2Tag.java:56)
+	at ca.media.mp3.entity.ID3V2Tag.&lt;init&gt;(ID3V2Tag.java:15)
+	at ca.media.mp3.entity.ID3V2TagTest.arrayIsTooSmall(ID3V2TagTest.java:38)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+</pre></div></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.FrameTest.calculateSizeOnEmptyArray()'><b>calculateSizeOnEmptyArray</b><br>Test class: ca.media.mp3.entity.FrameTest</td>
+<td><div><pre>java.lang.IllegalArgumentException: Length of the data array passed as a parameter is less than the valid size for a frame&apos;s header
+	at ca.media.mp3.entity.Frame.checkIfDataIsTooShort(Frame.java:60)
+	at ca.media.mp3.entity.Frame.calculateContentSize(Frame.java:83)
+	at ca.media.mp3.entity.FrameTest.calculateSizeOnEmptyArray(FrameTest.java:46)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace490986162", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace490986162'><pre>java.lang.IllegalArgumentException: Length of the data array passed as a parameter is less than the valid size for a frame&apos;s header
+	at ca.media.mp3.entity.Frame.checkIfDataIsTooShort(Frame.java:60)
+	at ca.media.mp3.entity.Frame.calculateContentSize(Frame.java:83)
+	at ca.media.mp3.entity.FrameTest.calculateSizeOnEmptyArray(FrameTest.java:46)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+</pre></div></td>
+<td>0</td>
+<td>ca.media.mp3.entity.FrameTest@3abbfa04</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.FrameTest.calculateSizeOnInvalidArray()'><b>calculateSizeOnInvalidArray</b><br>Test class: ca.media.mp3.entity.FrameTest<br>Parameters: [I@3bd08510</td>
+<td><div><pre>java.lang.IllegalArgumentException: One or more of the four size bytes is more or equal to 128
+	at ca.media.mp3.entity.Frame.checkIfSizeDescriptorIsValid(Frame.java:69)
+	at ca.media.mp3.entity.Frame.calculateContentSize(Frame.java:84)
+	at ca.media.mp3.entity.FrameTest.calculateSizeOnInvalidArray(FrameTest.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace614981381", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace614981381'><pre>java.lang.IllegalArgumentException: One or more of the four size bytes is more or equal to 128
+	at ca.media.mp3.entity.Frame.checkIfSizeDescriptorIsValid(Frame.java:69)
+	at ca.media.mp3.entity.Frame.calculateContentSize(Frame.java:84)
+	at ca.media.mp3.entity.FrameTest.calculateSizeOnInvalidArray(FrameTest.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+</pre></div></td>
+<td>0</td>
+<td>ca.media.mp3.entity.FrameTest@3abbfa04</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.FrameTest.calculateSizeOnInvalidArray()'><b>calculateSizeOnInvalidArray</b><br>Test class: ca.media.mp3.entity.FrameTest<br>Parameters: [I@704d62cb</td>
+<td><div><pre>java.lang.IllegalArgumentException: One or more of the four size bytes is more or equal to 128
+	at ca.media.mp3.entity.Frame.checkIfSizeDescriptorIsValid(Frame.java:69)
+	at ca.media.mp3.entity.Frame.calculateContentSize(Frame.java:84)
+	at ca.media.mp3.entity.FrameTest.calculateSizeOnInvalidArray(FrameTest.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1175130393", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1175130393'><pre>java.lang.IllegalArgumentException: One or more of the four size bytes is more or equal to 128
+	at ca.media.mp3.entity.Frame.checkIfSizeDescriptorIsValid(Frame.java:69)
+	at ca.media.mp3.entity.Frame.calculateContentSize(Frame.java:84)
+	at ca.media.mp3.entity.FrameTest.calculateSizeOnInvalidArray(FrameTest.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+</pre></div></td>
+<td>0</td>
+<td>ca.media.mp3.entity.FrameTest@3abbfa04</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.FrameTest.calculateSizeOnInvalidArray()'><b>calculateSizeOnInvalidArray</b><br>Test class: ca.media.mp3.entity.FrameTest<br>Parameters: [I@69312234</td>
+<td><div><pre>java.lang.IllegalArgumentException: One or more of the four size bytes is more or equal to 128
+	at ca.media.mp3.entity.Frame.checkIfSizeDescriptorIsValid(Frame.java:69)
+	at ca.media.mp3.entity.Frame.calculateContentSize(Frame.java:84)
+	at ca.media.mp3.entity.FrameTest.calculateSizeOnInvalidArray(FrameTest.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace38819419", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace38819419'><pre>java.lang.IllegalArgumentException: One or more of the four size bytes is more or equal to 128
+	at ca.media.mp3.entity.Frame.checkIfSizeDescriptorIsValid(Frame.java:69)
+	at ca.media.mp3.entity.Frame.calculateContentSize(Frame.java:84)
+	at ca.media.mp3.entity.FrameTest.calculateSizeOnInvalidArray(FrameTest.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+</pre></div></td>
+<td>0</td>
+<td>ca.media.mp3.entity.FrameTest@3abbfa04</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.FrameTest.calculateSizeOnInvalidArray()'><b>calculateSizeOnInvalidArray</b><br>Test class: ca.media.mp3.entity.FrameTest<br>Parameters: [I@16361892</td>
+<td><div><pre>java.lang.IllegalArgumentException: One or more of the four size bytes is more or equal to 128
+	at ca.media.mp3.entity.Frame.checkIfSizeDescriptorIsValid(Frame.java:69)
+	at ca.media.mp3.entity.Frame.calculateContentSize(Frame.java:84)
+	at ca.media.mp3.entity.FrameTest.calculateSizeOnInvalidArray(FrameTest.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace793410412", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace793410412'><pre>java.lang.IllegalArgumentException: One or more of the four size bytes is more or equal to 128
+	at ca.media.mp3.entity.Frame.checkIfSizeDescriptorIsValid(Frame.java:69)
+	at ca.media.mp3.entity.Frame.calculateContentSize(Frame.java:84)
+	at ca.media.mp3.entity.FrameTest.calculateSizeOnInvalidArray(FrameTest.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+</pre></div></td>
+<td>0</td>
+<td>ca.media.mp3.entity.FrameTest@3abbfa04</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnAValidArray()'><b>calculateTagSizeOnAValidArray</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithLessBytesThanHeaderSize()'><b>calculateTagSizeOnArrayWithLessBytesThanHeaderSize</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest</td>
+<td><div><pre>java.lang.IllegalArgumentException: Array&apos;s length is less than header&apos;s size
+	at ca.media.mp3.entity.ID3V2Tag.checkIfDataIsTooShort(ID3V2Tag.java:72)
+	at ca.media.mp3.entity.ID3V2Tag.calculateTagSize(ID3V2Tag.java:41)
+	at ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithLessBytesThanHeaderSize(ID3V2TagTest.java:13)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2019220686", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2019220686'><pre>java.lang.IllegalArgumentException: Array&apos;s length is less than header&apos;s size
+	at ca.media.mp3.entity.ID3V2Tag.checkIfDataIsTooShort(ID3V2Tag.java:72)
+	at ca.media.mp3.entity.ID3V2Tag.calculateTagSize(ID3V2Tag.java:41)
+	at ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithLessBytesThanHeaderSize(ID3V2TagTest.java:13)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+</pre></div></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F()'><b>calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest<br>Parameters: [I@2971e741</td>
+<td><div><pre>java.lang.IllegalArgumentException: One or more of the four size bytes is more than 0x7F
+	at ca.media.mp3.entity.ID3V2Tag.checkIfSizeDescriptorsAreValid(ID3V2Tag.java:65)
+	at ca.media.mp3.entity.ID3V2Tag.calculateTagSize(ID3V2Tag.java:42)
+	at ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F(ID3V2TagTest.java:28)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1660792844", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1660792844'><pre>java.lang.IllegalArgumentException: One or more of the four size bytes is more than 0x7F
+	at ca.media.mp3.entity.ID3V2Tag.checkIfSizeDescriptorsAreValid(ID3V2Tag.java:65)
+	at ca.media.mp3.entity.ID3V2Tag.calculateTagSize(ID3V2Tag.java:42)
+	at ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F(ID3V2TagTest.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+</pre></div></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F()'><b>calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest<br>Parameters: [I@3231939e</td>
+<td><div><pre>java.lang.IllegalArgumentException: One or more of the four size bytes is more than 0x7F
+	at ca.media.mp3.entity.ID3V2Tag.checkIfSizeDescriptorsAreValid(ID3V2Tag.java:65)
+	at ca.media.mp3.entity.ID3V2Tag.calculateTagSize(ID3V2Tag.java:42)
+	at ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F(ID3V2TagTest.java:28)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1549239764", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1549239764'><pre>java.lang.IllegalArgumentException: One or more of the four size bytes is more than 0x7F
+	at ca.media.mp3.entity.ID3V2Tag.checkIfSizeDescriptorsAreValid(ID3V2Tag.java:65)
+	at ca.media.mp3.entity.ID3V2Tag.calculateTagSize(ID3V2Tag.java:42)
+	at ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F(ID3V2TagTest.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+</pre></div></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F()'><b>calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest<br>Parameters: [I@5271276e</td>
+<td><div><pre>java.lang.IllegalArgumentException: One or more of the four size bytes is more than 0x7F
+	at ca.media.mp3.entity.ID3V2Tag.checkIfSizeDescriptorsAreValid(ID3V2Tag.java:65)
+	at ca.media.mp3.entity.ID3V2Tag.calculateTagSize(ID3V2Tag.java:42)
+	at ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F(ID3V2TagTest.java:28)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2032999233", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2032999233'><pre>java.lang.IllegalArgumentException: One or more of the four size bytes is more than 0x7F
+	at ca.media.mp3.entity.ID3V2Tag.checkIfSizeDescriptorsAreValid(ID3V2Tag.java:65)
+	at ca.media.mp3.entity.ID3V2Tag.calculateTagSize(ID3V2Tag.java:42)
+	at ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F(ID3V2TagTest.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+</pre></div></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F()'><b>calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest<br>Parameters: [I@7425473a</td>
+<td><div><pre>java.lang.IllegalArgumentException: One or more of the four size bytes is more than 0x7F
+	at ca.media.mp3.entity.ID3V2Tag.checkIfSizeDescriptorsAreValid(ID3V2Tag.java:65)
+	at ca.media.mp3.entity.ID3V2Tag.calculateTagSize(ID3V2Tag.java:42)
+	at ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F(ID3V2TagTest.java:28)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace404399626", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace404399626'><pre>java.lang.IllegalArgumentException: One or more of the four size bytes is more than 0x7F
+	at ca.media.mp3.entity.ID3V2Tag.checkIfSizeDescriptorsAreValid(ID3V2Tag.java:65)
+	at ca.media.mp3.entity.ID3V2Tag.calculateTagSize(ID3V2Tag.java:42)
+	at ca.media.mp3.entity.ID3V2TagTest.calculateTagSizeOnArrayWithOneOrMoreByteSizeMoreThan0x7F(ID3V2TagTest.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+</pre></div></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.FrameTest.constructorReceivesAValidFrameArray()'><b>constructorReceivesAValidFrameArray</b><br>Test class: ca.media.mp3.entity.FrameTest</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.FrameTest@3abbfa04</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.FrameTest.constructorReceivesAnInvalidFrameArray()'><b>constructorReceivesAnInvalidFrameArray</b><br>Test class: ca.media.mp3.entity.FrameTest</td>
+<td><div><pre>java.lang.IllegalArgumentException: One or more of the four size bytes is more or equal to 128
+	at ca.media.mp3.entity.Frame.checkIfSizeDescriptorIsValid(Frame.java:69)
+	at ca.media.mp3.entity.Frame.&lt;init&gt;(Frame.java:15)
+	at ca.media.mp3.entity.FrameTest.constructorReceivesAnInvalidFrameArray(FrameTest.java:31)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1546098027", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1546098027'><pre>java.lang.IllegalArgumentException: One or more of the four size bytes is more or equal to 128
+	at ca.media.mp3.entity.Frame.checkIfSizeDescriptorIsValid(Frame.java:69)
+	at ca.media.mp3.entity.Frame.&lt;init&gt;(Frame.java:15)
+	at ca.media.mp3.entity.FrameTest.constructorReceivesAnInvalidFrameArray(FrameTest.java:31)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+</pre></div></td>
+<td>0</td>
+<td>ca.media.mp3.entity.FrameTest@3abbfa04</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.firstByteIsNot49()'><b>firstByteIsNot49</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest</td>
+<td><div><pre>java.lang.IllegalArgumentException: Array does not contain an ID3 V2 tag
+	at ca.media.mp3.entity.ID3V2Tag.checkIfID3TagIsValid(ID3V2Tag.java:57)
+	at ca.media.mp3.entity.ID3V2Tag.&lt;init&gt;(ID3V2Tag.java:15)
+	at ca.media.mp3.entity.ID3V2TagTest.firstByteIsNot49(ID3V2TagTest.java:43)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace40519284", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace40519284'><pre>java.lang.IllegalArgumentException: Array does not contain an ID3 V2 tag
+	at ca.media.mp3.entity.ID3V2Tag.checkIfID3TagIsValid(ID3V2Tag.java:57)
+	at ca.media.mp3.entity.ID3V2Tag.&lt;init&gt;(ID3V2Tag.java:15)
+	at ca.media.mp3.entity.ID3V2TagTest.firstByteIsNot49(ID3V2TagTest.java:43)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+</pre></div></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.FrameTest.frameToString()'><b>frameToString</b><br>Test class: ca.media.mp3.entity.FrameTest</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.FrameTest@3abbfa04</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.isAnID3V2tagReceivesATooShortArray()'><b>isAnID3V2tagReceivesATooShortArray</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest</td>
+<td><div><pre>java.lang.IllegalArgumentException: Array&apos;s length is less than header&apos;s size
+	at ca.media.mp3.entity.ID3V2Tag.checkIfDataIsTooShort(ID3V2Tag.java:72)
+	at ca.media.mp3.entity.ID3V2Tag.isAnID3V2tag(ID3V2Tag.java:49)
+	at ca.media.mp3.entity.ID3V2TagTest.isAnID3V2tagReceivesATooShortArray(ID3V2TagTest.java:124)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace675682087", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace675682087'><pre>java.lang.IllegalArgumentException: Array&apos;s length is less than header&apos;s size
+	at ca.media.mp3.entity.ID3V2Tag.checkIfDataIsTooShort(ID3V2Tag.java:72)
+	at ca.media.mp3.entity.ID3V2Tag.isAnID3V2tag(ID3V2Tag.java:49)
+	at ca.media.mp3.entity.ID3V2TagTest.isAnID3V2tagReceivesATooShortArray(ID3V2TagTest.java:124)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+</pre></div></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.itDoesNotHaveExtendedHeader()'><b>itDoesNotHaveExtendedHeader</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.itHasExtendedHeader()'><b>itHasExtendedHeader</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.itIsAnID3V2Tag()'><b>itIsAnID3V2Tag</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest<br>Parameters: true, [I@5248ed10</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.itIsAnID3V2Tag()'><b>itIsAnID3V2Tag</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest<br>Parameters: false, [I@6cdb29a4</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.itIsAnID3V2Tag()'><b>itIsAnID3V2Tag</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest<br>Parameters: false, [I@37ca3906</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.itIsAnID3V2Tag()'><b>itIsAnID3V2Tag</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest<br>Parameters: false, [I@6988b452</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.itIsAnID3V2Tag()'><b>itIsAnID3V2Tag</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest<br>Parameters: false, [I@7cbdf41e</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.itIsAnID3V2Tag()'><b>itIsAnID3V2Tag</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest<br>Parameters: false, [I@499e6424</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.itIsAnID3V2Tag()'><b>itIsAnID3V2Tag</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest<br>Parameters: false, [I@2ffa7618</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.itIsAnID3V2Tag()'><b>itIsAnID3V2Tag</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest<br>Parameters: false, [I@3fc6d91</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.itIsAnID3V2Tag()'><b>itIsAnID3V2Tag</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest<br>Parameters: false, [I@107264f4</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.itIsAnID3V2Tag()'><b>itIsAnID3V2Tag</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest<br>Parameters: false, [I@2af79d9a</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.itIsAnID3V2Tag()'><b>itIsAnID3V2Tag</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest<br>Parameters: false, [I@56c1646a</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.itIsExperimental()'><b>itIsExperimental</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.itIsNotExperimental()'><b>itIsNotExperimental</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.itIsNotUnsynchronisation()'><b>itIsNotUnsynchronisation</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.itIsUnsynchronisation()'><b>itIsUnsynchronisation</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.majorVersionIs3()'><b>majorVersionIs3</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.FrameTest.receivesAnInvalidEncodingByte()'><b>receivesAnInvalidEncodingByte</b><br>Test class: ca.media.mp3.entity.FrameTest</td>
+<td><div><pre>java.lang.IllegalArgumentException: Encoding byte is invalid
+	at ca.media.mp3.entity.Frame.checkIfEncodingIsValid(Frame.java:52)
+	at ca.media.mp3.entity.Frame.&lt;init&gt;(Frame.java:16)
+	at ca.media.mp3.entity.FrameTest.receivesAnInvalidEncodingByte(FrameTest.java:71)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1054433415", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1054433415'><pre>java.lang.IllegalArgumentException: Encoding byte is invalid
+	at ca.media.mp3.entity.Frame.checkIfEncodingIsValid(Frame.java:52)
+	at ca.media.mp3.entity.Frame.&lt;init&gt;(Frame.java:16)
+	at ca.media.mp3.entity.FrameTest.receivesAnInvalidEncodingByte(FrameTest.java:71)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+</pre></div></td>
+<td>0</td>
+<td>ca.media.mp3.entity.FrameTest@3abbfa04</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.revisionNumberIs0()'><b>revisionNumberIs0</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.secondByteIsNot44()'><b>secondByteIsNot44</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest</td>
+<td><div><pre>java.lang.IllegalArgumentException: Array does not contain an ID3 V2 tag
+	at ca.media.mp3.entity.ID3V2Tag.checkIfID3TagIsValid(ID3V2Tag.java:57)
+	at ca.media.mp3.entity.ID3V2Tag.&lt;init&gt;(ID3V2Tag.java:15)
+	at ca.media.mp3.entity.ID3V2TagTest.secondByteIsNot44(ID3V2TagTest.java:48)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1888255006", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1888255006'><pre>java.lang.IllegalArgumentException: Array does not contain an ID3 V2 tag
+	at ca.media.mp3.entity.ID3V2Tag.checkIfID3TagIsValid(ID3V2Tag.java:57)
+	at ca.media.mp3.entity.ID3V2Tag.&lt;init&gt;(ID3V2Tag.java:15)
+	at ca.media.mp3.entity.ID3V2TagTest.secondByteIsNot44(ID3V2TagTest.java:48)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+</pre></div></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.sizeaIs257()'><b>sizeaIs257</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.ID3V2TagTest.thirdByteIsNot33()'><b>thirdByteIsNot33</b><br>Test class: ca.media.mp3.entity.ID3V2TagTest</td>
+<td><div><pre>java.lang.IllegalArgumentException: Array does not contain an ID3 V2 tag
+	at ca.media.mp3.entity.ID3V2Tag.checkIfID3TagIsValid(ID3V2Tag.java:57)
+	at ca.media.mp3.entity.ID3V2Tag.&lt;init&gt;(ID3V2Tag.java:15)
+	at ca.media.mp3.entity.ID3V2TagTest.thirdByteIsNot33(ID3V2TagTest.java:53)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace502551574", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace502551574'><pre>java.lang.IllegalArgumentException: Array does not contain an ID3 V2 tag
+	at ca.media.mp3.entity.ID3V2Tag.checkIfID3TagIsValid(ID3V2Tag.java:57)
+	at ca.media.mp3.entity.ID3V2Tag.&lt;init&gt;(ID3V2Tag.java:15)
+	at ca.media.mp3.entity.ID3V2TagTest.thirdByteIsNot33(ID3V2TagTest.java:53)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:37)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:368)
+	at org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+</pre></div></td>
+<td>0</td>
+<td>ca.media.mp3.entity.ID3V2TagTest@e25b2fe</td></tr>
+<tr>
+<td title='ca.media.mp3.entity.FrameTest.thisArrayIsAValidFrame()'><b>thisArrayIsAValidFrame</b><br>Test class: ca.media.mp3.entity.FrameTest</td>
+<td></td>
+<td>0</td>
+<td>ca.media.mp3.entity.FrameTest@3abbfa04</td></tr>
+</table><p>
+</body>
+</html>
