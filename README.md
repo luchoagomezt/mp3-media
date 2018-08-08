@@ -18,7 +18,7 @@ id3 src/test/resources/journey.mp3
 
 [V1.0.108 is](https://github.com/luchoagomezt/mp3-media/releases/tag/v1.0.108) the latest and first production release.
 
-## Cobertura Report
+## Coverage Report
 
 Please refer to the [Cobertura report](./docs/cobertura). 
 
