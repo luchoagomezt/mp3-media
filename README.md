@@ -17,3 +17,7 @@ id3 src/test/resources/journey.mp3
 ## Latest Release
 
 V1.0.108 is the latest and first production release.
+
+## Cobertura Report
+
+Please refer to the [Cobertura report](https://luchoagomezt.github.io/mp3-media/docs/cobertura). 
