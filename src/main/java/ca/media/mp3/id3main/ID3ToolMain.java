@@ -20,7 +20,7 @@ public class ID3ToolMain {
     try {
       ID3Reader tool = ID3ReaderFactory.makeAnID3Reader(args[0]);
       ID3TagFormatter formatter = new SimpleFormatter();
-      presenter.display((formatter.format(tool.perform())));
+      presenter.display((formatter.format(tool)));
     } catch (MP3MediaException e) {
       presenter.display(e.getMessage());
     }
