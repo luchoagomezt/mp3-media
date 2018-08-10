@@ -3,12 +3,6 @@ package ca.media.mp3.id3main;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.testng.annotations.Test;
-
-import ca.media.mp3.application.ID3Reader;
-import ca.media.mp3.application.ID3TagFormatter;
-import ca.media.mp3.application.MP3MediaException;
-import ca.media.mp3.entity.ID3V2Tag;
-
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
@@ -67,12 +61,5 @@ public class ID3ToolMainTest {
   public void fileNameWasFoundButItWasNotAMP3File() {
     ID3ToolMain.main(new String[]{"src/test/resources/notAMP3File.mp3"});
     assertEquals(outContent.toString(), String.format("%s%n", "The stream does not contain an ID3 V2 tag"));
-  }
-
-  @Test(enabled = false)
-  public void microTest() {
-    ID3Reader tool = () -> new ID3V2Tag(new int[]{});
-    ID3TagFormatter ftr = t -> t.perform().toString();
-    ftr.format(tool);
   }
 }
