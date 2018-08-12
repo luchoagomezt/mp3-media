@@ -17,12 +17,8 @@ public class ID3ToolMain {
       return;
     }
     
-    try {
-      ID3Reader tool = ID3ReaderFactory.makeAnID3Reader(args[0]);
-      ID3TagFormatter formatter = new SimpleFormatter();
-      presenter.display((formatter.format(tool.perform())));
-    } catch (MP3MediaException e) {
-      presenter.display(e.getMessage());
-    }
+    ID3Reader tool = ID3ReaderFactory.makeAnID3Reader(args[0]);
+    ID3TagFormatter formatter = new SimpleFormatter();
+    presenter.display((formatter.format(tool.perform())));
   }
 }
