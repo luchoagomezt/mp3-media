@@ -5,7 +5,6 @@ import ca.media.mp3.adapter.ID3ReaderFactory;
 import ca.media.mp3.adapter.SimpleFormatter;
 import ca.media.mp3.application.ID3Reader;
 import ca.media.mp3.application.ID3TagFormatter;
-import ca.media.mp3.application.MP3MediaException;
 import ca.media.mp3.application.Presenter;
 
 public class ID3ToolMain {
