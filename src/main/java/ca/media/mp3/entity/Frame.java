@@ -13,7 +13,6 @@ public class Frame
   {
     checkIfDataIsTooShort(data);
     checkIfSizeDescriptorIsValid(data);
-    checkIfEncodingIsValid(data);
 
     header = new Header(data);
     content = getContent(data);
@@ -38,25 +37,15 @@ public class Frame
   private List<Character> getContentAsACharacterList(final int[] data) 
   {
     List<Character> contentList = new ArrayList<>();
-    for(int i = HEADER_SIZE + 1; i < data.length; i++) 
-    {
+    for(int i = HEADER_SIZE + 1; i < data.length; i++) {
       contentList.add(new Character((char)data[i]));
     }
     return contentList;
   }
 
-  private static void checkIfEncodingIsValid(final int[] data) 
-  {
-    if (data.length > HEADER_SIZE && data[HEADER_SIZE] != 0x00) 
-    {
-      throw new IllegalArgumentException("Encoding byte is invalid");
-    }
-  }
-
   private static void checkIfDataIsTooShort(final int[] data) 
   {
-    if(data.length < HEADER_SIZE) 
-    {
+    if(data.length < HEADER_SIZE) {
       throw new IllegalArgumentException(
         "Length of the data array passed as a parameter is less than the valid size for a frame's header");
     }
@@ -64,8 +53,7 @@ public class Frame
 
   private static void checkIfSizeDescriptorIsValid(final int[] data) 
   {
-    if(!Header.isSizeDescriptorValid(data)) 
-    {
+    if(!Header.isSizeDescriptorValid(data)) {
       throw new IllegalArgumentException("One or more of the four size bytes is more or equal to " + Header.MAXIMUM_SIZE_VALUE);
     }
   }
@@ -73,7 +61,6 @@ public class Frame
   public static boolean isValid(final int[] data) 
   {
     checkIfDataIsTooShort(data);
-    checkIfEncodingIsValid(data);
     checkIfSizeDescriptorIsValid(data);
     return Header.isValidID(data);
   }
