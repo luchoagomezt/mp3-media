@@ -102,7 +102,7 @@ public class Frame
 
   private static class Header 
   {
-    public static final int MAXIMUM_SIZE_VALUE = 128;
+    public static final int MAXIMUM_SIZE_VALUE = 256;
     private final String id;
     private final int contentSize;
     private final int firstFlag;
