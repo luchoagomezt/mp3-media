@@ -49,7 +49,7 @@ public class ID3ToolMainTest {
   public void fileNameWasFoundAndProcessed() {
     ID3ToolMain.main(new String[]{"src/test/resources/journey.mp3"});
     assertEquals(outContent.toString(), 
-      String.format("%s%n", "{\"header\":{\"version\":3, \"revision\":0, \"flags\":0, \"size\":300022}, \"frames\":["
+      String.format("%s%n", "{\"version\":3, \"revision\":0, \"flags\":0, \"size\":300022, \"frames\":["
         + "{\"id\":\"TIT2\", \"size\":6, \"flags\":0x0000, \"content\":\"Title\"}, "
         + "{\"id\":\"TPE1\", \"size\":7, \"flags\":0x0000, \"content\":\"Artist\"}, "
         + "{\"id\":\"TALB\", \"size\":6, \"flags\":0x0000, \"content\":\"Album\"}, "

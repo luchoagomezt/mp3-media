@@ -208,7 +208,7 @@ public class ID3V2Tag
     {
       return 
         String.format(
-          "{\"header\":{\"version\":%d, \"revision\":%d, \"flags\":%d, \"size\":%d}",
+          "{\"version\":%d, \"revision\":%d, \"flags\":%d, \"size\":%d",
           majorVersion, revisionNumber, flag, size);
     }
   }
