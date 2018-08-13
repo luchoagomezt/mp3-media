@@ -4,7 +4,7 @@ import ca.media.mp3.entity.ID3V2Tag;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
-public class SimplePresenterTest {
+public class SimpleFormatterTest {
 
   @Test
   public void tagToStringWithNonNullParameter() {
