@@ -74,7 +74,11 @@ public class Frame
 
   public String toString() 
   {
-    return String.format("{%s, \"content\":\"%s\"}", getHeader().toString(), getContent());
+    String content = getContent();
+    if (getHeader().getId().equalsIgnoreCase("APIC")) {
+       content = "image";
+    }
+    return String.format("{%s, \"content\":\"%s\"}", getHeader().toString(), content);
   }
   
   public String getContent() 
