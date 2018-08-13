@@ -6,7 +6,7 @@ import java.util.List;
 public class Frame 
 {
   public static final int HEADER_SIZE = 10;
-	private static final int NULL = 0;  
+  private static final int NULL = 0;
   private final String content;
   private final Header header;
 
