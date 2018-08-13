@@ -5,7 +5,8 @@ import java.util.List;
 
 public class Frame 
 {
-  public static final int HEADER_SIZE = 10;  
+  public static final int HEADER_SIZE = 10;
+	private static final int NULL = 0;  
   private final String content;
   private final Header header;
 
@@ -37,7 +38,10 @@ public class Frame
   private List<Character> getContentAsACharacterList(final int[] data) 
   {
     List<Character> contentList = new ArrayList<>();
-    for(int i = HEADER_SIZE + 1; i < data.length; i++) {
+    for(int i = HEADER_SIZE; i < data.length; i++) {
+      if (data[i] == NULL) {
+        continue;
+      }
       contentList.add(new Character((char)data[i]));
     }
     return contentList;
