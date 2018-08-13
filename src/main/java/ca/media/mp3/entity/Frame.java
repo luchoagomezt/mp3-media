@@ -156,7 +156,7 @@ public class Frame
     
     public String toString()
     {
-      String format = "\"id\":\"%s\", \"size\":%d, \"flags\":{\"first\":%d, \"second\":%d}";
+      String format = "\"id\":\"%s\", \"size\":%d, \"flags\":0x%02X%02X";
       return String.format(format, getId(), getContentSize(), getFirstFlag(), getSecondFlag());
     }
   }
