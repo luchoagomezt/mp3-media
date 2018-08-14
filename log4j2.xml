@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="debug" strict="true" name="MP3Media" packages="org.apache.logging.log4j.test">
   <Properties>
-    <Property name="filename">src/test/resources/mp3media-$${sd:type}.log</Property>
+    <Property name="filename">mp3media-$${sd:type}.log</Property>
   </Properties>
   <ThresholdFilter level="debug"/>
  
