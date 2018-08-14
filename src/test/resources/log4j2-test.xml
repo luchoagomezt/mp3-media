@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="debug" strict="true" name="MP3Media" packages="org.apache.logging.log4j.test">
   <Properties>
-    <Property name="filename">src/test/resources/mp3media-$${sd:type}.log</Property>
+    <Property name="filename">mp3media.log</Property>
   </Properties>
-  <ThresholdFilter level="debug"/>
+  <ThresholdFilter level="error"/>
  
   <Appenders>
-    <Console name="STDOUT">
+    <File name="File" fileName="src/test/resources/${filename}">
       <PatternLayout pattern="%m%n"/>
-      <ThresholdFilter level="debug"/>
-    </Console>
-    <File name="File" fileName="${filename}">
-      <PatternLayout pattern="%m%n"/>
-      <ThresholdFilter level="debug"/>
+      <ThresholdFilter level="error"/>
     </File>
   </Appenders>
  
   <Loggers>
+    <Root level="trace">
+      <AppenderRef ref="File"/>
+      </Root>
   </Loggers>
  
 </Configuration>
