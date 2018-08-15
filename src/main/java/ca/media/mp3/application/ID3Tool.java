@@ -3,6 +3,7 @@ package ca.media.mp3.application;
 import java.io.InputStream;
 import java.io.IOException;
 import ca.media.mp3.entity.ID3V2Tag;
+import ca.media.mp3.entity.MP3MediaException;
 
 public class ID3Tool implements ID3Reader 
 {

@@ -3,11 +3,13 @@ package ca.media.mp3.id3main;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.testng.annotations.Test;
+
+import ca.media.mp3.entity.MP3MediaException;
+
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import static org.testng.Assert.assertEquals;
-import ca.media.mp3.application.MP3MediaException;
 
 public class ID3ToolMainTest {
   private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();

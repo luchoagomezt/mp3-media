@@ -8,6 +8,8 @@ import java.io.InputStream;
 
 import org.testng.annotations.Test;
 
+import ca.media.mp3.entity.MP3MediaException;
+
 @Test
 public class ID3V2ToolTest {
   

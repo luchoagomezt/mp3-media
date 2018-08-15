@@ -2,7 +2,7 @@ package ca.media.mp3.adapter;
 
 import org.testng.annotations.Test;
 
-import ca.media.mp3.application.MP3MediaException;
+import ca.media.mp3.entity.MP3MediaException;
 
 import static org.testng.Assert.assertNotNull;
 

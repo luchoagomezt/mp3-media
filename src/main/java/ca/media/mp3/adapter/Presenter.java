@@ -1,4 +1,4 @@
-package ca.media.mp3.application;
+package ca.media.mp3.adapter;
 
 @FunctionalInterface
 public interface Presenter
