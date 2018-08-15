@@ -112,6 +112,8 @@
                 <configuration>
                 <archive>
                   <manifest>
+                       <addClasspath>true</addClasspath>
+                       <classpathPrefix>dependency-jars/</classpathPrefix>
                        <mainClass>ca.media.mp3.id3main.ID3ToolMain</mainClass>
                   </manifest>
                 </archive>
