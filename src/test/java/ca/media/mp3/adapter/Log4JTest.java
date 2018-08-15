@@ -12,7 +12,6 @@ public class Log4JTest
   @BeforeTest
   public void setUp() 
   {
-    System.setProperty("log4j.configurationFile", "src/test/resources/log4j2-test.xml");
     logger = LogManager.getLogger("Log4JTest.class");
   }
 
