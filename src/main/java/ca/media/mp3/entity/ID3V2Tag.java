@@ -23,15 +23,15 @@ public class ID3V2Tag
     List<Frame> list = new ArrayList<Frame>();
     int current = HEADER_SIZE;
     int last = header.getSize();
-    while ((Frame.HEADER_SIZE + current) < last && (Frame.HEADER_SIZE + current) < data.length) {
+    while ((current + Frame.HEADER_SIZE) < last) {
       int[] frameHeader = Arrays.copyOfRange(data, current, Frame.HEADER_SIZE + current);
       if(!Frame.isValid(frameHeader)) {
         break;
       }
       int frameSize = Frame.calculateContentSize(frameHeader);
-      int[] frameArray = Arrays.copyOfRange(data, current, Frame.HEADER_SIZE + current + frameSize);
+      int[] frameArray = Arrays.copyOfRange(data, current, current + Frame.HEADER_SIZE + frameSize);
+      current = current + Frame.HEADER_SIZE + frameSize;
       list.add(new Frame(frameArray));
-      current = Frame.HEADER_SIZE + current + frameSize;
     }
     return list;
   }
