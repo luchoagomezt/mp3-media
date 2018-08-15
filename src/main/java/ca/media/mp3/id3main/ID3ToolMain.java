@@ -4,8 +4,9 @@ import ca.media.mp3.adapter.ConsolePresenter;
 import ca.media.mp3.adapter.ID3ReaderFactory;
 import ca.media.mp3.adapter.Presenter;
 import ca.media.mp3.adapter.SimpleFormatter;
-import ca.media.mp3.application.ID3Reader;
-import ca.media.mp3.application.ID3TagFormatter;
+import ca.media.mp3.entity.ID3Reader;
+import ca.media.mp3.entity.ID3TagFormatter;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
