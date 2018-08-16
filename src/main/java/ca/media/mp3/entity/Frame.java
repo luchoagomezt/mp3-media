@@ -123,9 +123,9 @@ public class Frame
     public static boolean isValidID(final int[] data) 
     {
       return 
-        data[0] != 0x00 || 
-        data[1] != 0x00 || 
-        data[2] != 0x00 || 
+        data[0] != 0x00 && 
+        data[1] != 0x00 && 
+        data[2] != 0x00 && 
         data[3] != 0x00;
     }
     
