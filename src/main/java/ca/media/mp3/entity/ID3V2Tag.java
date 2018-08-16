@@ -21,19 +21,26 @@ public class ID3V2Tag
   private List<Frame> buildFrameList(final int[] data)
   {
     List<Frame> list = new ArrayList<Frame>();
-    int current = HEADER_SIZE;
     int last = header.getSize();
-    while ((current + Frame.HEADER_SIZE) < last) {
-      int[] frameHeader = Arrays.copyOfRange(data, current, Frame.HEADER_SIZE + current);
-      if(!Frame.isValid(frameHeader)) {
-        break;
-      }
-      int frameSize = Frame.calculateContentSize(frameHeader);
-      int[] frameArray = Arrays.copyOfRange(data, current, current + Frame.HEADER_SIZE + frameSize);
-      current = current + Frame.HEADER_SIZE + frameSize;
+
+    int from = HEADER_SIZE;
+    int[] frameHeader = copyStartingAtAmount(data, from, Frame.HEADER_SIZE);
+    int frameSize = Frame.HEADER_SIZE + Frame.calculateContentSize(frameHeader);
+
+    while (Frame.isValid(frameHeader) && (from + frameSize) < last) {
+      int[] frameArray = copyStartingAtAmount(data, from, frameSize);
       list.add(new Frame(frameArray));
+      
+      from = from + frameSize;
+      frameHeader = copyStartingAtAmount(data, from, Frame.HEADER_SIZE);
+      frameSize = Frame.HEADER_SIZE + Frame.calculateContentSize(frameHeader);
     }
     return list;
+  }
+
+  private int[] copyStartingAtAmount(int[] original, int from, int amount) 
+  {
+    return Arrays.copyOfRange(original, from, from + amount);
   }
 
   public static int calculateTagSize(final int[] data) 
