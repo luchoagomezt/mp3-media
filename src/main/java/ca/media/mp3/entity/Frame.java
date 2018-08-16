@@ -30,7 +30,7 @@ public class Frame
     if (header.getId().equalsIgnoreCase("APIC")) {
       return "image";
     }
-    List<Character> characterList = getContentAsACharacterList(content);
+    List<Character> characterList = contentAsACharacterList();
     return characterListToString(characterList);
   }
 
@@ -44,14 +44,14 @@ public class Frame
       orElse("");
   }
 
-  private List<Character> getContentAsACharacterList(final int[] data) 
+  private List<Character> contentAsACharacterList() 
   {
     List<Character> contentList = new ArrayList<>();
-    for(int i = 0; i < data.length; i++) {
-      if (data[i] == NULL) {
+    for(int i = 0; i < content.length; i++) {
+      if (content[i] == NULL) {
         continue;
       }
-      contentList.add(new Character((char)data[i]));
+      contentList.add(new Character((char)content[i]));
     }
     return contentList;
   }
