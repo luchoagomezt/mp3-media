@@ -1,6 +1,6 @@
 package ca.media.mp3.id3main;
 
-import ca.media.mp3.application.ID3ReaderFactory;
+import ca.media.mp3.adapter.ID3ReaderFactory;
 import ca.media.mp3.entity.ID3Reader;
 import ca.media.mp3.entity.ID3V2Tag;
 import java.util.function.Consumer;
