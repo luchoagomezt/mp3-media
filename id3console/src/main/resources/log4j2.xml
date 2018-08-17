@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="error" strict="true" name="MP3Media" packages="org.apache.logging.log4j.test">
+  <Properties>
+    <Property name="filename">mp3media.log</Property>
+  </Properties>
+  <ThresholdFilter level="trace"/>
+ 
+  <Appenders>
+    <File name="File" fileName="${filename}">
+      <Layout type="PatternLayout">
+        <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
+      </Layout>
+      <ThresholdFilter level="trace"/>
+    </File>
+  </Appenders>
+ 
+  <Loggers>
+    <Logger name="org.apache.logging.log4j.test1" level="debug" additivity="false">
+      <AppenderRef ref="File"/>
+    </Logger>
+    <Root level="trace">
+      <AppenderRef ref="File"/>
+      </Root>
+  </Loggers>
+ 
+</Configuration>
