@@ -1,13 +1,14 @@
 package ca.media.mp3.entity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Frame 
 {
   public static final int HEADER_SIZE = 10;
   private static final int NULL = 0;
-  private final String content;
+  private final int[] content;
   private final Header header;
 
   public Frame(int[] data)
@@ -19,9 +20,17 @@ public class Frame
     content = getContent(data);
   }
 
-  private String getContent(final int[] data) 
+  private int[] getContent(final int[] data) 
   {
-    List<Character> characterList = getContentAsACharacterList(data);
+    return Arrays.copyOfRange(data, HEADER_SIZE, data.length);
+  }
+
+  private String contentToString() 
+  {
+    if (header.getId().equalsIgnoreCase("APIC")) {
+      return "image";
+    }
+    List<Character> characterList = contentAsACharacterList();
     return characterListToString(characterList);
   }
 
@@ -35,14 +44,14 @@ public class Frame
       orElse("");
   }
 
-  private List<Character> getContentAsACharacterList(final int[] data) 
+  private List<Character> contentAsACharacterList() 
   {
     List<Character> contentList = new ArrayList<>();
-    for(int i = HEADER_SIZE; i < data.length; i++) {
-      if (data[i] == NULL) {
+    for(int i = 0; i < content.length; i++) {
+      if (content[i] == NULL) {
         continue;
       }
-      contentList.add(new Character((char)data[i]));
+      contentList.add(new Character((char)content[i]));
     }
     return contentList;
   }
@@ -78,23 +87,14 @@ public class Frame
 
   public String toString() 
   {
-    String content = getContent();
-    if (getHeader().getId().equalsIgnoreCase("APIC")) {
-       content = "image";
-    }
-    return String.format("{%s, \"content\":\"%s\"}", getHeader().toString(), content);
+    return String.format("{%s, \"content\":\"%s\"}", header.toString(), contentToString());
   }
   
-  public String getContent() 
+  public int[] getContent() 
   {
     return content;
   }
   
-  public Header getHeader() 
-  {
-    return header;
-  }
-
   private static class Header 
   {
     public static final int MAXIMUM_SIZE_VALUE = 256;
