@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="ID3 V2 Tool Console" verbose="1" thread-count="1" parallel="tests" configfailurepolicy="continue">
+    <test name="adapter test" annotations="JDK" preserve-order="true">
+        <classes>
+            <class name="ca.media.mp3.adapter.SimpleFormatterTest"/>
+            <class name="ca.media.mp3.adapter.ID3ReaderFactoryTest"/>
+            <class name="ca.media.mp3.adapter.Log4JTest"/>
+            </classes>
+    </test>
+    <test name="main test" annotations="JDK" preserve-order="true">
+        <classes>
+            <class name="ca.media.mp3.id3main.FunctionalID3ToolMainTest"/>
+            <class name="ca.media.mp3.id3main.ID3ToolMainTest"/>
+            </classes>
+    </test>
+</suite>
