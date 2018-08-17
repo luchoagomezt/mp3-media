@@ -125,5 +125,6 @@
     <packaging>pom</packaging>
   <modules>
     <module>id3core</module>
+    <module>id3console</module>
   </modules>
 </project>
