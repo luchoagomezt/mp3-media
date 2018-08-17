@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="error" strict="true" name="MP3Media" packages="org.apache.logging.log4j.test">
+  <Properties>
+    <Property name="filename">src/test/resources/mp3media.log</Property>
+  </Properties>
+  <ThresholdFilter level="trace"/>
+ 
+  <Appenders>
+    <File name="File" fileName="${filename}">
+      <PatternLayout pattern="%m%n"/>
+      <ThresholdFilter level="trace"/>
+    </File>
+  </Appenders>
+ 
+  <Loggers>
+    <Root level="trace">
+      <AppenderRef ref="File"/>
+      </Root>
+  </Loggers>
+ 
+</Configuration>
