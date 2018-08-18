@@ -7,9 +7,9 @@
     <artifactId>id3tool</artifactId>
     <version>1.0.26</version>
   </parent>
-  <groupId>ca.media.mp3.console</groupId>
+  <groupId>ca.media.mp3</groupId>
   <artifactId>id3console</artifactId>
-  <version>0.0.1</version>
+  <version>1.0.26</version>
   <name>id3console</name>
   <url>http://maven.apache.org</url>
   <properties>
@@ -17,9 +17,9 @@
   </properties>
   <dependencies>
     <dependency>
-      <groupId>ca.media.mp3.core</groupId>
+      <groupId>ca.media.mp3</groupId>
       <artifactId>id3core</artifactId>
-      <version>0.0.1</version>
+      <version>1.0.26</version>
     </dependency>
   </dependencies>
     <build>
