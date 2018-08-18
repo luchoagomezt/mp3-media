@@ -5,7 +5,6 @@
         <classes>
             <class name="ca.media.mp3.adapter.SimpleFormatterTest"/>
             <class name="ca.media.mp3.adapter.ID3ReaderFactoryTest"/>
-            <class name="ca.media.mp3.adapter.Log4JTest"/>
             </classes>
     </test>
     <test name="main test" annotations="JDK" preserve-order="true">
