@@ -3,12 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.0.4.RELEASE</version>
-  </parent>
-
+  <groupId>ca.media.mp3</groupId>
   <artifactId>id3console</artifactId>
   <name>id3console</name>
   <version>1.0.26</version>
@@ -25,17 +20,6 @@
       <groupId>ca.media.mp3</groupId>
       <artifactId>id3core</artifactId>
       <version>${project.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
     </dependency>
 
     <dependency>
@@ -107,12 +91,32 @@
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.5.1</version>
+                <executions>
+                   <execution>
+                    <id>copy-dependencies</id>
+                    <phase>package</phase>
+                    <goals>
+                       <goal>copy-dependencies</goal>
+                    </goals>
+                    <configuration>
+                      <includeScope>runtime</includeScope>
+                      <outputDirectory>${project.build.directory}/dependency-jars/</outputDirectory>
+                    </configuration>
+                   </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
                 <archive>
                   <manifest>
                        <addClasspath>true</addClasspath>
-                       <mainClass>ca.media.mp3.id3main.ID3ConsoleMain</mainClass>
+                       <classpathPrefix>dependency-jars/</classpathPrefix>
+                       <mainClass>ca.media.mp3.console.ID3ConsoleMain</mainClass>
                   </manifest>
                 </archive>
                 </configuration>
