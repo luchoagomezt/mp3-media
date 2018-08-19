@@ -5,4 +5,4 @@ if [ ${#} -lt 1 ] ; then
         exit 1
 fi
 
-java -jar id3console/target/id3console-0.0.1.jar $1
+java -jar id3console/target/id3console-1.0.26.jar $1
