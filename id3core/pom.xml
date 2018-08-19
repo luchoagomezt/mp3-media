@@ -9,7 +9,7 @@
   <name>id3core</name>
   <packaging>jar</packaging>
 
-  <url>http://maven.apache.org</url>
+  <url>https://github.com/luchoagomezt/mp3-media</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
