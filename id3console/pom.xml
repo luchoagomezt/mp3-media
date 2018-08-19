@@ -2,62 +2,65 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
+
   <parent>
-    <groupId>ca.media.mp3</groupId>
-    <artifactId>id3tool</artifactId>
-    <version>1.0.26</version>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.0.4.RELEASE</version>
   </parent>
-  <groupId>ca.media.mp3</groupId>
+
   <artifactId>id3console</artifactId>
-  <version>1.0.26</version>
   <name>id3console</name>
-  <url>http://maven.apache.org</url>
+  <version>1.0.26</version>
+  <packaging>jar</packaging>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
+
   <dependencies>
     <dependency>
       <groupId>ca.media.mp3</groupId>
       <artifactId>id3core</artifactId>
-      <version>1.0.26</version>
+      <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>6.8</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
-    <build>
+
+  <build>
         <plugins>
             <!-- Copy project dependency -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.5.1</version>
-                <executions>
-                   <execution>
-                    <id>copy-dependencies</id>
-                    <phase>package</phase>
-                    <goals>
-                       <goal>copy-dependencies</goal>
-                    </goals>
-                    <configuration>
-                      <!-- exclude junit, we need runtime dependency only -->
-                      <includeScope>runtime</includeScope>
-                      <outputDirectory>${project.build.directory}/dependency-jars/</outputDirectory>
-                    </configuration>
-                   </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.4</version>
                 <configuration>
                 <archive>
                   <manifest>
                        <addClasspath>true</addClasspath>
-                       <classpathPrefix>dependency-jars/</classpathPrefix>
                        <mainClass>ca.media.mp3.id3main.ID3ConsoleMain</mainClass>
                   </manifest>
                 </archive>
                 </configuration>
             </plugin>
         </plugins>
-    </build>
+  </build>
 </project>
