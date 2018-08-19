@@ -9,9 +9,10 @@ import java.io.InputStream;
 import org.testng.annotations.Test;
 
 import ca.media.mp3.entity.MP3MediaException;
+import ca.media.mp3.usercase.ID3Tool;
 
 @Test
-public class ID3V2ToolTest {
+public class ID3ToolTest {
   
   @Test
   public void performOnMP3WithAnID3V2TagWithoutFrames() throws IOException {

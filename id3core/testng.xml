@@ -9,7 +9,7 @@
     </test>
     <test name="application test" annotations="JDK" preserve-order="true">
         <classes>
-            <class name="ca.media.mp3.application.ID3V2ToolTest"/>
+            <class name="ca.media.mp3.application.ID3ToolTest"/>
         </classes>
     </test>
 </suite>

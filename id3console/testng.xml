@@ -9,8 +9,8 @@
     </test>
     <test name="main test" annotations="JDK" preserve-order="true">
         <classes>
-            <class name="ca.media.mp3.id3main.FunctionalID3ToolMainTest"/>
-            <class name="ca.media.mp3.id3main.ID3ToolMainTest"/>
+            <class name="ca.media.mp3.id3main.FunctionalID3ConsoleMainTest"/>
+            <class name="ca.media.mp3.id3main.ID3ConsoleMainTest"/>
             </classes>
     </test>
 </suite>

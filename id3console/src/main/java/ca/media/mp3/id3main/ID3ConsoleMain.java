@@ -7,7 +7,7 @@ import ca.media.mp3.adapter.Presenter;
 import ca.media.mp3.adapter.SimpleFormatter;
 import ca.media.mp3.entity.ID3Reader;
 
-public class ID3ToolMain {
+public class ID3ConsoleMain {
   
   public static void main(String[] args) {
 

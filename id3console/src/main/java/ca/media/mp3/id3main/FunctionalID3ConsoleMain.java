@@ -6,7 +6,7 @@ import ca.media.mp3.entity.ID3V2Tag;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-public class FunctionalID3ToolMain {
+public class FunctionalID3ConsoleMain {
 
   public static void main(String[] args) {
     Consumer<String> presenter = s -> System.out.printf("%s%n", s);

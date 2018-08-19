@@ -53,7 +53,7 @@
                   <manifest>
                        <addClasspath>true</addClasspath>
                        <classpathPrefix>dependency-jars/</classpathPrefix>
-                       <mainClass>ca.media.mp3.id3main.ID3ToolMain</mainClass>
+                       <mainClass>ca.media.mp3.id3main.ID3ConsoleMain</mainClass>
                   </manifest>
                 </archive>
                 </configuration>

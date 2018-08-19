@@ -5,9 +5,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-import ca.media.mp3.application.ID3Tool;
 import ca.media.mp3.entity.ID3Reader;
 import ca.media.mp3.entity.MP3MediaException;
+import ca.media.mp3.usercase.ID3Tool;
 
 public class ID3ReaderFactory {
 
