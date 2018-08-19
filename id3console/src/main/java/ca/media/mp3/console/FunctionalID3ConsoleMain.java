@@ -1,4 +1,4 @@
-package ca.media.mp3.id3main;
+package ca.media.mp3.console;
 
 import ca.media.mp3.adapter.ID3ReaderFactory;
 import ca.media.mp3.entity.ID3Reader;

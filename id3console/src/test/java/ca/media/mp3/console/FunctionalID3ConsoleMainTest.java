@@ -1,9 +1,10 @@
-package ca.media.mp3.id3main;
+package ca.media.mp3.console;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.testng.annotations.Test;
 
+import ca.media.mp3.console.FunctionalID3ConsoleMain;
 import ca.media.mp3.entity.MP3MediaException;
 
 import org.testng.annotations.BeforeClass;
@@ -11,7 +12,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import static org.testng.Assert.assertEquals;
 
-public class ID3ConsoleMainTest {
+public class FunctionalID3ConsoleMainTest {
   private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
   private final PrintStream originalOut = System.out;
   
@@ -32,24 +33,24 @@ public class ID3ConsoleMainTest {
   
   @Test
   public void usingTheConstructorJustForCoverage() {
-    new ID3ConsoleMain();
+    new FunctionalID3ConsoleMain();
   }
 
   @Test
   public void emptyParameters() {
-    ID3ConsoleMain.main(new String[]{});
+  	FunctionalID3ConsoleMain.main(new String[]{});
     assertEquals(outContent.toString(), String.format("%s%n", "usage: id3 <path to MP3 file>"));
   }
 
   @Test(expectedExceptions = {MP3MediaException.class})
   public void fileNameWasNotFound() {
-    ID3ConsoleMain.main(new String[]{"notAFile.mp3"});
+  	FunctionalID3ConsoleMain.main(new String[]{"notAFile.mp3"});
     assertEquals(outContent.toString(), String.format("%s%n", "notAFile.mp3 (No such file or directory)"));
   }
 
   @Test
   public void fileNameWasFoundAndProcessed() {
-    ID3ConsoleMain.main(new String[]{"src/test/resources/journey.mp3"});
+  	FunctionalID3ConsoleMain.main(new String[]{"src/test/resources/journey.mp3"});
     assertEquals(outContent.toString(), 
       String.format("%s%n", "{\"version\":3, \"revision\":0, \"flags\":0x00, \"size\":300022, \"frames\":[\n"
         + "{\"id\":\"TIT2\", \"size\":6, \"flags\":0x0000, \"content\":\"Title\"},\n"
@@ -62,7 +63,7 @@ public class ID3ConsoleMainTest {
 
   @Test(expectedExceptions = {MP3MediaException.class})
   public void fileNameWasFoundButItWasNotAMP3File() {
-    ID3ConsoleMain.main(new String[]{"src/test/resources/notAMP3File.mp3"});
+  	FunctionalID3ConsoleMain.main(new String[]{"src/test/resources/notAMP3File.mp3"});
     assertEquals(outContent.toString(), String.format("%s%n", "The stream does not contain an ID3 V2 tag"));
   }
 }
