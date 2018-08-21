@@ -9,6 +9,7 @@ import java.io.BufferedInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.springframework.stereotype.Service;
@@ -41,6 +42,8 @@ public class ID3WebReaderTool implements ID3WebReader
     } catch (FileNotFoundException e) {
       throw new MP3MediaException(url + " (No such file or directory)");
     } catch (IllegalArgumentException e) {
+      throw new MP3MediaException(e);
+    } catch (MalformedURLException e) {
       throw new MP3MediaException(e);
     } catch (IOException e) {
       throw new MP3MediaException(e);
