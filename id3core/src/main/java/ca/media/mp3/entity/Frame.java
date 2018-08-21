@@ -10,17 +10,29 @@ public class Frame
   private static final int NULL = 0;
   private final int[] content;
   private final Header header;
+  private final int[] data;
 
   public Frame(int[] data)
   {
     checkIfDataIsTooShort(data);
     checkIfSizeDescriptorIsValid(data);
 
+    this.data = data;
     header = new Header(data);
-    content = getContent(data);
+    content = setContent(data);
   }
 
-  private int[] getContent(final int[] data) 
+  public int[] getData()
+  {
+    return data;
+  }
+  
+  public Header getHeader()
+  {
+    return header;
+  }
+
+  private int[] setContent(final int[] data) 
   {
     return Arrays.copyOfRange(data, HEADER_SIZE, data.length);
   }
