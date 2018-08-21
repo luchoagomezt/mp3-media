@@ -90,6 +90,11 @@ public class ID3V2Tag
     return header.getRevisionNumber();
   }
 
+  public int getSize()
+  {
+    return header.getSize();
+  }
+
   public boolean getUnsynchronisationFlag()
   {
     return header.isUnsynchronized();
@@ -105,9 +110,9 @@ public class ID3V2Tag
     return header.isExperimental();
   }
 
-  public int getSize()
+  public List<Frame> getFrameList()
   {
-    return header.getSize();
+    return frameList;
   }
 
   @Override

@@ -10,26 +10,29 @@ public class Frame
   private static final int NULL = 0;
   private final int[] content;
   private final Header header;
-  private final int[] data;
 
   public Frame(int[] data)
   {
     checkIfDataIsTooShort(data);
     checkIfSizeDescriptorIsValid(data);
 
-    this.data = data;
     header = new Header(data);
     content = setContent(data);
   }
 
-  public int[] getData()
+  public String getId()
   {
-    return data;
+    return header.getId();
   }
-  
-  public Header getHeader()
+
+  public int getSize()
   {
-    return header;
+    return header.getContentSize();
+  }
+
+  public String getContentAsString() 
+  {
+    return contentToString();
   }
 
   private int[] setContent(final int[] data) 
@@ -101,12 +104,7 @@ public class Frame
   {
     return String.format("{%s, \"content\":\"%s\"}", header.toString(), contentToString());
   }
-  
-  public int[] getContent() 
-  {
-    return content;
-  }
-  
+
   private static class Header 
   {
     public static final int MAXIMUM_SIZE_VALUE = 256;
