@@ -35,7 +35,7 @@ public class FrameTest {
   public void frameToString() 
   {
     Frame frame = new Frame(new int[]{84, 73, 84, 50, 0, 0, 0, 6, 0, 0, 0, 84, 105, 116, 118, 101});
-    assertEquals(frame.toString(), "{\"id\":\"TIT2\", \"size\":6, \"flags\":0x0000, \"content\":\"Titve\"}");
+    assertEquals(frame.toString(), "{\"id\":\"TIT2\", \"size\":6, \"flags\":0, \"content\":\"Titve\"}");
   }
 
   @Test(expectedExceptions = {IllegalArgumentException.class}, 

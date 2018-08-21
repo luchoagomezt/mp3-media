@@ -17,14 +17,14 @@ public class ID3ToolTest {
   @Test
   public void performOnMP3WithAnID3V2TagWithoutFrames() throws IOException {
     ID3Tool tool = new ID3Tool(new ByteArrayInputStream(new byte[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x00, 0x00}));
-    assertEquals(tool.perform().toString(), "{\"version\":3, \"revision\":0, \"flags\":0x00, \"size\":0, \"frames\":[]}");
+    assertEquals(tool.perform().toString(), "{\"version\":3, \"revision\":0, \"flags\":0, \"size\":0, \"frames\":[]}");
   }
 
   @Test
   public void performOnMP3WithAnID3V2TagWithOneFrame() throws IOException {
     byte[] data = new byte[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x00, 0x0A, 0x49, 0x49, 0x49, 0x49, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
     ID3Tool tool = new ID3Tool(new ByteArrayInputStream(data));
-    String expected = "{\"version\":3, \"revision\":0, \"flags\":0x00, \"size\":10, \"frames\":[]}";
+    String expected = "{\"version\":3, \"revision\":0, \"flags\":0, \"size\":10, \"frames\":[]}";
     assertEquals(tool.perform().toString(), expected);
   }
 
