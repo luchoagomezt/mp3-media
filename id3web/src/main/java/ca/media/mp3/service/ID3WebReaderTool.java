@@ -27,12 +27,6 @@ public class ID3WebReaderTool implements ID3WebReader
   }
   
   @Override
-  public String getUrl()
-  {
-    return url;
-  }
-  
-  @Override
   public ID3V2Tag perform()
   {
     try {
