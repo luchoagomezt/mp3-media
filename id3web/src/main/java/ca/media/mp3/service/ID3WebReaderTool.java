@@ -34,7 +34,7 @@ public class ID3WebReaderTool implements ID3WebReader
       reader = new ID3Tool(mp3File);
       return reader.perform();
     } catch (FileNotFoundException e) {
-      throw new MP3MediaException(url + " (No such file or directory)");
+      throw new MP3MediaException(e);
     } catch (IllegalArgumentException e) {
       throw new MP3MediaException(e);
     } catch (MalformedURLException e) {
