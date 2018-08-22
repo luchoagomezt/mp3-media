@@ -22,24 +22,40 @@ public class ID3WebExceptionHandler extends ResponseEntityExceptionHandler
   @ExceptionHandler(MP3MediaException.class)
   public final ResponseEntity<ErrorDetails> handleMP3MediaException(MP3MediaException ex, WebRequest request)
   {
-    ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getCause().getMessage(), request.getDescription(false));
+    ErrorDetails errorDetails = getErrorDetails(ex, request);
     HttpStatus status = determineHttpStatus(ex);
     return new ResponseEntity<>(errorDetails, status);
   }
 
-  private HttpStatus determineHttpStatus(MP3MediaException ex) {
-    HttpStatus status = HttpStatus.I_AM_A_TEAPOT;
-    Object obj = ex.getCause().getClass();
-    
-    if(obj.equals(FileNotFoundException.class)) {
-      status = HttpStatus.NOT_FOUND;
-    } else if (obj.equals(IllegalArgumentException.class)) {
-      status = HttpStatus.BAD_REQUEST;
-    } else if (obj.equals(MalformedURLException.class)) {
-      status = HttpStatus.BAD_REQUEST;
-    } else if (obj.equals(IOException.class)) {
-      status = HttpStatus.SEE_OTHER;
+  private ErrorDetails getErrorDetails(MP3MediaException ex, WebRequest request)
+  {
+	String message = ex.getMessage();
+	if (ex.getCause() != null) {
+      message = ex.getCause().getMessage();
+	}
+    return new ErrorDetails(new Date(), message, request.getDescription(false));
+  }
+
+  private HttpStatus determineHttpStatus(MP3MediaException ex)
+  {
+
+    if(ex.getCause() == null) {
+      return HttpStatus.OK;
     }
-    return status;
+
+    Object obj = ex.getCause().getClass();
+    if(obj.equals(FileNotFoundException.class)) {
+      return HttpStatus.NOT_FOUND;
+    }
+
+    if (obj.equals(MalformedURLException.class)) {
+      return HttpStatus.BAD_REQUEST;
+    }
+
+    if (obj.equals(IOException.class)) {
+      return HttpStatus.UNPROCESSABLE_ENTITY;
+    }
+
+    return HttpStatus.BAD_REQUEST;
   }
 }
