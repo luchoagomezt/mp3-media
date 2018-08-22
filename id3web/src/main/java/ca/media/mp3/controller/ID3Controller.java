@@ -21,7 +21,6 @@ public class ID3Controller
   public ID3V2Tag readTag(@RequestParam(name="mp3", required=false, defaultValue="") String mp3) 
   {
     reader.setUrl(mp3);
-    ID3V2Tag tag = reader.perform();
-    return tag;
+    return reader.perform();
   }
 }
