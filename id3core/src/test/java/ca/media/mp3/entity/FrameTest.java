@@ -7,7 +7,8 @@ import static org.testng.AssertJUnit.assertTrue;
 import static org.testng.Assert.assertEquals;
 
 public class FrameTest {
-  @Test(
+  
+@Test(
     expectedExceptions = {IllegalArgumentException.class})
   public void aTooShortArrayIsNotAFrame() 
   {
@@ -28,13 +29,15 @@ public class FrameTest {
 
   @Test(expectedExceptions = {IllegalArgumentException.class})
   public void constructorReceivesAnInvalidFrameArray() {
-    new Frame(new int[]{0x49, 0x49, 0x49, 0x49, 256, 0x7F, 0x7F, 0x7F, 0x00, 0x00});
+    int[] frameWithInvalidID = new int[]{0x49, 0x49, 0x49, 0x49, 256, 0x7F, 0x7F, 0x7F, 0x00, 0x00};
+    new Frame(frameWithInvalidID);
   }
 
   @Test
   public void frameToString() 
   {
-    Frame frame = new Frame(new int[]{84, 73, 84, 50, 0, 0, 0, 6, 0, 0, 0, 84, 105, 116, 118, 101});
+    int[] validFrame = new int[]{84, 73, 84, 50, 0, 0, 0, 6, 0, 0, 0, 84, 105, 116, 118, 101};
+	Frame frame = new Frame(validFrame);
     assertEquals(frame.toString(), "{\"id\":\"TIT2\", \"size\":6, \"flags\":0, \"content\":\"Titve\"}");
   }
 
