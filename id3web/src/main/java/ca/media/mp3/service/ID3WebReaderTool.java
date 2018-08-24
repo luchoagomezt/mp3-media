@@ -1,6 +1,5 @@
 package ca.media.mp3.service;
 
-import ca.media.mp3.entity.ID3Reader;
 import ca.media.mp3.entity.ID3V2Tag;
 import ca.media.mp3.entity.MP3MediaException;
 import ca.media.mp3.usercase.ID3Tool;
