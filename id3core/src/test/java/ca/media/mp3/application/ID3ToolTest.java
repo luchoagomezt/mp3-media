@@ -4,7 +4,6 @@ import static org.testng.Assert.assertEquals;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 
 import org.testng.annotations.Test;
 
@@ -31,19 +30,20 @@ public class ID3ToolTest {
 
   @Test(expectedExceptions = {MP3MediaException.class}, expectedExceptionsMessageRegExp = "The stream does not contain an ID3 V2 tag")
   public void performOnMP3WithoutID3V2Tag() throws IOException {
-    ID3Tool tool = new ID3Tool(new ByteArrayInputStream(new byte[]{60, 60, 33, 03, 00, 00, 00, 00, 0x02, 0x00}));
+    byte[] tagWithoutFrames = new byte[]{60, 60, 33, 03, 00, 00, 00, 00, 0x02, 0x00};
+	ID3Tool tool = makeID3ToolFrom(tagWithoutFrames);
     tool.perform();
   }
 
   @Test(expectedExceptions = {MP3MediaException.class}, expectedExceptionsMessageRegExp = "The stream does not contain an ID3 V2 tag")
   public void readUptoTenBytes() throws IOException {
-    InputStream stream = new ByteArrayInputStream(new byte[]{60, 60, 33, 03, 00, 00});
-    ID3Tool tool = new ID3Tool(stream);
+    byte[] tagTooShort = new byte[]{60, 60, 33, 03, 00, 00};
+    ID3Tool tool = makeID3ToolFrom(tagTooShort);
     tool.perform();
   }
 
-  private ID3Tool makeID3ToolFrom(byte[] tagWithoutFrames) {
-	  return new ID3Tool(new ByteArrayInputStream(tagWithoutFrames));
+  private ID3Tool makeID3ToolFrom(byte[] tag) {
+	  return new ID3Tool(new ByteArrayInputStream(tag));
   }
 
 }
