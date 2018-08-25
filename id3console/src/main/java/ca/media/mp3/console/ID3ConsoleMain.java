@@ -19,7 +19,7 @@ public class ID3ConsoleMain {
     
     ID3Reader tool = ID3ReaderFactory.makeAnID3Reader(args[0]);
     ID3TagFormatter formatter = new JSONFormatter();
-    presenter.display((formatter.format(tool.perform())));
+    presenter.display(formatter.format(tool.perform()));
 
   }
 }
