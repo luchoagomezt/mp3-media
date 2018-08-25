@@ -29,10 +29,10 @@ public class ID3WebExceptionHandler extends ResponseEntityExceptionHandler
 
   private ErrorDetails getErrorDetails(MP3MediaException ex, WebRequest request)
   {
-	String message = ex.getMessage();
-	if (ex.getCause() != null) {
+    String message = ex.getMessage();
+   if (ex.getCause() != null) {
       message = ex.getCause().getMessage();
-	}
+   }
     return new ErrorDetails(new Date(), message, request.getDescription(false));
   }
 
