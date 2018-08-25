@@ -30,7 +30,7 @@ public class Frame
     return header.getContentSize();
   }
 
-  public String getContentAsString() 
+  public String getContent() 
   {
     return contentToString();
   }
