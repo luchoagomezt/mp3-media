@@ -20,8 +20,7 @@ public class ID3Tool implements ID3Reader
   public ID3V2Tag perform() 
   {
     int[] header = readHeader();
-    int tagSize = ID3V2Tag.calculateTagSize(header);
-    int[] tag = readRestOfTag(tagSize);
+    int[] tag = readRestOfTag(ID3V2Tag.calculateTagSize(header));
     copySourceArrayOntoDestination(header, tag);
     return new ID3V2Tag(tag);
   }
