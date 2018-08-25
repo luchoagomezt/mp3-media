@@ -19,15 +19,24 @@ public class ID3Tool implements ID3Reader
   @Override
   public ID3V2Tag perform() 
   {
-    int[] header = new int[ID3V2Tag.HEADER_SIZE];
-    readBuffer(header, 0);
-    checkForValidHeader(header);
+    int[] header = readHeader();
+    int tagSize = ID3V2Tag.calculateTagSize(header);
+    int[] tag = readRestOfTag(tagSize);
+    copySourceArrayOntoDestination(header, tag);
+    return new ID3V2Tag(tag);
+  }
 
-    int[] data = new int[ID3V2Tag.HEADER_SIZE + ID3V2Tag.calculateTagSize(header)];
-    arrayCopy(header, data);
-    readBuffer(data, ID3V2Tag.HEADER_SIZE);
- 
-    return new ID3V2Tag(data);
+  private int[] readRestOfTag(int amountInBytes) {
+    int[] data = new int[ID3V2Tag.HEADER_SIZE + amountInBytes];
+    readFromStreamIntoBufferAtIndex(data, ID3V2Tag.HEADER_SIZE);
+    return data;
+  }
+
+  private int[] readHeader() {
+    int[] header = new int[ID3V2Tag.HEADER_SIZE];
+    readFromStreamIntoBufferAtIndex(header, 0);
+    checkForValidHeader(header);
+    return header;
   }
 
   private void checkForValidHeader(int[] header)
@@ -37,7 +46,7 @@ public class ID3Tool implements ID3Reader
     }
   }
 
-  private void readBuffer(int[] buffer, int from)
+  private void readFromStreamIntoBufferAtIndex(int[] buffer, int from)
   {
     try {
       for(int i = from; i < buffer.length; i++) {
@@ -48,7 +57,7 @@ public class ID3Tool implements ID3Reader
     }
   }
 
-  private void arrayCopy(int[] src, int[] dest) 
+  private void copySourceArrayOntoDestination(int[] src, int[] dest) 
   {
     System.arraycopy(src, 0, dest, 0, src.length);
   }
