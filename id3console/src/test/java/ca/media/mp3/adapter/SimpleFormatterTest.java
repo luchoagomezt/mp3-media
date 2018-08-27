@@ -10,6 +10,6 @@ public class SimpleFormatterTest {
   public void tagToStringWithNonNullParameter() {
     int[] tagWithoutFrames = new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x00, 0x00};
     String toStringTagWithoutFrames = "{\"version\":3, \"revision\":0, \"flags\":0, \"size\":0, \"frames\":[]}";
-	assertEquals(new SimpleFormatter().format(new ID3V2Tag(tagWithoutFrames)), toStringTagWithoutFrames);
+    assertEquals(new SimpleFormatter().format(new ID3V2Tag(tagWithoutFrames)), toStringTagWithoutFrames);
   }
 }
