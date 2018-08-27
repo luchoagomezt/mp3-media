@@ -38,7 +38,7 @@ public class ApplicationTest
   public void responseIsTheSystemCannotTheFindPath() throws Exception
   {
     String url = "/id3tag?mp3=file:///notAPathInTheFileSystem/journey.mp3";
-    String expectedMessage = "The system cannot find the path specified";
+    String expectedMessage = "(No such file or directory)";
     this.mockMvc.
       perform(get(url)).
       andDo(print()).

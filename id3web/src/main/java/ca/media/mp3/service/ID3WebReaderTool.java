@@ -30,6 +30,7 @@ public class ID3WebReaderTool implements ID3WebReader
       final InputStream mp3File = new URL(url).openConnection().getInputStream();
       return new ID3Tool(mp3File).perform();
     } catch (FileNotFoundException e) {
+      e = new FileNotFoundException("(No such file or directory)");
       throw new MP3MediaException(e);
     } catch (MalformedURLException e) {
       throw new MP3MediaException(e);
