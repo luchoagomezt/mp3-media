@@ -40,7 +40,7 @@ public class ID3WebExceptionHandler extends ResponseEntityExceptionHandler
   {
 
     if(ex.getCause() == null) {
-      return HttpStatus.OK;
+      return HttpStatus.BAD_REQUEST;
     }
 
     Object obj = ex.getCause().getClass();
