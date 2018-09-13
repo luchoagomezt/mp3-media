@@ -133,7 +133,7 @@ public class ID3V2Tag
       orElse(""));
   }
 
-  private static class Header 
+  public static class Header 
   {
     private static final int CHAR_I = 0x49;
     private static final int CHAR_D = 0x44;
