@@ -80,36 +80,6 @@ public class ID3V2Tag
     }
   }
 
-  public int getMajorVersion()
-  {
-    return header.getMajorVersion();
-  }
-  
-  public int getRevisionNumber()
-  {
-    return header.getRevisionNumber();
-  }
-
-  public int getSize()
-  {
-    return header.getSize();
-  }
-
-  public boolean getUnsynchronisationFlag()
-  {
-    return header.isUnsynchronized();
-  }
-
-  public boolean getExtendedHeaderFlag()
-  {
-    return header.hasAnExtendedHeader();
-  }
-
-  public boolean getExperimentalFlag()
-  {
-    return header.isExperimental();
-  }
-  
   public Header getHeader()
   {
     return this.header;

@@ -55,47 +55,47 @@ public class ID3V2TagTest {
   
   @Test
   public void itIsNotUnsynchronisation() {
-    assertFalse(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 12, 27, 76}).getUnsynchronisationFlag());
+    assertFalse(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 12, 27, 76}).getHeader().isUnsynchronized());
   }
   
   @Test
   public void itIsUnsynchronisation() {
-    assertTrue(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 128, 00, 12, 27, 76}).getUnsynchronisationFlag());
+    assertTrue(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 128, 00, 12, 27, 76}).getHeader().isUnsynchronized());
   }
   
   @Test
   public void itDoesNotHaveExtendedHeader() {
-    assertFalse(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 0x00, 0x12, 0x27, 0x76}).getExtendedHeaderFlag());
+    assertFalse(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 0x00, 0x12, 0x27, 0x76}).getHeader().hasAnExtendedHeader());
   }
   
   @Test
   public void itHasExtendedHeader() {
-    assertTrue(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 64, 00, 12, 27, 76}).getExtendedHeaderFlag());
+    assertTrue(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 64, 00, 12, 27, 76}).getHeader().hasAnExtendedHeader());
   }
   
   @Test
   public void itIsNotExperimental() {
-    assertFalse(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 12, 27, 76}).getExperimentalFlag());
+    assertFalse(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 12, 27, 76}).getHeader().isExperimental());
   }
   
   @Test
   public void itIsExperimental() {
-    assertTrue(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 32, 00, 12, 27, 76}).getExperimentalFlag());
+    assertTrue(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 32, 00, 12, 27, 76}).getHeader().isExperimental());
   }
   
   @Test
   public void majorVersionIs3() {
-    assertEquals(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 12, 27, 76}).getMajorVersion(), 3);
+    assertEquals(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 12, 27, 76}).getHeader().getMajorVersion(), 3);
   }
   
   @Test
   public void revisionNumberIs0() {
-    assertEquals(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 12, 27, 76}).getRevisionNumber(), 0);
+    assertEquals(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 12, 27, 76}).getHeader().getRevisionNumber(), 0);
   }
 
   @Test
   public void sizeaIs257() {
-    assertEquals(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x02, 0x01}).getSize(), 257);
+    assertEquals(new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x02, 0x01}).getHeader().getSize(), 257);
   }
 
   @DataProvider(name = "isATagDataProvider")
