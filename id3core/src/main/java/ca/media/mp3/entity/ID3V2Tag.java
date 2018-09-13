@@ -109,6 +109,11 @@ public class ID3V2Tag
   {
     return header.isExperimental();
   }
+  
+  public Header getHeader()
+  {
+    return this.header;
+  }
 
   public List<Frame> getFrameList()
   {
