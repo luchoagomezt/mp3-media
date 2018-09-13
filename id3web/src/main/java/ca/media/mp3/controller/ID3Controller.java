@@ -25,8 +25,8 @@ public class ID3Controller
   public MP3 readTag(@RequestParam(name="mp3", required=false, defaultValue="") String mp3StringUrl)
   {
     try {
-      reader.setUrl(mp3StringUrl);
       URL url = new URL(mp3StringUrl);
+      reader.setUrl(url);
       return new MP3(url, reader.perform());
     } catch(MalformedURLException e) {
       throw new MP3MediaException(e);
