@@ -8,4 +8,5 @@ public interface ID3WebReader
 {
   ID3V2Tag perform();
   void setUrl(URL url);
+  URL getURL();
 }

@@ -34,4 +34,10 @@ public class ID3WebReaderTool implements ID3WebReader
       throw new MP3MediaException(e);
     }
   }
+  
+  @Override
+  public URL getURL()
+  {
+    return url;
+  }
 }
