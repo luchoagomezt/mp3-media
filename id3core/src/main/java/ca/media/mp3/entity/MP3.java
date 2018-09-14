@@ -24,7 +24,7 @@ public class MP3
     return this.tag;
   }
   
-  public URL getUrl()
+  public URL getURL()
   {
     return this.url;
   }
