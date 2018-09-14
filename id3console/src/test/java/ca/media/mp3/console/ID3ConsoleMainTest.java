@@ -2,6 +2,8 @@ package ca.media.mp3.console;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.net.MalformedURLException;
+
 import org.testng.annotations.Test;
 
 import ca.media.mp3.console.ID3ConsoleMain;
@@ -39,25 +41,25 @@ public class ID3ConsoleMainTest {
   }
 
   @Test
-  public void emptyParameters() {
+  public void emptyParameters() throws MalformedURLException {
     ID3ConsoleMain.main(new String[]{});
     assertEquals(outContent.toString(), String.format("%s%n", "usage: id3 <path to MP3 file>"));
   }
 
   @Test(expectedExceptions = {MP3MediaException.class})
-  public void fileNameWasNotFound() {
+  public void fileNameWasNotFound() throws MalformedURLException {
     ID3ConsoleMain.main(new String[]{"notAFile.mp3"});
     assertEquals(outContent.toString(), String.format("%s%n", "notAFile.mp3 (No such file or directory)"));
   }
 
   @Test
-  public void fileNameWasFoundAndProcessed() {
+  public void fileNameWasFoundAndProcessed() throws MalformedURLException {
     ID3ConsoleMain.main(new String[]{"src/test/resources/journey.mp3"});
     assertFalse(outContent.toString().isEmpty());
   }
 
   @Test(expectedExceptions = {MP3MediaException.class})
-  public void fileNameWasFoundButItWasNotAMP3File() {
+  public void fileNameWasFoundButItWasNotAMP3File() throws MalformedURLException {
     ID3ConsoleMain.main(new String[]{"src/test/resources/notAMP3File.mp3"});
     assertEquals(outContent.toString(), String.format("%s%n", "The stream does not contain an ID3 V2 tag"));
   }

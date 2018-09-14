@@ -1,5 +1,6 @@
 package ca.media.mp3.entity;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 public class MP3
@@ -9,8 +10,13 @@ public class MP3
   
   public MP3(URL url, ID3V2Tag tag)
   {
-    this.url = url;;
+    this.url = url;
     this.tag = tag;
+  }
+  
+  public MP3(String path, ID3V2Tag tag) throws MalformedURLException
+  {
+    this(new URL("file", "localhost", path), tag);
   }
   
   public ID3V2Tag getTag()
