@@ -10,6 +10,9 @@ import ca.media.mp3.entity.MP3MediaException;
 import ca.media.mp3.usercase.ID3Tool;
 
 public class ID3ReaderFactory {
+  private ID3ReaderFactory() {
+    throw new IllegalStateException();
+  }
 
   public static ID3Reader makeAnID3Reader(String filePath) {
     try {

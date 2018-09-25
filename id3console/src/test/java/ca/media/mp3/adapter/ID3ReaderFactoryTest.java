@@ -8,11 +8,6 @@ import static org.testng.Assert.assertNotNull;
 
 public class ID3ReaderFactoryTest {
 
-  @Test
-  public void instantiateAFactory() {
-    assertNotNull(new ID3ReaderFactory());
-  }
-
   @Test(expectedExceptions = {MP3MediaException.class})
   public void checkFileNotFound() {
     ID3ReaderFactory.makeAnID3Reader("");
