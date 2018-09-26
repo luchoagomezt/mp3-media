@@ -3,6 +3,8 @@ package ca.media.mp3.entity;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.BinaryOperator;
+import java.util.function.Function;
 
 public class ID3V2Tag 
 {
@@ -20,7 +22,7 @@ public class ID3V2Tag
 
   private List<Frame> buildFrameList(final int[] data)
   {
-    List<Frame> list = new ArrayList<Frame>();
+    List<Frame> list = new ArrayList<>();
     int last = header.getSize();
 
     int from = HEADER_SIZE;
@@ -93,13 +95,15 @@ public class ID3V2Tag
   @Override
   public String toString()
   {
-    return 
-      String.format("%s, \"frames\":[%s]}", 
-      header.toString(), 
+    Function<Frame, String> frameToString = frame -> frame.toString();
+    BinaryOperator<String> concatTwoStrings = (s1, s2) -> s1.concat(", ").concat(s2);
+    String frameListToString = 
       frameList.
       stream().
-      map(e -> e.toString()).
-      reduce((s1, s2) -> s1.concat(", ").concat(s2)).
-      orElse(""));
+      map(frameToString).
+      reduce(concatTwoStrings).
+      orElse("");
+    String theStringFormat = "%s, \"frames\":[%s]}";
+    return String.format(theStringFormat, header.toString(), frameListToString);
   }
 }
