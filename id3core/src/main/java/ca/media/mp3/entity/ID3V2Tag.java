@@ -95,7 +95,7 @@ public class ID3V2Tag
   @Override
   public String toString()
   {
-    Function<Frame, String> frameToString = frame -> frame.toString();
+    Function<Frame, String> frameToString = Frame::toString;
     BinaryOperator<String> concatTwoStrings = (s1, s2) -> s1.concat(", ").concat(s2);
     String frameListToString = 
       frameList.
