@@ -17,8 +17,8 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertEquals;
 
 public class ID3ConsoleMainTest {
-  private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-  private final PrintStream originalOut = System.out;
+  private static final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+  private static final PrintStream originalOut = System.out;
   
   @BeforeClass
   public void setUpStreams() {
