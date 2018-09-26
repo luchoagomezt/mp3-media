@@ -12,7 +12,7 @@ import java.lang.reflect.InvocationTargetException;
 public class ID3ReaderFactoryTest {
 
   @Test(expectedExceptions = {IllegalAccessException.class})
-  public void instantiateAFactory() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, IllegalArgumentException {
+  public void instantiateAFactory() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
     Constructor<ID3ReaderFactory> constructor = ID3ReaderFactory.class.getDeclaredConstructor();
     constructor.newInstance();
   }
