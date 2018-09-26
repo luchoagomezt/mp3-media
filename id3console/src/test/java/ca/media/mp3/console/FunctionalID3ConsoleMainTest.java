@@ -13,8 +13,8 @@ import org.testng.annotations.BeforeMethod;
 import static org.testng.Assert.assertEquals;
 
 public class FunctionalID3ConsoleMainTest {
-  private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-  private final PrintStream originalOut = System.out;
+  private static final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+  private static final PrintStream originalOut = System.out;
   
   @BeforeClass
   public void setUpStreams() {
