@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.BinaryOperator;
-import java.util.function.Function;
 
 public class ID3V2Tag 
 {
@@ -95,12 +94,11 @@ public class ID3V2Tag
   @Override
   public String toString()
   {
-    Function<Frame, String> frameToString = Frame::toString;
     BinaryOperator<String> concatTwoStrings = (s1, s2) -> s1.concat(", ").concat(s2);
     String frameListToString = 
       frameList.
       stream().
-      map(frameToString).
+      map(Frame::toString).
       reduce(concatTwoStrings).
       orElse("");
     String theStringFormat = "%s, \"frames\":[%s]}";
