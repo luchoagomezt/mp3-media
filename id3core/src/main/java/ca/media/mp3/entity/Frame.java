@@ -66,7 +66,7 @@ public class Frame
       if (content[i] == NULL) {
         continue;
       }
-      contentList.add(new Character((char)content[i]));
+      contentList.add((char)content[i]);
     }
     return contentList;
   }
