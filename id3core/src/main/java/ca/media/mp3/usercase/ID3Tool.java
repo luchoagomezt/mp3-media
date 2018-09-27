@@ -12,16 +12,19 @@ import ca.media.mp3.entity.MP3MediaException;
 public class ID3Tool implements ID3Reader 
 {
   private final InputStream stream;
+  private final InputStream fileInputStream; 
 
   public ID3Tool(InputStream stream) 
   {
     this.stream = stream;
+    fileInputStream = null;
   }
 
   public ID3Tool(String filePath) 
   {
     try {
-      this.stream = new BufferedInputStream(new FileInputStream(filePath));
+      fileInputStream = new FileInputStream(filePath);
+      this.stream = new BufferedInputStream(fileInputStream);
     } catch (FileNotFoundException e) {
       throw new MP3MediaException(filePath + " (No such file or directory)");
     }
@@ -33,6 +36,14 @@ public class ID3Tool implements ID3Reader
     int[] header = readHeader();
     int[] tag = readRestOfTag(ID3V2Tag.calculateTagSize(header));
     copySourceArrayOntoDestination(header, tag);
+    try {
+      stream.close();
+      if (fileInputStream != null) {
+        fileInputStream.close();
+      }
+    } catch(IOException e) {
+      throw new MP3MediaException(e); 
+    }
     return new ID3V2Tag(tag);
   }
 
