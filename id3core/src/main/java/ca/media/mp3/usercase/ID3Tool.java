@@ -1,7 +1,9 @@
 package ca.media.mp3.usercase;
 
 import java.io.InputStream;
-
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import ca.media.mp3.entity.ID3Reader;
 import ca.media.mp3.entity.ID3V2Tag;
@@ -14,6 +16,15 @@ public class ID3Tool implements ID3Reader
   public ID3Tool(InputStream stream) 
   {
     this.stream = stream;
+  }
+
+  public ID3Tool(String filePath) 
+  {
+    try {
+      this.stream = new BufferedInputStream(new FileInputStream(filePath));
+    } catch (FileNotFoundException e) {
+      throw new MP3MediaException(filePath + " (No such file or directory)");
+    }
   }
 
   @Override
