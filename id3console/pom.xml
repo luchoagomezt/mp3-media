@@ -13,6 +13,25 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+
+<maven.build.timestamp.format>MM.yyyy</maven.build.timestamp.format>
+<yearMonth>${maven.build.timestamp}</yearMonth>    
+
+<sonar.projectKey>MP3-Media</sonar.projectKey>
+<sonar.projectName>MP3-Media</sonar.projectName>
+<sonar.projectVersion>${yearMonth}</sonar.projectVersion>
+<sonar.language>java</sonar.language>
+<sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
+<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+<jacoco.version>0.8.2</jacoco.version>
+<sonar-jacoco-listeners.version>1.4</sonar-jacoco-listeners.version>
+
+<jacoco.outputDir>${project.build.directory}</jacoco.outputDir>
+<jacoco.out.ut.file>jacoco-ut.exec</jacoco.out.ut.file>
+<sonar.jacoco.reportPath>${jacoco.outputDir}/${jacoco.out.ut.file}</sonar.jacoco.reportPath>
+<jacoco.out.it.file>jacoco-it.exec</jacoco.out.it.file>
+<sonar.jacoco.itReportPath>${jacoco.outputDir}/${jacoco.out.it.file}</sonar.jacoco.itReportPath>
+
   </properties>
 
   <dependencies>
