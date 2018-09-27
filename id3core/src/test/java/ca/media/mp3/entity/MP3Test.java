@@ -9,7 +9,7 @@ import static org.testng.Assert.assertEquals;
 
 public class MP3Test
 {
-  static final ID3V2Tag TAG = new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x02, 0x00});
+  private static final ID3V2Tag TAG = new ID3V2Tag(new int[]{0x49, 0x44, 0x33, 0x03, 00, 00, 00, 00, 0x02, 0x00});
 
   @Test
   public void constructAMP3AndGetTheArguments() throws MalformedURLException
