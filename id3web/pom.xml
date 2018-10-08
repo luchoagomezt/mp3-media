@@ -71,6 +71,10 @@
               <configuration>
                   <project>mp3-media-218803</project>
               </configuration>
+              <goals>
+                  <goal> package</goal>
+                  <goal>deploy</goal>
+              </goals>
           </plugin>
       </plugins>
   </build>
