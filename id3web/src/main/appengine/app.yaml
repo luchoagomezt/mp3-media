@@ -1,5 +1,5 @@
-service: id3tag # Id of the service
-env: flex       # Flex environment
-runtime: java   # Java runtime
+service: mp3-media # Id of the service
+env: flex          # Flex environment
+runtime: java      # Java runtime
 runtime_config:
-  jdk: openjdk8 # use OpenJDK 8
+  jdk: openjdk8    # use OpenJDK 8
