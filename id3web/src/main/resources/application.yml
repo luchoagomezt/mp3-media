@@ -1,4 +1,0 @@
-management:
-   context-path: /_ah
-   security:
-    enabled: false
