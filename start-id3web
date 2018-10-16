@@ -1,0 +1,3 @@
+#!/bin/sh
+cd id3web
+java -jar target/id3web-1.0.26.jar
