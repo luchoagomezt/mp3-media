@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = {
   "ca.media.mp3.entity",
-  "ca.media.mp3.controller",
-  "ca.media.mp3.service"})
+  "ca.media.mp3.application.controller",
+  "ca.media.mp3.application.service"})
 public class ID3Application
 {
   public static void main(String[] args)

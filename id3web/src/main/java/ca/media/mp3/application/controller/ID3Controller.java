@@ -1,10 +1,10 @@
-package ca.media.mp3.controller;
+package ca.media.mp3.application.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import ca.media.mp3.application.service.ID3WebReader;
 import ca.media.mp3.entity.MP3;
 import ca.media.mp3.entity.MP3MediaException;
-import ca.media.mp3.service.ID3WebReader;
 
 import java.net.MalformedURLException;
 import java.net.URL;

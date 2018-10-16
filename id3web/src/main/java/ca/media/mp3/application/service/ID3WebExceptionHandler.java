@@ -1,4 +1,4 @@
-package ca.media.mp3.service;
+package ca.media.mp3.application.service;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

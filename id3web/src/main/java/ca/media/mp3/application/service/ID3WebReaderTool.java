@@ -1,4 +1,4 @@
-package ca.media.mp3.service;
+package ca.media.mp3.application.service;
 
 import ca.media.mp3.entity.ID3V2Tag;
 import ca.media.mp3.entity.MP3MediaException;
