@@ -31,4 +31,11 @@ public class ID3Controller
       throw new MP3MediaException(e);
     }
   }
+  
+  @GetMapping("/")
+  @ResponseBody
+  public String defaultURL()
+  {
+    return new String("");
+  }
 }

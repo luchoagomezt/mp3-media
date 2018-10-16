@@ -45,4 +45,14 @@ public class ApplicationTest
       andExpect(status().isNotFound()).
       andExpect(content().string(containsString(expectedMessage)));
   }
+  
+  @Test
+  public void responseForTheDefaultURL() throws Exception
+  {
+    this.mockMvc.
+      perform(get("/")).
+      andDo(print()).
+      andExpect(status().is2xxSuccessful()).
+      andExpect(content().string(""));
+  }
 }
