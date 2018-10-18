@@ -7,7 +7,7 @@
   <artifactId>id3web</artifactId>
   <name>id3web</name>
   <version>1.0.26</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -37,6 +37,12 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-tomcat</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
@@ -46,35 +52,53 @@
     </dependency>
 
     <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jul-to-slf4j</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
       <version>6.8</version>
       <scope>test</scope>
     </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-configuration-processor</artifactId>
       <optional>true</optional>
     </dependency>
-  </dependencies>
+ 
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-tomcat</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+ </dependencies>
 
   <build>
       <plugins>
           <plugin>
+              <groupId>com.google.cloud.tools</groupId>
+              <artifactId>appengine-maven-plugin</artifactId>
+              <version>1.3.2</version>
+              <configuration>
+                  <project>mp3-id3v2-219704</project>
+              </configuration>
+          </plugin>
+
+          <plugin>
               <groupId>org.springframework.boot</groupId>
               <artifactId>spring-boot-maven-plugin</artifactId>
-          </plugin>
-          <plugin>
-              <groupId>com.google.appengine</groupId>
-              <artifactId>appengine-maven-plugin</artifactId>
-              <version>1.9.66</version>
-              <configuration>
-                  <project>mp3-media-218803</project>
-              </configuration>
-              <goals>
-                  <goal>package</goal>
-                  <goal>deploy</goal>
-              </goals>
           </plugin>
       </plugins>
   </build>
