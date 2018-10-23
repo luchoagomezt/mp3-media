@@ -3,6 +3,7 @@ package ca.media.mp3.application.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import ca.media.mp3.application.service.ID3WebReader;
+import ca.media.mp3.application.service.MP3Hal;
 import ca.media.mp3.entity.MP3;
 import ca.media.mp3.entity.MP3MediaException;
 
@@ -22,11 +23,11 @@ public class ID3Controller
   
   @GetMapping("/id3tag")
   @ResponseBody
-  public MP3 readTag(@RequestParam(name="mp3", required=false, defaultValue="") String mp3StringUrl)
+  public MP3Hal readTag(@RequestParam(name="mp3", required=false, defaultValue="") String mp3StringUrl)
   {
     try {
       reader.setUrl(new URL(mp3StringUrl));
-      return new MP3(reader.getURL(), reader.perform());
+      return new MP3Hal(new MP3(reader.getURL(), reader.perform()));
     } catch(MalformedURLException e) {
       throw new MP3MediaException(e);
     }
