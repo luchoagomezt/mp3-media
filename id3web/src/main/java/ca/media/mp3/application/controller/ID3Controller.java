@@ -1,5 +1,7 @@
 package ca.media.mp3.application.controller;
 
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import ca.media.mp3.application.service.ID3WebReader;
@@ -27,7 +29,9 @@ public class ID3Controller
   {
     try {
       reader.setUrl(new URL(mp3StringUrl));
-      return new MP3Hal(new MP3(reader.getURL(), reader.perform()));
+      MP3Hal mp3Hal = new MP3Hal(new MP3(reader.getURL(), reader.perform()));
+      mp3Hal.add(linkTo(methodOn(ID3Controller.class).readTag(mp3StringUrl)).withSelfRel());
+      return mp3Hal;
     } catch(MalformedURLException e) {
       throw new MP3MediaException(e);
     }
