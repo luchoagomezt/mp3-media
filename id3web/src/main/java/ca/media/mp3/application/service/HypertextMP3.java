@@ -7,12 +7,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import ca.media.mp3.entity.MP3;
 
-public class MP3Hal extends ResourceSupport
+public class HypertextMP3 extends ResourceSupport
 {
   private final MP3 mp3;
   
   @JsonCreator
-  public MP3Hal(@JsonProperty("mp3") MP3 mp3)
+  public HypertextMP3(@JsonProperty("mp3") MP3 mp3)
   {
     this.mp3 = mp3;
   }
