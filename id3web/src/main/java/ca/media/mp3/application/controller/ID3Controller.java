@@ -1,8 +1,11 @@
 package ca.media.mp3.application.controller;
 
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import ca.media.mp3.application.service.ID3WebReader;
+import ca.media.mp3.application.service.HypertextMP3;
 import ca.media.mp3.entity.MP3;
 import ca.media.mp3.entity.MP3MediaException;
 
@@ -22,11 +25,13 @@ public class ID3Controller
   
   @GetMapping("/id3tag")
   @ResponseBody
-  public MP3 readTag(@RequestParam(name="mp3", required=false, defaultValue="") String mp3StringUrl)
+  public HypertextMP3 readTag(@RequestParam(name="mp3", required=false, defaultValue="") String mp3StringUrl)
   {
     try {
       reader.setUrl(new URL(mp3StringUrl));
-      return new MP3(reader.getURL(), reader.perform());
+      HypertextMP3 mp3 = new HypertextMP3(new MP3(reader.getURL(), reader.perform()));
+      mp3.add(linkTo(methodOn(ID3Controller.class).readTag(mp3StringUrl)).withSelfRel());
+      return mp3;
     } catch(MalformedURLException e) {
       throw new MP3MediaException(e);
     }
