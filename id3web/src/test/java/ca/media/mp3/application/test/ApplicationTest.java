@@ -15,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import ca.media.mp3.application.controller.ID3Controller;
+import ca.media.mp3.application.ID3Application;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -23,7 +23,7 @@ import ca.media.mp3.application.controller.ID3Controller;
 public class ApplicationTest 
 {
   @Autowired
-  private ID3Controller controller;
+  private ID3Application controller;
   
   @Test
   public void controllerIsNotNull() throws Exception

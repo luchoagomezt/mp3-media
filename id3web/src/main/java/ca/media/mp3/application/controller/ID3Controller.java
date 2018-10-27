@@ -24,7 +24,6 @@ public class ID3Controller
   private ID3WebReader reader;
   
   @GetMapping("/id3tag")
-  @ResponseBody
   public HypertextMP3 readTag(@RequestParam(name="mp3", required=false, defaultValue="") String mp3StringUrl)
   {
     try {
@@ -38,7 +37,6 @@ public class ID3Controller
   }
   
   @GetMapping("/")
-  @ResponseBody
   public String defaultURL()
   {
     return new String("");
